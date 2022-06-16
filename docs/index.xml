@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Problem Statement on</title><link>/docs/</link><description>Recent content in Problem Statement on</description><generator>Hugo -- gohugo.io</generator><language>en-US</language><lastBuildDate>Tue, 06 Oct 2020 08:48:23 +0000</lastBuildDate><atom:link href="/docs/index.xml" rel="self" type="application/rss+xml"/><item><title>Dashboard</title><link>/docs/explorer/dashboard/</link><pubDate>Thu, 24 Feb 2022 13:56:33 -0500</pubDate><guid>/docs/explorer/dashboard/</guid><description>Monitors Text about Monitors
+Details Text about Details
+Charts Text about Charts
+History Text about History
+Event Text about History-Events
+Function Text about History-Functions
+Reconciliations Text about History-Reconciliations
+Custom Text about Custom
+Events Text about Events
+Functions Text about Functions
+Gas Text about Gas
+Neighbors Text about Neighbors
+Collections Text about Collections</description></item><item><title>Names</title><link>/docs/explorer/names/</link><pubDate>Thu, 24 Feb 2022 13:56:33 -0500</pubDate><guid>/docs/explorer/names/</guid><description>Named Addresses Text about Named Addresses
+Address Tags Text about Address Tags
+Signatures Text about Signatures
+Named Blocks Text about Named Blocks</description></item><item><title>Explore</title><link>/docs/explorer/explorer/</link><pubDate>Thu, 24 Feb 2022 13:56:33 -0500</pubDate><guid>/docs/explorer/explorer/</guid><description>Blocks Text about Blocks
+Transactions Text about Transactions
+Receipts Text about Receipts
+Logs Text about Logs
+Traces Text about Traces</description></item><item><title>Settings</title><link>/docs/explorer/settings/</link><pubDate>Thu, 24 Feb 2022 13:56:33 -0500</pubDate><guid>/docs/explorer/settings/</guid><description>Scrapers Text about Scrapers
+Indexes Text about Indexes
+Caches Text about Caches
+Skins Text about Skins
+Data Model Text about Data Model</description></item><item><title>Support</title><link>/docs/explorer/support/</link><pubDate>Thu, 24 Feb 2022 13:56:33 -0500</pubDate><guid>/docs/explorer/support/</guid><description>Contact Us Text about Contact Us
+Documentation Text about Documentation
+Hot Keys Text about Hot Keys
+Licensing Text about Licensing
+About Us Text about About Us</description></item><item><title>Install TrueBlocks core</title><link>/docs/install/install-trueblocks/</link><pubDate>Mon, 16 Nov 2020 13:59:39 +0100</pubDate><guid>/docs/install/install-trueblocks/</guid><description>These instructions assume you can navigate the command line and edit configuration files. If you need help with a particular step, see the installation&amp;rsquo;s troubleshooting section.
+Quick Install Update GoLang installation go version If your version is less than 1.16, install Go Check other build dependancies or install
+☑ Install the other dependencies Clone the repo and compile from the codebase.
+While TrueBlocks is still alpha, use the develop branch (we hope to release beta by January, 2022).</description></item><item><title>Build Unchained Index</title><link>/docs/install/get-the-index/</link><pubDate>Mon, 09 Aug 2021 10:19:51 -0300</pubDate><guid>/docs/install/get-the-index/</guid><description>If you want to&amp;hellip; and you don&amp;rsquo;t mind&amp;hellip; then use&amp;hellip; minimize the size of the data stored locally and you want to get started faster&amp;hellip; slower first-time queries on new addresses, an index that&amp;rsquo;s slightly behind the head of the chain, an index created by someone else&amp;hellip; chifra init maximize the speed of first-time queries for new addresses&amp;hellip; longer initial setup time, ~70 GB of local storage, an index that&amp;rsquo;s slightly behind the head of the chain, an index created by someone else&amp;hellip; chifra init --all have a fully-local index, built directly from your own node, that stays up with the chain and maximizes the speed of your queries&amp;hellip; two to three days setup time and running your own local node (such as dAppnode)&amp;hellip;.</description></item><item><title>Install TrueBlocks explorer</title><link>/docs/install/install-explorer/</link><pubDate>Fri, 02 Jul 2021 08:01:07 -0300</pubDate><guid>/docs/install/install-explorer/</guid><description>First, make sure that you have the chifra-core backend up and running, then run the application from a clone of the explorer repo.
+Before you begin ☑ Set up the trueblocks backend using the chifra installation instructions
+☑ In a terminal window, run the command chifra serve
+Install Keep the chifra serve process running.
+Then, in a new terminal, run these commands:
+git clone git@github.com:TrueBlocks/trueblocks-explorer.git cd trueblocks-explorer cp .env.example .env yarn yarn develop Open your browser, and access the app from localhost:1234.</description></item><item><title>Introducing chifra</title><link>/docs/using/introducing-chifra/</link><pubDate>Mon, 16 Nov 2020 13:59:39 +0100</pubDate><guid>/docs/using/introducing-chifra/</guid><description>Similar to git, TrueBlocks has an overarching command called chifra that gives you access to all of the other subcommands.
+Type:
+chifra You will see a long list of commands similar to this
+Usage: chifra command Purpose: Access to all TrueBlocks tools (chifra &amp;lt;cmd&amp;gt; --help for more). Where: ACCOUNTS list list every appearance of an address anywhere on the chain export export full detail of transactions for one or more addresses monitors add, remove, clean, and list address monitors names query addresses or names of well known accounts abis fetches the ABI for a smart contract CHAIN DATA blocks retrieve one or more blocks from the chain or local cache transactions retrieve one or more transactions from the chain or local cache receipts retrieve receipts for the given transaction(s) logs retrieve logs for the given transaction(s) traces retrieve traces for the given transaction(s) when find block(s) based on date, blockNum, timestamp, or 'special' CHAIN STATE state retrieve account balance(s) for one or more addresses at given block(s) tokens retrieve token balance(s) for one or more addresses at given block(s) ADMIN status report on the status of the TrueBlocks system serve serve the TrueBlocks API using the flame server scrape scan the chain and update the TrueBlocks index of appearances init initialize the index of appearances by downloading Bloom filters pins manage pinned index of appearances and associated Bloom filters OTHER quotes freshen and/or display Ethereum price data explore open an explorer for a given address, block, or transaction slurp fetch data from EtherScan for any address You may get more help on any command by typing chifra &amp;lt;cmd&amp;gt; --help.</description></item><item><title>Some chifra examples</title><link>/docs/using/using-chifra/</link><pubDate>Mon, 16 Nov 2020 13:59:39 +0100</pubDate><guid>/docs/using/using-chifra/</guid><description>A few more examples in more detail.
+Getting Help Every chifra sub-command comes with an associated help page. To get help for chifra itself, simply type
+chifra A long list of commands should show. (If you have trouble, see the Installation page.)
+To get help for a specific command, type
+chifra &amp;lt;cmd&amp;gt; --help To get more detailed help, type
+chifra &amp;lt;cmd&amp;gt; --help --verbose 2 Getting System Status The chifra command gives you access to all of TrueBlocks&amp;rsquo; functionality.</description></item></channel></rss>
