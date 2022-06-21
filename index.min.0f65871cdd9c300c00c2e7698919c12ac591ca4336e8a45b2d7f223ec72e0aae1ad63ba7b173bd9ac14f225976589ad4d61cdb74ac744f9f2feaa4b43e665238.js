@@ -190,13 +190,13 @@ or ask us on discord.\u003c/p\u003e
 \u003cul\u003e
 \u003cli\u003e
 \u003cp\u003eFor Linux\u003c/p\u003e
-\u003cpre\u003e\u003ccode class="language-shell"\u003esudo apt install build-essential git cmake python python-dev libcurl3-dev clang-format jq
+\u003cpre\u003e\u003ccode class="language-shell"\u003esudo apt install build-essential git cmake ninja-build python python-dev libcurl3-dev clang-format jq
 \u003c/code\u003e\u003c/pre\u003e
 \u003c/li\u003e
 \u003cli\u003e
 \u003cp\u003eFor Mac:\u003c/p\u003e
 \u003cp\u003e\u003cem\u003eFor best results, we recommend running MacOS Big Sur or later.\u003c/em\u003e\u003c/p\u003e
-\u003cpre\u003e\u003ccode class="language-shell"\u003ebrew install cmake
+\u003cpre\u003e\u003ccode class="language-shell"\u003ebrew install cmake ninja
 brew install git
 brew install clang-format
 brew install jq
@@ -1422,14 +1422,17 @@ Usage:
 
 Arguments:
   mode - the type of chunk info to retrieve (required)
-	One of [ stats | pins | blooms | index | addresses | appearances ]
+	One of [ stats | manifest | pins | blooms | index | addresses | appearances ]
   blocks - optional list of blocks to intersect with chunk ranges
   addrs - one or more addresses to use with --belongs option (see note)
 
 Flags:
+  -d, --details      for manifest and addresses options only, display full details of the report
   -c, --check        depends on mode, checks for internal consistency of the data type
   -b, --belongs      checks if the given address appears in the given chunk
-  -d, --details      for the --addresses option only, display appearance records as well as address records
+  -p, --pin_chunks   gzip each chunk, push it to IPFS, and update and publish the manifest
+  -a, --pin_data     gzip the databases, push them to IPFS, and update and publish the manifest
+  -n, --clean        retrieve all pins on Pinata, compare to manifest, remove any extraneous remote pins
   -x, --fmt string   export format, one of [none|json*|txt|csv|api]
   -v, --verbose      enable verbose (increase detail with --log_level)
   -h, --help         display this help screen
@@ -1440,6 +1443,7 @@ Notes:
   - The --belongs option is only available with the addresses or blooms mode.
   - The --belongs option requires both an address and a block identifier.
   - You may only specifiy an address when using the --belongs option.
+  - The two --pin_ options, the --clean option, and the --check option are available only in manifest mode.
 \u003c/code\u003e\u003c/pre\u003e
 \u003cp\u003e\u003cstrong\u003eSource code\u003c/strong\u003e: \u003ca href="https://github.com/TrueBlocks/trueblocks-core/tree/master/src/apps/chifra/internal/chunks"\u003e\u003ccode\u003einternal/chunks\u003c/code\u003e\u003c/a\u003e\u003c/p\u003e
 \u003ch2 id="chifra-init"\u003echifra init\u003c/h2\u003e
