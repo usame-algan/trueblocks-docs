@@ -442,17 +442,18 @@ You can still use scrape, but you need to
 \u003cp\u003eYou can find the most \u003ca href="https://etherscan.io/address/0xcfd7f3b24f3551741f922fd8c4381aa4e00fc8fd#readContract"\u003erecent manifest here\u003c/a\u003e. (Open the \u003ccode\u003emanifestHash\u003c/code\u003e record.)\u003c/p\u003e
 \u003cp\u003eEach pin has a given block range, which you can check yourself using \u003ccode\u003echifra\u003c/code\u003e.\u003c/p\u003e
 \u003cp\u003eFor example, see the last manifest record by running\u003c/p\u003e
-\u003cpre\u003e\u003ccode class="language-shell"\u003echifra pins --list | tail -n 1
+\u003cpre\u003e\u003ccode class="language-shell"\u003echifra chunks manifest --fmt txt | tail -n 1
 \u003c/code\u003e\u003c/pre\u003e
 \u003cp\u003eThis outputs something like this:\u003c/p\u003e
 \u003cpre\u003e\u003ccode\u003e012909804-012912694     QmSQvJ5GPyc8juthKgvMaonxm2t2m939MphyMhBRuHKJzt  QmVCZdXD9EMU9jR6HKp8V1bC74DQDCzGurLxnK6KnbV2LP
 \u003c/code\u003e\u003c/pre\u003e
 \u003cp\u003eThe first field of the output provides the block range for the latest chunk. So, you could see when the last block of the latest
 range was published by running \u003ccode\u003echifra when\u003c/code\u003e on the last record:\u003c/p\u003e
-\u003cpre\u003e\u003ccode class="language-shell"\u003e\$chifra when 012912694
+\u003cpre\u003e\u003ccode class="language-shell"\u003e\$chifra when 12912694
 blocknumber     timestamp       date    name
 12912694        1627451435      2021-07-28 05:50:35 UTC
 \u003c/code\u003e\u003c/pre\u003e
+\u003cp\u003e(Remember to remove the leading zero from the block number.)\u003c/p\u003e
 `}).add({id:9,href:"/docs/prologue/design-philosophy/",title:"Design philosophy",description:"The philosophy behind the technical design of TrueBlocks",content:`\u003ch2 id="the-three-commandments"\u003eThe three commandments\u003c/h2\u003e
 \u003col\u003e
 \u003cli\u003e
