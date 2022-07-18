@@ -2038,5 +2038,40 @@ chifra blocks 100
 \u003c/tr\u003e
 \u003c/tbody\u003e
 \u003c/table\u003e
-`}).add({id:21,href:"/docs/chifra/",title:"Chifra",description:"The TrueBlocks CLI",content:`\u003cp\u003eA\u003c/p\u003e
+`}).add({id:21,href:"/docs/chifra/",title:"Chifra Command Line",description:"The TrueBlocks CLI",content:`\u003cp\u003eThe chifra command provides access to all the applications and tools available:\u003c/p\u003e
+\u003cpre\u003e\u003ccode\u003ePurpose:
+  Access to all TrueBlocks tools (chifra \u0026lt;cmd\u0026gt; --help for more).
+
+  Accounts:
+    list          list every appearance of an address anywhere on the chain
+    export        export full detail of transactions for one or more addresses
+    monitors      add, remove, clean, and list address monitors
+    names         query addresses or names of well known accounts
+    abis          fetches the ABI for a smart contract
+  Chain Data:
+    blocks        retrieve one or more blocks from the chain or local cache
+    transactions  retrieve one or more transactions from the chain or local cache
+    receipts      retrieve receipts for the given transaction(s)
+    logs          retrieve logs for the given transaction(s)
+    traces        retrieve traces for the given transaction(s)
+    when          find block(s) based on date, blockNum, timestamp, or 'special'
+  Chain State:
+    state         retrieve account balance(s) for one or more addresses at given block(s)
+    tokens        retrieve token balance(s) for one or more addresses at given block(s)
+  Admin:
+    status        report on the status of the TrueBlocks system
+    serve         serve the TrueBlocks API using the flame server
+    scrape        scan the chain and update (and optionally pin) the TrueBlocks index of appearances
+    chunks        manage and investigate chunks and bloom filters
+    init          initialize the TrueBlocks system by downloading from IPFS
+  Other:
+    quotes        update or display Ethereum price data, this tool has been deprecated
+    explore       open a local or remote explorer for one or more addresses, blocks, or transactions
+    slurp         fetch data from EtherScan for any address
+  Flags:
+    -h, --help    display this help screen
+
+  Use \u0026quot;chifra [command] --help\u0026quot; for more information about a command.
+\u003c/code\u003e\u003c/pre\u003e
+\u003cp\u003eClick on the links to the left for more information on each command\u003c/p\u003e
 `}).add({id:22,href:"/docs/prologue/",title:"Prologue",description:"Prologue Doks.",content:""}),userinput.addEventListener("input",n,!0),suggestions.addEventListener("click",s,!0);function n(){var n,r=this.value,o=e.search(r,{limit:5,index:["content"],enrich:!0}),i=suggestions.childNodes,s=0,c=o.length;for(suggestions.classList.remove("d-none"),o.forEach(function(e){n=document.createElement("div"),n.innerHTML="<a href><span></span><span></span></a>",a=n.querySelector("a"),t=n.querySelector("span:first-child"),d=n.querySelector("span:nth-child(2)"),a.href=e.result[s].doc.href,t.textContent=e.result[s].doc.title,d.textContent=e.result[s].doc.description,suggestions.appendChild(n)});i.length>c;)suggestions.removeChild(i[s])}function s(){for(;suggestions.lastChild;)suggestions.removeChild(suggestions.lastChild);return!1}})()
