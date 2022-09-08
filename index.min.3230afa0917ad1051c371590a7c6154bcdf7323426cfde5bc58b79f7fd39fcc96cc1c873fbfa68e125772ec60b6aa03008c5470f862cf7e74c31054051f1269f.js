@@ -453,7 +453,6 @@ range was published by running \u003ccode\u003echifra when\u003c/code\u003e on t
 blocknumber     timestamp       date    name
 12912694        1627451435      2021-07-28 05:50:35 UTC
 \u003c/code\u003e\u003c/pre\u003e
-\u003cp\u003e(Remember to remove the leading zero from the block number.)\u003c/p\u003e
 `}).add({id:9,href:"/docs/prologue/design-philosophy/",title:"Design philosophy",description:"The philosophy behind the technical design of TrueBlocks",content:`\u003ch2 id="the-three-commandments"\u003eThe three commandments\u003c/h2\u003e
 \u003col\u003e
 \u003cli\u003e
@@ -988,7 +987,7 @@ Flags:
   -r, --receipts            export receipts instead of transactional data
   -l, --logs                export logs instead of transactional data
   -t, --traces              export traces instead of transactional data
-  -A, --statements          export reconciliations instead of transactional data (requires --accounting option)
+  -A, --statements          export reconciliations instead of transactional data (assumes --accounting option)
   -n, --neighbors           export the neighbors of the given address
   -C, --accounting          attach accounting records to the exported data (applies to transactions export only)
   -a, --articulate          articulate transactions, traces, logs, and outputs
@@ -1001,8 +1000,9 @@ Flags:
       --emitter strings     for log export only, export only logs if emitted by one of these address(es)
       --topic strings       for log export only, export only logs with this topic(s)
       --asset strings       for the statements option only, export only reconciliations for this asset
+      --flow string         for the statements option only, export only statements with incoming value or outgoing value
+                            One of [ in | out | zero ]
   -y, --factory             scan for contract creations from the given address(es) and report address of those contracts
-  -s, --staging             export transactions labeled staging (i.e. older than 28 blocks but not yet consolidated)
   -u, --unripe              export transactions labeled upripe (i.e. less than 28 blocks old)
   -F, --first_block uint    first block to process (inclusive)
   -L, --last_block uint     last block to process (inclusive)
@@ -1038,7 +1038,7 @@ Flags:
       --undelete      undelete a previously deleted monitor
       --remove        remove a previously deleted monitor
       --watch         continually scan for new blocks and extract data for monitored addresses
-  -E, --sleep float   seconds to sleep between monitor passes (default 14)
+  -s, --sleep float   seconds to sleep between monitor passes (default 14)
   -x, --fmt string    export format, one of [none|json*|txt|csv|api]
   -v, --verbose       enable verbose (increase detail with --log_level)
   -h, --help          display this help screen
@@ -1100,6 +1100,7 @@ Flags:
   -k, --known          load common 'known' ABIs from cache
   -s, --sol            extract the abi definition from the provided .sol file(s)
   -f, --find strings   search for function or event declarations given a four- or 32-byte code(s)
+  -n, --hint strings   for the --find option only, provide hints to speed up the search
   -x, --fmt string     export format, one of [none|json*|txt|csv|api]
   -v, --verbose        enable verbose (increase detail with --log_level)
   -h, --help           display this help screen
@@ -1272,13 +1273,14 @@ Arguments:
 
 Flags:
   -l, --list         export a list of the 'special' blocks
-  -t, --timestamps   ignore other options and generate timestamps only
+  -t, --timestamps   display or process timestamps
   -x, --fmt string   export format, one of [none|json*|txt|csv|api]
   -v, --verbose      enable verbose (increase detail with --log_level)
   -h, --help         display this help screen
 
 Notes:
   - The block list may contain any combination of number, hash, date, special named blocks.
+  - Block numbers, timestamps, or dates in the future are estimated with 13 second blocks.
   - Dates must be formatted in JSON format: YYYY-MM-DD[THH[:MM[:SS]]].
 \u003c/code\u003e\u003c/pre\u003e
 \u003cp\u003e\u003cstrong\u003eSource code\u003c/strong\u003e: \u003ca href="https://github.com/TrueBlocks/trueblocks-core/tree/master/src/apps/chifra/internal/when"\u003e\u003ccode\u003einternal/when\u003c/code\u003e\u003c/a\u003e\u003c/p\u003e
@@ -1383,73 +1385,135 @@ Notes:
 \u003c/code\u003e\u003c/pre\u003e
 \u003cp\u003e\u003cstrong\u003eSource code\u003c/strong\u003e: \u003ca href="https://github.com/TrueBlocks/trueblocks-core/tree/master/src/apps/chifra/server"\u003e\u003ccode\u003eserver\u003c/code\u003e\u003c/a\u003e\u003c/p\u003e
 \u003ch2 id="chifra-scrape"\u003echifra scrape\u003c/h2\u003e
-\u003cp\u003eThe \u003ccode\u003echifra scrape\u003c/code\u003e application creates TrueBlocks\u0026rsquo; index of address appearances \u0026ndash; the fundamental data structure of the entire system. It also, optionally, pins the index to IPFS.\u003c/p\u003e
-\u003cp\u003e\u003ccode\u003echifra scrape\u003c/code\u003e is a long running process, therefore we advise you run it as a service or in terminal multiplexer such as \u003ccode\u003etmux\u003c/code\u003e. You may start and stop \u003ccode\u003echifra scrape\u003c/code\u003e as needed, but doing so means the scraper will have to catch up to the front of the chain the next time it runs, a process that may take several hours depending on how long ago it was last run. See below for a more in depth explanation of how the scraping process works and prerequisites for it proper operation.\u003c/p\u003e
-\u003cp\u003eYou may adjust the speed of the index creation with the \u003ccode\u003e--sleep\u003c/code\u003e and \u003ccode\u003e--block_cnt\u003c/code\u003e options. On some machines, or when running against some EVM node software, you may overburden the hardware. Slowing things down will ensure proper operation. Finally, you may optionally \u003ccode\u003e--pin\u003c/code\u003e each new chunk to IPFS which naturally shards the database among all users.\u003c/p\u003e
+\u003cp\u003eThe \u003ccode\u003echifra scrape\u003c/code\u003e application creates TrueBlocks\u0026rsquo; chunked index of address appearances \u0026ndash; the fundamental data structure of the entire system. It also, optionally, pins each chunk of the index to IPFS.\u003c/p\u003e
+\u003cp\u003e\u003ccode\u003echifra scrape\u003c/code\u003e is a long running process, therefore we advise you run it as a service or in terminal multiplexer such as \u003ccode\u003etmux\u003c/code\u003e. You may start and stop \u003ccode\u003echifra scrape\u003c/code\u003e as needed, but doing so means the scraper will not be keeping up with the front of teh blockchain. The next time it starts, it will have to catch up to the chain, a process that may take several hours depending on how long ago it was last run. See the section below and the \u0026ldquo;Papers\u0026rdquo; section of our website for more information on how the scraping process works and prerequisites for it proper operation.\u003c/p\u003e
+\u003cp\u003eYou may adjust the speed of the index creation with the \u003ccode\u003e--sleep\u003c/code\u003e and \u003ccode\u003e--block_cnt\u003c/code\u003e options. On some machines, or when running against some EVM node software, the scraper may overburden the hardware. Slowing things down will ensure proper operation. Finally, you may optionally \u003ccode\u003e--pin\u003c/code\u003e each new chunk to IPFS which naturally shards the database among all users. By default, pinning is against a locally running IPFS node, but the \u003ccode\u003e--remote\u003c/code\u003e option allows pinning to an IPFS pinning service such as Pinata or Estuary.\u003c/p\u003e
 \u003cpre\u003e\u003ccode class="language-[plaintext]"\u003ePurpose:
-  Scan the chain and update (and optionally pin) the TrueBlocks index of appearances.
+  Scan the chain and update the TrueBlocks index of appearances.
 
 Usage:
-  chifra scrape \u0026lt;mode\u0026gt; [mode...] [flags]
-
-Arguments:
-  modes - which scraper(s) to control (required)
-	One or more of [ run | stop ]
+  chifra scrape [flags]
 
 Flags:
-  -s, --sleep float      seconds to sleep between scraper passes (default 14)
-  -p, --pin              pin chunks (and blooms) to IPFS as they are created (requires pinning service)
   -n, --block_cnt uint   maximum number of blocks to process per pass (default 2000)
+  -i, --pin              pin new chunks (requires locally-running IPFS daemon or --remote)
+  -m, --remote           pin new chunks to the gateway (requires pinning service keys)
+  -s, --sleep float      seconds to sleep between scraper passes (default 14)
   -x, --fmt string       export format, one of [none|json*|txt|csv|api]
   -v, --verbose          enable verbose (increase detail with --log_level)
   -h, --help             display this help screen
 \u003c/code\u003e\u003c/pre\u003e
-\u003ch3 id="explainer"\u003eexplainer\u003c/h3\u003e
-\u003cp\u003eEach time \u003ccode\u003echifra scrape\u003c/code\u003e runs, it begins at the last block it completed processing (plus one). With each pass, it descends as deeply as it can into the block\u0026rsquo;s data. (This is why the indexer requires a \u003ccode\u003e--tracing\u003c/code\u003e node.) As addresses appear in the blocks, the system adds the appearance to a binary index. Periodically (at the end of the block containing the 2,000,000th appearance), the system consolidates a \u003cstrong\u003echunk\u003c/strong\u003e.\u003c/p\u003e
-\u003cp\u003eA \u003cstrong\u003echunk\u003c/strong\u003e is a portion of the index containing approximately 2,000,000 records (although, this number is adjustable for different chains). As part of the consolidation, the scraper creates a Bloom filter representing the set membership in the chunk. The Bloom filters are an order of magnitude (or more) smaller than the chunks. The system then pushes both the chunk and the Bloom filter to IPFS. In this way, TrueBlocks creates an immutable, uncapturable index of appearances that can be used not only by TrueBlocks, but any member of the community who needs it. (Hint: We all, every one of us, need it.)\u003c/p\u003e
-\u003cp\u003eUsers of the \u003ca href="https://github.com/TrueBlocks/trueblocks-explorer"\u003eTrueBlocks Explorer\u003c/a\u003e (or any other software) may subsequently download the Bloom filters, query them to determine which \u003cstrong\u003echunks\u003c/strong\u003e need to be downloaded, and thereby build a historical list of transactions for a given address. This is accomplished while imposing a minimum amount of resource requirement on the end user\u0026rsquo;s machine.\u003c/p\u003e
-\u003cp\u003eIn future versions of the software, we will pin these downloaded chunks and blooms on end user\u0026rsquo;s machines. The user needs the data for the software to operate and sharing it makes all everyone better off. A naturally-occuring network effect.\u003c/p\u003e
+\u003ch3 id="configuration"\u003econfiguration\u003c/h3\u003e
+\u003cp\u003eEach of the following additional configurable command line options are available.\u003c/p\u003e
+\u003cp\u003e\u003cstrong\u003eConfiguration file:\u003c/strong\u003e \u003ccode\u003e\$CONFIG/\$CHAIN/blockScrape.toml\u003c/code\u003e\u003cbr\u003e
+\u003cstrong\u003eConfiguration group:\u003c/strong\u003e \u003ccode\u003e[settings]\u003c/code\u003e\u003c/p\u003e
+\u003ctable\u003e
+\u003cthead\u003e
+\u003ctr\u003e
+\u003cth\u003eItem\u003c/th\u003e
+\u003cth\u003eType\u003c/th\u003e
+\u003cth\u003eDefault\u003c/th\u003e
+\u003cth\u003eDescription / Default\u003c/th\u003e
+\u003c/tr\u003e
+\u003c/thead\u003e
+\u003ctbody\u003e
+\u003ctr\u003e
+\u003ctd\u003eapps_per_chunk\u003c/td\u003e
+\u003ctd\u003euint64\u003c/td\u003e
+\u003ctd\u003e200000\u003c/td\u003e
+\u003ctd\u003ethe number of appearances to build into a chunk before consolidating it\u003c/td\u003e
+\u003c/tr\u003e
+\u003ctr\u003e
+\u003ctd\u003esnap_to_grid\u003c/td\u003e
+\u003ctd\u003euint64\u003c/td\u003e
+\u003ctd\u003e100000\u003c/td\u003e
+\u003ctd\u003ean override to apps_per_chunk to snap-to-grid at every modulo of this value, this allows easier corrections to the index\u003c/td\u003e
+\u003c/tr\u003e
+\u003ctr\u003e
+\u003ctd\u003efirst_snap\u003c/td\u003e
+\u003ctd\u003euint64\u003c/td\u003e
+\u003ctd\u003e0\u003c/td\u003e
+\u003ctd\u003ethe first block at which snap_to_grid is enabled\u003c/td\u003e
+\u003c/tr\u003e
+\u003ctr\u003e
+\u003ctd\u003eunripe_dist\u003c/td\u003e
+\u003ctd\u003euint64\u003c/td\u003e
+\u003ctd\u003e28\u003c/td\u003e
+\u003ctd\u003ethe distance (in blocks) from the front of the chain under which (inclusive) a block is considered unripe\u003c/td\u003e
+\u003c/tr\u003e
+\u003ctr\u003e
+\u003ctd\u003echannel_count\u003c/td\u003e
+\u003ctd\u003euint64\u003c/td\u003e
+\u003ctd\u003e20\u003c/td\u003e
+\u003ctd\u003enumber of concurrent processing channels\u003c/td\u003e
+\u003c/tr\u003e
+\u003ctr\u003e
+\u003ctd\u003eallow_missing\u003c/td\u003e
+\u003ctd\u003ebool\u003c/td\u003e
+\u003ctd\u003efalse\u003c/td\u003e
+\u003ctd\u003edo not report errors for blockchains that contain blocks with zero addresses\u003c/td\u003e
+\u003c/tr\u003e
+\u003c/tbody\u003e
+\u003c/table\u003e
+\u003cp\u003eThese items may be set in three ways, each overridding the preceeding method:\u003c/p\u003e
+\u003cp\u003e\u0026ndash; in the above configuration file under the \u003ccode\u003e[settings]\u003c/code\u003e group,\u003cbr\u003e
+\u0026ndash; in the environment by exporting the configuration item as UPPER_CASE, without underbars, and prepended with TB_SETTINGS_, or\u003cbr\u003e
+\u0026ndash; on the command line using the configuration item with leading dashes (i.e., \u003ccode\u003e--name\u003c/code\u003e).\u003c/p\u003e
+\u003ch3 id="further-information"\u003efurther information\u003c/h3\u003e
+\u003cp\u003eEach time \u003ccode\u003echifra scrape\u003c/code\u003e runs, it begins at the last block it completed processing (plus one). With each pass, the scraper descends as deeply as is possible into each block\u0026rsquo;s data. (This is why TrueBlocks requires a \u003ccode\u003e--tracing\u003c/code\u003e node.) As the scraper encounters appearances of address in the block\u0026rsquo;s data, it adds those appearance to a growing index. Periodically (after processing the the block that contains the 2,000,000th appearance), the system consolidates an \u003cstrong\u003eindex chunk\u003c/strong\u003e.\u003c/p\u003e
+\u003cp\u003eAn \u003cstrong\u003eindex chunk\u003c/strong\u003e is a portion of the index containing approximately 2,000,000 records (although, this number is adjustable for different chains). As part of the consolidation, the scraper creates a Bloom filter representing the set membership in the associated index portion. The Bloom filters are an order of magnitude smaller than the index chunks. The system then pushes both the index chunk and the Bloom filter to IPFS. In this way, TrueBlocks creates an immutable, uncapturable index of appearances that can be used not only by TrueBlocks, but any member of the community who needs it. (Hint: We all need it.)\u003c/p\u003e
+\u003cp\u003eUsers of the \u003ca href="https://github.com/TrueBlocks/trueblocks-explorer"\u003eTrueBlocks Explorer\u003c/a\u003e (or any other software) may subsequently download the Bloom filters, query them to determine which \u003cstrong\u003eindex chunks\u003c/strong\u003e need to be downloaded, and thereby build a historical list of transactions for a given address. This is accomplished while imposing a minimum amount of resource requirement on the end user\u0026rsquo;s machine.\u003c/p\u003e
+\u003cp\u003eRecently, we enabled the ability for the end user to pin these downloaded index chunks and blooms on their own machines. The user needs the data for the software to operate\u0026ndash;sharing requires minimal effort and makes the data available to other people. Everyone is better off. A naturally-occuring network effect.\u003c/p\u003e
 \u003ch3 id="prerequisites"\u003eprerequisites\u003c/h3\u003e
-\u003cp\u003e\u003ccode\u003echifra scrape\u003c/code\u003e does not work without an RPC endpoint to an Ethereum node. The software \u003cem\u003eworks\u003c/em\u003e without an \u003ccode\u003earchive\u003c/code\u003e node, but it works significantly better with one. An additional requirement is an RPC that provides OpenEthereum\u0026rsquo;s \u003ccode\u003etrace_\u003c/code\u003e routines. We suggest strongly that you use Erigon for many reasons.\u003c/p\u003e
+\u003cp\u003e\u003ccode\u003echifra scrape\u003c/code\u003e works with any EVM-based blockchain, but does not currently work without a \u0026ldquo;tracing, archive\u0026rdquo; RPC endpoint. The Erigon blockchain node, given its minimal disc footprint for an archive node and its support of the required \u003ccode\u003etrace_\u003c/code\u003e endpoint routines, is highly recommended.\u003c/p\u003e
 \u003cp\u003ePlease \u003ca href="https://trueblocks.io/blog/a-long-winded-explanation-of-trueblocks/"\u003esee this article\u003c/a\u003e for more information about running the scraper and building and sharing the index of appearances.\u003c/p\u003e
 \u003cp\u003e\u003cstrong\u003eSource code\u003c/strong\u003e: \u003ca href="https://github.com/TrueBlocks/trueblocks-core/tree/master/src/apps/chifra/internal/scrape"\u003e\u003ccode\u003einternal/scrape\u003c/code\u003e\u003c/a\u003e\u003c/p\u003e
 \u003ch2 id="chifra-chunks"\u003echifra chunks\u003c/h2\u003e
-\u003cp\u003eThis tool is not yet ready for production use. Please return to this page later.\u003c/p\u003e
+\u003cp\u003eThe chifra chunks routine provides tools for interacting with, checking the validity of,
+cleaning up, and analyizing the Unchained Index. It provides options to list pins,
+the Manifest, summary data on the index, Bloom filters, addresses, and appearances.
+While still in its early stages, this tool will eventually allow users to clean
+their local index, clean their remote index, study the indexes, etc. Stay tuned.\u003c/p\u003e
 \u003cpre\u003e\u003ccode class="language-[plaintext]"\u003ePurpose:
-  Manage and investigate chunks and bloom filters.
+  Manage, investigate, and display the Unchained Index.
 
 Usage:
   chifra chunks \u0026lt;mode\u0026gt; [flags] [blocks...] [address...]
 
 Arguments:
-  mode - the type of chunk info to retrieve (required)
-	One of [ stats | manifest | pins | blooms | index | addresses | appearances ]
-  blocks - optional list of blocks to intersect with chunk ranges
-  addrs - one or more addresses to use with --belongs option (see note)
+  mode - the type of data to process (required)
+	One of [ status | manifest | index | blooms | addresses | appearances | stats ]
+  blocks - an optional list of blocks to intersect with chunk ranges
 
 Flags:
-  -d, --details      for manifest and addresses options only, display full details of the report
-  -c, --check        depends on mode, checks for internal consistency of the data type
-  -b, --belongs      checks if the given address appears in the given chunk
-  -p, --pin_chunks   gzip each chunk, push it to IPFS, and update and publish the manifest
-  -a, --pin_data     gzip the databases, push them to IPFS, and update and publish the manifest
-  -n, --clean        retrieve all pins on Pinata, compare to manifest, remove any extraneous remote pins
-  -r, --remote       for some options, force processing from remote data
-  -x, --fmt string   export format, one of [none|json*|txt|csv|api]
-  -v, --verbose      enable verbose (increase detail with --log_level)
-  -h, --help         display this help screen
+  -c, --check             check the manifest, index, or blooms for internal consistency
+  -i, --pin               pin the manifest or each index chunk and bloom
+  -p, --publish           publish the manifest to the Unchained Index smart contract
+  -n, --truncate uint     truncate the entire index at this block (requires a block identifier)
+  -m, --remote            prior to processing, retreive the manifest from the Unchained Index smart contract
+  -b, --belongs strings   in index mode only, checks the address(es) for inclusion in the given index chunk
+  -s, --sleep float       for --remote pinning only, seconds to sleep between API calls
+  -x, --fmt string        export format, one of [none|json*|txt|csv|api]
+  -v, --verbose           enable verbose (increase detail with --log_level)
+  -h, --help              display this help screen
 
 Notes:
+  - Mode determines which type of data to display or process.
+  - Certain options are only available in certain modes.
   - If blocks are provided, only chunks intersecting with those blocks are displayed.
-  - Only a single block in a given chunk needs to be supplied for a match.
-  - The --belongs option is only available with the addresses or blooms mode.
-  - The --belongs option requires both an address and a block identifier.
-  - You may only specifiy an address when using the --belongs option.
-  - The two --pin_ options, the --clean option, and the --check option are available only in manifest mode.
+  - The --truncate option updates data, but does not --pin or --publish.
+  - You may combine the --pin and --publish options.
+  - The --belongs option is only available in the index mode.
 \u003c/code\u003e\u003c/pre\u003e
 \u003cp\u003e\u003cstrong\u003eSource code\u003c/strong\u003e: \u003ca href="https://github.com/TrueBlocks/trueblocks-core/tree/master/src/apps/chifra/internal/chunks"\u003e\u003ccode\u003einternal/chunks\u003c/code\u003e\u003c/a\u003e\u003c/p\u003e
 \u003ch2 id="chifra-init"\u003echifra init\u003c/h2\u003e
-\u003cp\u003eWhen invoked, \u003ccode\u003echifra init\u003c/code\u003e looks at a smart contract called \u003cstrong\u003eThe Unchained Index\u003c/strong\u003e (\u003ca href="https://etherscan.io/address/0xcfd7f3b24f3551741f922fd8c4381aa4e00fc8fd"\u003e0xcfd7f3b24f3551741f922fd8c4381aa4e00fc8fd\u003c/a\u003e). From this smart contract, it extracts a data item called \u003ccode\u003emanifestHash\u003c/code\u003e. The \u003ccode\u003emanifestHash\u003c/code\u003e is an IPFS hash that points to a file (a manifest) that contains every previously pinned Bloom filter and index chunk. TrueBlocks periodically publishes the manifest\u0026rsquo;s hash to the smart contract. This makes the entire index both available for our software to use and impossible for us to withhold. Both of these aspects of the manifest are included by design.\u003c/p\u003e
+\u003cp\u003eWhen invoked, \u003ccode\u003echifra init\u003c/code\u003e reads a value from a smart contract called \u003cstrong\u003eThe Unchained Index\u003c/strong\u003e
+(\u003ca href="https://etherscan.io/address/0x0c316b7042b419d07d343f2f4f5bd54ff731183d"\u003e0x0c316b7042b419d07d343f2f4f5bd54ff731183d\u003c/a\u003e).\u003c/p\u003e
+\u003cp\u003eThis value (\u003ccode\u003emanifestHashMap\u003c/code\u003e) is an IPFS hash pointing to a pinned file (called the Manifest) that
+contains a large collection of other IPFS hashes. These other hashes point to each of the Bloom
+filter and Index Chunk. TrueBlocks periodically publishes the Manifest\u0026rsquo;s hash to the smart contract.
+This makes the index available for our software to use and impossible for us to withhold. Both of these
+aspects of the manifest are by design.\u003c/p\u003e
 \u003cp\u003eIf you stop \u003ccode\u003echifra init\u003c/code\u003e before it finishes, it will pick up again where it left off the next time you run it.\u003c/p\u003e
 \u003cp\u003eCertain parts of the system (\u003ccode\u003echifra list\u003c/code\u003e and \u003ccode\u003echifra export\u003c/code\u003e for example) if you have not previously run \u003ccode\u003echifra init\u003c/code\u003e or \u003ccode\u003echifra scrape\u003c/code\u003e. You will be warned by the system until it\u0026rsquo;s satified.\u003c/p\u003e
 \u003cp\u003eIf you run \u003ccode\u003echifra init\u003c/code\u003e and allow it to complete, the next time you run \u003ccode\u003echifra scrape\u003c/code\u003e, it will start where \u003ccode\u003einit\u003c/code\u003e finished. This means that only the blooms will be stored on your hard drive. Subsequent scraping will produce both chunks and blooms, although you can, if you wish delete chunks that are not being used. You may periodically run \u003ccode\u003echifra init\u003c/code\u003e if you prefer not to scrape.\u003c/p\u003e
@@ -1460,10 +1524,11 @@ Usage:
   chifra init [flags]
 
 Flags:
-  -a, --all          in addition to Bloom filters, download full index chunks
-  -x, --fmt string   export format, one of [none|json*|txt|csv|api]
-  -v, --verbose      enable verbose (increase detail with --log_level)
-  -h, --help         display this help screen
+  -a, --all           in addition to Bloom filters, download full index chunks
+  -s, --sleep float   seconds to sleep between downloads
+  -x, --fmt string    export format, one of [none|json*|txt|csv|api]
+  -v, --verbose       enable verbose (increase detail with --log_level)
+  -h, --help          display this help screen
 
 Notes:
   - Re-run chifra init as often as you wish. It will repair or freshen the index.
@@ -1597,8 +1662,8 @@ chifra blocks 100
 \u003ctable\u003e
 \u003cthead\u003e
 \u003ctr\u003e
-\u003cth\u003eItem/Default\u003c/th\u003e
-\u003cth\u003eDescription\u003c/th\u003e
+\u003cth\u003eItem\u003c/th\u003e
+\u003cth\u003eDescription / Default\u003c/th\u003e
 \u003c/tr\u003e
 \u003c/thead\u003e
 \u003ctbody\u003e
@@ -1616,8 +1681,8 @@ chifra blocks 100
 \u003ctable\u003e
 \u003cthead\u003e
 \u003ctr\u003e
-\u003cth\u003eItem/Default\u003c/th\u003e
-\u003cth\u003eDescription\u003c/th\u003e
+\u003cth\u003eItem\u003c/th\u003e
+\u003cth\u003eDescription / Default\u003c/th\u003e
 \u003c/tr\u003e
 \u003c/thead\u003e
 \u003ctbody\u003e
@@ -1713,101 +1778,64 @@ chifra blocks 100
 \u003c/table\u003e
 \u003cp\u003e\u003ca href="#C4"\u003e\u003c/a\u003e\u003c/p\u003e
 \u003cdiv style="padding:2px;padding-left:10px;background-color:green;color:white"\u003eblockScrape.toml for chifra scrape\u003c/div\u003e
+\u003cp\u003e\u003cstrong\u003eConfiguration group:\u003c/strong\u003e \u003ccode\u003e[settings]\u003c/code\u003e\u003c/p\u003e
 \u003ctable\u003e
 \u003cthead\u003e
 \u003ctr\u003e
-\u003cth\u003eItem/Default\u003c/th\u003e
-\u003cth\u003eDescription\u003c/th\u003e
+\u003cth\u003eItem\u003c/th\u003e
+\u003cth\u003eType\u003c/th\u003e
+\u003cth\u003eDefault\u003c/th\u003e
+\u003cth\u003eDescription / Default\u003c/th\u003e
 \u003c/tr\u003e
 \u003c/thead\u003e
 \u003ctbody\u003e
 \u003ctr\u003e
 \u003ctd\u003e\u003c/td\u003e
 \u003ctd\u003e\u003c/td\u003e
+\u003ctd\u003e\u003c/td\u003e
+\u003ctd\u003e\u003c/td\u003e
 \u003c/tr\u003e
 \u003ctr\u003e
 \u003ctd\u003e[settings]\u003c/td\u003e
 \u003ctd\u003e\u003c/td\u003e
-\u003c/tr\u003e
-\u003ctr\u003e
-\u003ctd\u003eblock_cnt\u003c/td\u003e
-\u003ctd\u003eThe number of blocks to process with each round of the scraper\u003cbr /\u003e2000\u003c/td\u003e
-\u003c/tr\u003e
-\u003ctr\u003e
-\u003ctd\u003eblock_chan_cnt\u003c/td\u003e
-\u003ctd\u003eThe number of go routines to devote to block processors\u003cbr /\u003e10\u003c/td\u003e
-\u003c/tr\u003e
-\u003ctr\u003e
-\u003ctd\u003eaddr_chan_cnt\u003c/td\u003e
-\u003ctd\u003eThe number of go routines to devote to address processors\u003cbr /\u003e20\u003c/td\u003e
-\u003c/tr\u003e
-\u003ctr\u003e
-\u003ctd\u003en_blocks_fallback\u003c/td\u003e
-\u003ctd\u003eThe number of blocks to process during dDos or other busy block ranges\u003cbr /\u003e500\u003c/td\u003e
+\u003ctd\u003e\u003c/td\u003e
+\u003ctd\u003e\u003c/td\u003e
 \u003c/tr\u003e
 \u003ctr\u003e
 \u003ctd\u003eapps_per_chunk\u003c/td\u003e
+\u003ctd\u003euint64\u003c/td\u003e
+\u003ctd\u003e200000\u003c/td\u003e
 \u003ctd\u003ethe number of appearances to build into a chunk before consolidating it\u003c/td\u003e
 \u003c/tr\u003e
 \u003ctr\u003e
-\u003ctd\u003eunripe_dist\u003c/td\u003e
-\u003ctd\u003eThe distance (in blocks) from the front of the chain under which (inclusive) a block is considered unripe\u003c/td\u003e
-\u003c/tr\u003e
-\u003ctr\u003e
 \u003ctd\u003esnap_to_grid\u003c/td\u003e
-\u003ctd\u003eAn override to apps_per_chunk to snap-to-grid at every modulo of this value, this allows easier corrections to the index\u003c/td\u003e
+\u003ctd\u003euint64\u003c/td\u003e
+\u003ctd\u003e100000\u003c/td\u003e
+\u003ctd\u003ean override to apps_per_chunk to snap-to-grid at every modulo of this value, this allows easier corrections to the index\u003c/td\u003e
 \u003c/tr\u003e
 \u003ctr\u003e
 \u003ctd\u003efirst_snap\u003c/td\u003e
-\u003ctd\u003eThe first block at which snap_to_grid is enabled\u003c/td\u003e
+\u003ctd\u003euint64\u003c/td\u003e
+\u003ctd\u003e0\u003c/td\u003e
+\u003ctd\u003ethe first block at which snap_to_grid is enabled\u003c/td\u003e
+\u003c/tr\u003e
+\u003ctr\u003e
+\u003ctd\u003eunripe_dist\u003c/td\u003e
+\u003ctd\u003euint64\u003c/td\u003e
+\u003ctd\u003e28\u003c/td\u003e
+\u003ctd\u003ethe distance (in blocks) from the front of the chain under which (inclusive) a block is considered unripe\u003c/td\u003e
+\u003c/tr\u003e
+\u003ctr\u003e
+\u003ctd\u003echannel_count\u003c/td\u003e
+\u003ctd\u003euint64\u003c/td\u003e
+\u003ctd\u003e20\u003c/td\u003e
+\u003ctd\u003enumber of concurrent processing channels\u003c/td\u003e
 \u003c/tr\u003e
 \u003ctr\u003e
 \u003ctd\u003eallow_missing\u003c/td\u003e
-\u003ctd\u003eDo not report errors for blockchain that contain blocks with zero addresses\u003c/td\u003e
-\u003c/tr\u003e
-\u003ctr\u003e
-\u003ctd\u003en_test_runs\u003c/td\u003e
-\u003ctd\u003eIn live testing mode, the number of test runs to process before quitting\u003c/td\u003e
-\u003c/tr\u003e
-\u003ctr\u003e
-\u003ctd\u003epinata_api_key\u003c/td\u003e
-\u003ctd\u003eIf \u0026ndash;pin is on, the key to Pinata at which to pin\u003c/td\u003e
-\u003c/tr\u003e
-\u003ctr\u003e
-\u003ctd\u003epinata_secret_api_key\u003c/td\u003e
-\u003ctd\u003eIf \u0026ndash;pin is on, the secret key to Pinata at which to pin\u003c/td\u003e
-\u003c/tr\u003e
-\u003ctr\u003e
-\u003ctd\u003e\u003c/td\u003e
-\u003ctd\u003e\u003c/td\u003e
-\u003c/tr\u003e
-\u003ctr\u003e
-\u003ctd\u003e[requires]\u003c/td\u003e
-\u003ctd\u003e(this section will be removed when full multi-chain support is finished)\u003c/td\u003e
-\u003c/tr\u003e
-\u003ctr\u003e
-\u003ctd\u003etracing\u003c/td\u003e
-\u003ctd\u003eIf true, require the node to be able to produce traces\u003cbr /\u003etrue\u003c/td\u003e
-\u003c/tr\u003e
-\u003ctr\u003e
-\u003ctd\u003earchive\u003c/td\u003e
-\u003ctd\u003eIf true, require the node to be an archive node\u003cbr /\u003etrue\u003c/td\u003e
-\u003c/tr\u003e
-\u003ctr\u003e
-\u003ctd\u003eparity\u003c/td\u003e
-\u003ctd\u003eIf true, require the node to be parity (deprecated)\u003cbr /\u003etrue\u003c/td\u003e
-\u003c/tr\u003e
-\u003ctr\u003e
-\u003ctd\u003e\u003c/td\u003e
-\u003ctd\u003e\u003c/td\u003e
-\u003c/tr\u003e
-\u003ctr\u003e
-\u003ctd\u003e[dev]\u003c/td\u003e
-\u003ctd\u003e(this section will be removed when full multi-chain support is finished)\u003c/td\u003e
-\u003c/tr\u003e
-\u003ctr\u003e
-\u003ctd\u003eipfs_gateway\u003c/td\u003e
-\u003ctd\u003eThe default IPFS gateway endpoint for \u003ccode\u003echifra init\u003c/code\u003e\u003cbr /\u003ehttps://ipfs.unchainedindex.io/ipfs/\u003c/td\u003e
+\u003ctd\u003ebool\u003c/td\u003e
+\u003ctd\u003efalse\u003c/td\u003e
+\u003ctd\u003edo not report errors for blockchains that contain blocks with zero addresses\u003c/td\u003e
 \u003c/tr\u003e
 \u003c/tbody\u003e
 \u003c/table\u003e
@@ -1815,8 +1843,8 @@ chifra blocks 100
 \u003ctable\u003e
 \u003cthead\u003e
 \u003ctr\u003e
-\u003cth\u003eItem/Default\u003c/th\u003e
-\u003cth\u003eDescription\u003c/th\u003e
+\u003cth\u003eItem\u003c/th\u003e
+\u003cth\u003eDescription / Default\u003c/th\u003e
 \u003c/tr\u003e
 \u003c/thead\u003e
 \u003ctbody\u003e
@@ -1838,8 +1866,8 @@ chifra blocks 100
 \u003ctable\u003e
 \u003cthead\u003e
 \u003ctr\u003e
-\u003cth\u003eItem/Default\u003c/th\u003e
-\u003cth\u003eDescription\u003c/th\u003e
+\u003cth\u003eItem\u003c/th\u003e
+\u003cth\u003eDescription / Default\u003c/th\u003e
 \u003c/tr\u003e
 \u003c/thead\u003e
 \u003ctbody\u003e
@@ -1869,8 +1897,8 @@ chifra blocks 100
 \u003ctable\u003e
 \u003cthead\u003e
 \u003ctr\u003e
-\u003cth\u003eItem/Default\u003c/th\u003e
-\u003cth\u003eDescription\u003c/th\u003e
+\u003cth\u003eItem\u003c/th\u003e
+\u003cth\u003eDescription / Default\u003c/th\u003e
 \u003c/tr\u003e
 \u003c/thead\u003e
 \u003ctbody\u003e
@@ -1908,8 +1936,8 @@ chifra blocks 100
 \u003ctable\u003e
 \u003cthead\u003e
 \u003ctr\u003e
-\u003cth\u003eItem/Default\u003c/th\u003e
-\u003cth\u003eDescription\u003c/th\u003e
+\u003cth\u003eItem\u003c/th\u003e
+\u003cth\u003eDescription / Default\u003c/th\u003e
 \u003c/tr\u003e
 \u003c/thead\u003e
 \u003ctbody\u003e
@@ -1967,8 +1995,8 @@ chifra blocks 100
 \u003ctable\u003e
 \u003cthead\u003e
 \u003ctr\u003e
-\u003cth\u003eItem/Default\u003c/th\u003e
-\u003cth\u003eDescription\u003c/th\u003e
+\u003cth\u003eItem\u003c/th\u003e
+\u003cth\u003eDescription / Default\u003c/th\u003e
 \u003c/tr\u003e
 \u003c/thead\u003e
 \u003ctbody\u003e
