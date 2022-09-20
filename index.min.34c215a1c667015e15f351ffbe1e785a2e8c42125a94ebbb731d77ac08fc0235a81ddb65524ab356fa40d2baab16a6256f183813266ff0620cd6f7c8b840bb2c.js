@@ -1536,7 +1536,6 @@ Notes:
 \u003cp\u003e\u003cstrong\u003eSource code\u003c/strong\u003e: \u003ca href="https://github.com/TrueBlocks/trueblocks-core/tree/master/src/apps/chifra/internal/init"\u003e\u003ccode\u003einternal/init\u003c/code\u003e\u003c/a\u003e\u003c/p\u003e
 `}).add({id:19,href:"/docs/chifra/other/",title:"Other",description:"",content:`\u003cp\u003eThese commands call some useful miscellaneous tools:\u003c/p\u003e
 \u003cul\u003e
-\u003cli\u003e\u003ccode\u003echifra quotes\u003c/code\u003e, a rudimentary pricing tool,\u003c/li\u003e
 \u003cli\u003e\u003ccode\u003echifra explore\u003c/code\u003e a quick way to open a blockchain explorer,\u003c/li\u003e
 \u003cli\u003e\u003ccode\u003eethslurp\u003c/code\u003e an older tool that lets you call data from EtherScan. (This has issues of centralization and data quality, see explanation in its section).\u003c/li\u003e
 \u003c/ul\u003e
@@ -1545,29 +1544,6 @@ Notes:
   \u003cdiv class="w-100"\u003eNote: some of these tools, like \`ethslurp\`, require an EtherScan key.\u003c/div\u003e
 \u003c/div\u003e
 \u003ca href="/docs/install/install-trueblocks/#3-update-the-configs-for-your-rpc-and-api-keys"\u003eFollow these instructions to add a key to your config\u003c/a\u003e\u003c/p\u003e
-\u003ch2 id="chifra-quotes"\u003echifra quotes\u003c/h2\u003e
-\u003cp\u003eThe \u003ccode\u003echifra quotes\u003c/code\u003e tool provides USD (\$) price data to other tools and to the command line. Currently, \u003ccode\u003echifra quotes\u003c/code\u003e retrieves its price data from the Poloniex API. In future versions, we will add other sources and provide a mechanism for fair averaging. Ultimately, as more of this type of price data becomes available on chain, we will use those source, but this is not yet implemented.\u003c/p\u003e
-\u003cpre\u003e\u003ccode class="language-[plaintext]"\u003ePurpose:
-  Update or display Ethereum price data, this tool has been deprecated.
-
-Usage:
-  chifra quotes [flags]
-
-Flags:
-  -u, --update          freshen price database
-  -p, --period string   increment of display
-                        One of [ 5 | 15 | 30 | 60 | 120 | 240 | 1440 | 10080 | hourly | daily | weekly ]
-  -a, --pair string     which price pair to freshen or list (see Poloniex)
-  -e, --feed string     the feed for the price data
-                        One of [ poloniex | maker | tellor ]
-  -x, --fmt string      export format, one of [none|json*|txt|csv|api]
-  -v, --verbose         enable verbose (increase detail with --log_level)
-  -h, --help            display this help screen
-
-Notes:
-  - Due to restrictions from Poloniex, this tool retrieves only 30 days of data at a time. You must repeatedly run this command until the data is up-to-date.
-\u003c/code\u003e\u003c/pre\u003e
-\u003cp\u003e\u003cstrong\u003eSource code\u003c/strong\u003e: \u003ca href="https://github.com/TrueBlocks/trueblocks-core/tree/master/src/apps/chifra/internal/quotes"\u003e\u003ccode\u003einternal/quotes\u003c/code\u003e\u003c/a\u003e\u003c/p\u003e
 \u003ch2 id="chifra-explore"\u003echifra explore\u003c/h2\u003e
 \u003cp\u003e\u003ccode\u003echifra explore\u003c/code\u003e opens Etherscan (and other explorers \u0026ndash; including our own) to the block, transaction hash, or address you specify. It\u0026rsquo;s a handy (configurable) way to open an explorer from the command line, nothing more.\u003c/p\u003e
 \u003cpre\u003e\u003ccode class="language-[plaintext]"\u003ePurpose:
