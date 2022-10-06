@@ -90,15 +90,15 @@ own transactions.\u003c/p\u003e
 \u003chr\u003e
 \u003cp\u003eLike Infura, anyone may visit EtherScan. That is true. Both of those systems are kind enough to
 give us (give us!) whatever we ask for. But how long do you think it will take before they realize
-(hint: they\u0026rsquo;ve already have) how valuable thier position in the ecosystem is? Do you think they\u0026rsquo;re
+(hint: they\u0026rsquo;ve already have) how valuable their position in the ecosystem is? Do you think they\u0026rsquo;re
 not paying attention to what you\u0026rsquo;re doing? Do you think they\u0026rsquo;re not connecting your Ethereum address
 to your IP address? I would be if I were them.\u003c/p\u003e
 \u003cp\u003eWebsites and APIs are inherently the wrong solution for decentralized data for a number of reasons:\u003c/p\u003e
 \u003col\u003e
 \u003cli\u003eThey can see who you are because your browser tells them your IP address (not private!).\u003c/li\u003e
-\u003cli\u003eBecause their resources are shared among many users, they must protect thier system by rate limiting you (not permissionless!)
+\u003cli\u003eBecause their resources are shared among many users, they must protect their system by rate limiting you (not permissionless!)
 \u003col\u003e
-\u003cli\u003eThey use you IP address to rate limit you - that is, they know who you are each time you arrive\u003c/li\u003e
+\u003cli\u003eThey use your IP address to rate limit you - that is, they know who you are each time you arrive\u003c/li\u003e
 \u003c/ol\u003e
 \u003c/li\u003e
 \u003cli\u003eEvery time you visit EtherScan or use Infura, you do it with the same Ethereum address\u003c/li\u003e
