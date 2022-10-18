@@ -958,7 +958,7 @@ Arguments:
 
 Flags:
   -U, --count        display only the count of records for each monitor
-  -x, --fmt string   export format, one of [none|json*|txt|csv|api]
+  -x, --fmt string   export format, one of [none|json*|txt|csv]
   -v, --verbose      enable verbose (increase detail with --log_level)
   -h, --help         display this help screen
 
@@ -1000,13 +1000,13 @@ Flags:
       --emitter strings     for log export only, export only logs if emitted by one of these address(es)
       --topic strings       for log export only, export only logs with this topic(s)
       --asset strings       for the statements option only, export only reconciliations for this asset
-      --flow string         for the statements option only, export only statements with incoming value or outgoing value
+  -f, --flow string         for the statements option only, export only statements with incoming value or outgoing value
                             One of [ in | out | zero ]
   -y, --factory             scan for contract creations from the given address(es) and report address of those contracts
   -u, --unripe              export transactions labeled upripe (i.e. less than 28 blocks old)
   -F, --first_block uint    first block to process (inclusive)
   -L, --last_block uint     last block to process (inclusive)
-  -x, --fmt string          export format, one of [none|json*|txt|csv|api]
+  -x, --fmt string          export format, one of [none|json*|txt|csv]
   -v, --verbose             enable verbose (increase detail with --log_level)
   -h, --help                display this help screen
 
@@ -1039,7 +1039,7 @@ Flags:
       --remove        remove a previously deleted monitor
       --watch         continually scan for new blocks and extract data for monitored addresses
   -s, --sleep float   seconds to sleep between monitor passes (default 14)
-  -x, --fmt string    export format, one of [none|json*|txt|csv|api]
+  -x, --fmt string    export format, one of [none|json*|txt|csv]
   -v, --verbose       enable verbose (increase detail with --log_level)
   -h, --help          display this help screen
 
@@ -1051,7 +1051,7 @@ Notes:
 \u003ch2 id="chifra-names"\u003echifra names\u003c/h2\u003e
 \u003cp\u003e\u003ccode\u003echifra names\u003c/code\u003e is a surprisingly useful tool. It allows one to associate textual names with Ethereum addresses. One may ask why this is necessary given that ENS exists. The answer is a single word: \u0026ldquo;privacy\u0026rdquo;. ENS names are public. In many cases, users desire to keep personal addresses private. Try to do this on a website.\u003c/p\u003e
 \u003cp\u003eLike \u003ccode\u003echifra abis\u003c/code\u003e, this tool is useful from the command line but is primarily used in support of other tools, especially \u003ccode\u003echifra export\u003c/code\u003e where naming addresses becomes the single best way to turn unintelligible blockchain data into understandable information.\u003c/p\u003e
-\u003cp\u003eThe various options allow you to search and filter the results. The \u003ccode\u003ecollections\u003c/code\u003e and \u003ccode\u003etags\u003c/code\u003e options are used primarily by the TrueBlocks explorer.\u003c/p\u003e
+\u003cp\u003eThe various options allow you to search and filter the results. The \u003ccode\u003etags\u003c/code\u003e option is used primarily by the TrueBlocks explorer.\u003c/p\u003e
 \u003cp\u003eYou may use the TrueBlocks explorer to manage (add, edit, delete) address-name associations.\u003c/p\u003e
 \u003cpre\u003e\u003ccode class="language-[plaintext]"\u003ePurpose:
   Query addresses or names of well known accounts.
@@ -1063,18 +1063,17 @@ Arguments:
   terms - a space separated list of one or more search terms (required)
 
 Flags:
-  -e, --expand        expand search to include all fields (search name, address, and symbol otherwise)
-  -m, --match_case    do case-sensitive search
-  -l, --all           include all accounts in the search
-  -c, --custom        include your custom named accounts
-  -p, --prefund       include prefund accounts
-  -n, --named         include well know token and airdrop addresses in the search
-  -a, --addr          display only addresses in the results (useful for scripting)
-  -s, --collections   display collections data
-  -g, --tags          export the list of tags and subtags only
-  -x, --fmt string    export format, one of [none|json*|txt|csv|api]
-  -v, --verbose       enable verbose (increase detail with --log_level)
-  -h, --help          display this help screen
+  -e, --expand       expand search to include all fields (search name, address, and symbol otherwise)
+  -m, --match_case   do case-sensitive search
+  -l, --all          include all accounts in the search
+  -c, --custom       include your custom named accounts
+  -p, --prefund      include prefund accounts
+  -n, --named        include well know token and airdrop addresses in the search
+  -a, --addr         display only addresses in the results (useful for scripting)
+  -g, --tags         export the list of tags and subtags only
+  -x, --fmt string   export format, one of [none|json*|txt|csv]
+  -v, --verbose      enable verbose (increase detail with --log_level)
+  -h, --help         display this help screen
 
 Notes:
   - The tool will accept up to three terms, each of which must match against any field in the database.
@@ -1101,7 +1100,7 @@ Flags:
   -s, --sol            extract the abi definition from the provided .sol file(s)
   -f, --find strings   search for function or event declarations given a four- or 32-byte code(s)
   -n, --hint strings   for the --find option only, provide hints to speed up the search
-  -x, --fmt string     export format, one of [none|json*|txt|csv|api]
+  -x, --fmt string     export format, one of [none|json*|txt|csv]
   -v, --verbose        enable verbose (increase detail with --log_level)
   -h, --help           display this help screen
 
@@ -1128,16 +1127,18 @@ Arguments:
   blocks - a space-separated list of one or more block identifiers (required)
 
 Flags:
-  -e, --hashes       display only transaction hashes, default is to display full transaction detail
-  -c, --uncles       display uncle blocks (if any) instead of the requested block
-  -t, --trace        export the traces from the block as opposed to the block data
-  -s, --apps         display a list of uniq address appearances in the block
-  -u, --uniq         display a list of uniq address appearances per transaction
-  -U, --count        display the number of the lists of appearances for --addrs or --uniq
-  -o, --cache        force a write of the block to the cache
-  -x, --fmt string   export format, one of [none|json*|txt|csv|api]
-  -v, --verbose      enable verbose (increase detail with --log_level)
-  -h, --help         display this help screen
+  -e, --hashes        display only transaction hashes, default is to display full transaction detail
+  -c, --uncles        display uncle blocks (if any) instead of the requested block
+  -t, --trace         export the traces from the block as opposed to the block data
+  -s, --apps          display a list of uniq address appearances in the block
+  -u, --uniq          display a list of uniq address appearances per transaction
+  -f, --flow string   for the uniq and apps options only, export only from or to (including trace from or to)
+                      One of [ from | to | reward ]
+  -U, --count         display the number of the lists of appearances for --addrs or --uniq
+  -o, --cache         force a write of the block to the cache
+  -x, --fmt string    export format, one of [none|json*|txt|csv]
+  -v, --verbose       enable verbose (increase detail with --log_level)
+  -h, --help          display this help screen
 
 Notes:
   - Blocks is a space-separated list of values, a start-end range, a special, or any combination.
@@ -1166,9 +1167,11 @@ Flags:
   -a, --articulate         articulate the retrieved data if ABIs can be found
   -t, --trace              include the transaction's traces in the results
   -u, --uniq               display a list of uniq addresses found in the transaction
+  -f, --flow string        for the uniq option only, export only from or to (including trace from or to)
+                           One of [ from | to ]
   -r, --reconcile string   reconcile the transaction as per the provided address
   -o, --cache              force the results of the query into the tx cache (and the trace cache if applicable)
-  -x, --fmt string         export format, one of [none|json*|txt|csv|api]
+  -x, --fmt string         export format, one of [none|json*|txt|csv]
   -v, --verbose            enable verbose (increase detail with --log_level)
   -h, --help               display this help screen
 
@@ -1193,7 +1196,7 @@ Arguments:
 
 Flags:
   -a, --articulate   articulate the retrieved data if ABIs can be found
-  -x, --fmt string   export format, one of [none|json*|txt|csv|api]
+  -x, --fmt string   export format, one of [none|json*|txt|csv]
   -v, --verbose      enable verbose (increase detail with --log_level)
   -h, --help         display this help screen
 
@@ -1217,7 +1220,7 @@ Arguments:
 
 Flags:
   -a, --articulate   articulate the retrieved data if ABIs can be found
-  -x, --fmt string   export format, one of [none|json*|txt|csv|api]
+  -x, --fmt string   export format, one of [none|json*|txt|csv]
   -v, --verbose      enable verbose (increase detail with --log_level)
   -h, --help         display this help screen
 
@@ -1246,7 +1249,7 @@ Flags:
   -f, --filter string   call the node's trace_filter routine with bang-separated filter
   -d, --statediff       export state diff traces (not implemented)
   -c, --count           show the number of traces for the transaction only (fast)
-  -x, --fmt string      export format, one of [none|json*|txt|csv|api]
+  -x, --fmt string      export format, one of [none|json*|txt|csv]
   -v, --verbose         enable verbose (increase detail with --log_level)
   -h, --help            display this help screen
 
@@ -1274,7 +1277,7 @@ Arguments:
 Flags:
   -l, --list         export a list of the 'special' blocks
   -t, --timestamps   display or process timestamps
-  -x, --fmt string   export format, one of [none|json*|txt|csv|api]
+  -x, --fmt string   export format, one of [none|json*|txt|csv]
   -v, --verbose      enable verbose (increase detail with --log_level)
   -h, --help         display this help screen
 
@@ -1313,7 +1316,7 @@ Flags:
                         One or more of [ none | some | all | balance | nonce | code | storage | deployed | accttype ]
   -c, --changes         only report a balance when it changes from one block to the next
   -n, --no_zero         suppress the display of zero balance accounts
-  -x, --fmt string      export format, one of [none|json*|txt|csv|api]
+  -x, --fmt string      export format, one of [none|json*|txt|csv]
   -v, --verbose         enable verbose (increase detail with --log_level)
   -h, --help            display this help screen
 
@@ -1346,7 +1349,7 @@ Flags:
                         One or more of [ name | symbol | decimals | totalSupply | version | none | all ]
   -b, --by_acct         consider each address an ERC20 token except the last, whose balance is reported for each token
   -n, --no_zero         suppress the display of zero balance accounts
-  -x, --fmt string      export format, one of [none|json*|txt|csv|api]
+  -x, --fmt string      export format, one of [none|json*|txt|csv]
   -v, --verbose         enable verbose (increase detail with --log_level)
   -h, --help            display this help screen
 
@@ -1375,7 +1378,7 @@ Usage:
 
 Flags:
   -p, --port string   specify the server's port (default \u0026quot;:8080\u0026quot;)
-  -x, --fmt string    export format, one of [none|json*|txt|csv|api]
+  -x, --fmt string    export format, one of [none|json*|txt|csv]
   -v, --verbose       enable verbose (increase detail with --log_level)
   -h, --help          display this help screen
 
@@ -1399,7 +1402,7 @@ Flags:
   -i, --pin              pin new chunks (requires locally-running IPFS daemon or --remote)
   -m, --remote           pin new chunks to the gateway (requires pinning service keys)
   -s, --sleep float      seconds to sleep between scraper passes (default 14)
-  -x, --fmt string       export format, one of [none|json*|txt|csv|api]
+  -x, --fmt string       export format, one of [none|json*|txt|csv]
   -v, --verbose          enable verbose (increase detail with --log_level)
   -h, --help             display this help screen
 \u003c/code\u003e\u003c/pre\u003e
@@ -1450,7 +1453,7 @@ Flags:
 \u003ctr\u003e
 \u003ctd\u003eallow_missing\u003c/td\u003e
 \u003ctd\u003ebool\u003c/td\u003e
-\u003ctd\u003efalse\u003c/td\u003e
+\u003ctd\u003etrue\u003c/td\u003e
 \u003ctd\u003edo not report errors for blockchains that contain blocks with zero addresses\u003c/td\u003e
 \u003c/tr\u003e
 \u003c/tbody\u003e
@@ -1493,7 +1496,7 @@ Flags:
   -m, --remote            prior to processing, retreive the manifest from the Unchained Index smart contract
   -b, --belongs strings   in index mode only, checks the address(es) for inclusion in the given index chunk
   -s, --sleep float       for --remote pinning only, seconds to sleep between API calls
-  -x, --fmt string        export format, one of [none|json*|txt|csv|api]
+  -x, --fmt string        export format, one of [none|json*|txt|csv]
   -v, --verbose           enable verbose (increase detail with --log_level)
   -h, --help              display this help screen
 
@@ -1526,7 +1529,7 @@ Usage:
 Flags:
   -a, --all           in addition to Bloom filters, download full index chunks
   -s, --sleep float   seconds to sleep between downloads
-  -x, --fmt string    export format, one of [none|json*|txt|csv|api]
+  -x, --fmt string    export format, one of [none|json*|txt|csv]
   -v, --verbose       enable verbose (increase detail with --log_level)
   -h, --help          display this help screen
 
@@ -1677,10 +1680,6 @@ chifra blocks 100
 \u003ctr\u003e
 \u003ctd\u003ecache_traces\u003c/td\u003e
 \u003ctd\u003eIf true, queried traces are cached\u003cbr /\u003efalse\u003c/td\u003e
-\u003c/tr\u003e
-\u003ctr\u003e
-\u003ctd\u003emax_slow_queries\u003c/td\u003e
-\u003ctd\u003eIn API mode only, if transactions do not reconcile, only produce this many results per page\u003cbr /\u003e13\u003c/td\u003e
 \u003c/tr\u003e
 \u003ctr\u003e
 \u003ctd\u003eether_rounding\u003c/td\u003e
