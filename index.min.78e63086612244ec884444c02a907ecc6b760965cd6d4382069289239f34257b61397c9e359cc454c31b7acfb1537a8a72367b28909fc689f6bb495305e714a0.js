@@ -154,7 +154,7 @@ make
 \u003cul\u003e
 \u003cli\u003eOn linux at \u003ccode\u003e~/.local/share/trueblocks\u003c/code\u003e\u003c/li\u003e
 \u003cli\u003eOn mac at \u003ccode\u003e~/Library/Application Support/TrueBlocks\u003c/code\u003e\u003c/li\u003e
-\u003cli\u003eIf you\u0026rsquo;ve configured it, wherever the location of \u003ccode\u003e\$XDG_CONFIG_HOME\u003c/code\u003e is
+\u003cli\u003eIf you\u0026rsquo;ve configured it, wherever the location of \u003ccode\u003e$XDG_CONFIG_HOME\u003c/code\u003e is
 \u003cbr/\u003e\u003cbr/\u003e\u003c/li\u003e
 \u003c/ul\u003e
 \u003c/li\u003e
@@ -224,11 +224,11 @@ which identifies the machine\u0026rsquo;s number of available processing units.\
 \u003cp\u003eIf nothing outputs, the build has failed. Try repeating the instructions.
 If it still fails, make an issue.\u003c/p\u003e
 \u003ch3 id="how-do-i-export-to-path"\u003eHow do I export to PATH?\u003c/h3\u003e
-\u003cp\u003e\u003ccode\u003echifra\u003c/code\u003e only works if its underlying tools are found in your \u003ccode\u003e\$PATH.\u003c/code\u003e
+\u003cp\u003e\u003ccode\u003echifra\u003c/code\u003e only works if its underlying tools are found in your \u003ccode\u003e$PATH.\u003c/code\u003e
 To find the full path, run this from the top of the \u003ccode\u003etrueblocks-core\u003c/code\u003e directory.\u003c/p\u003e
 \u003cpre\u003e\u003ccode class="language-shell"\u003ecd bin \u0026amp;\u0026amp; pwd \u0026amp;\u0026amp; cd -
 \u003c/code\u003e\u003c/pre\u003e
-\u003cp\u003eAdd the result of that command to your shell’s \u003ccode\u003e\$PATH\u003c/code\u003e.\u003c/p\u003e
+\u003cp\u003eAdd the result of that command to your shell’s \u003ccode\u003e$PATH\u003c/code\u003e.\u003c/p\u003e
 \u003cp\u003eHow you do that depends on your system.
 In Bash, you\u0026rsquo;re probably going to put something like this in your \u003ccode\u003e.bashrc\u003c/code\u003e:\u003c/p\u003e
 \u003cpre\u003e\u003ccode class="language-shell"\u003eexport PATH=\${PATH}:\u0026lt;/path/to/trueblocks-core/directory\u0026gt;/bin
@@ -437,22 +437,9 @@ You can still use scrape, but you need to
 \u003cp\u003eAlternatively, you may choose to scrape (i.e. build) the index yourself and share it with others by pinning it on IPFS. In this case, you\u0026rsquo;re being a good citizen and making the whole ecosystem better off because you\u0026rsquo;re sharing you index.\u003c/p\u003e
 \u003cp\u003eYou can download the index (either with \u003ccode\u003echifra init\u003c/code\u003e or \u003ccode\u003echifra init --all\u003c/code\u003e) and pin that data (with the \u003ccode\u003e--pin_locally\u003c/code\u003e flag) as a way to share with the community, and then turn on the scraper. All options are available as a way to maximize the usefulness of the tool.\u003c/p\u003e
 \u003ch2 id="supplementary-how-can-i-see-when-the-manifest-was-last-published"\u003eSupplementary: how can I see when the manifest was last published?\u003c/h2\u003e
-\u003cp\u003eIf you are using one of the \u003ccode\u003einit\u003c/code\u003e options, you may wish to know how \u0026lsquo;fresh\u0026rsquo; your index is.\u003c/p\u003e
-\u003cp\u003eTrueBlocks tries to publish the manifest frequently (weekly?), but you can always check. The eventual goal of to publish the manifest each time a new chunk is produced (about two or three times a day). But this is \u003ccode\u003egas-expensive\u003c/code\u003e, so we would need to secure funding for that process. We welcome donations, peers and alternative indexers to participate!.\u003c/p\u003e
-\u003cp\u003eYou can find the most \u003ca href="https://etherscan.io/address/0xcfd7f3b24f3551741f922fd8c4381aa4e00fc8fd#readContract"\u003erecent manifest here\u003c/a\u003e. (Open the \u003ccode\u003emanifestHash\u003c/code\u003e record.)\u003c/p\u003e
-\u003cp\u003eEach pin has a given block range, which you can check yourself using \u003ccode\u003echifra\u003c/code\u003e.\u003c/p\u003e
-\u003cp\u003eFor example, see the last manifest record by running\u003c/p\u003e
-\u003cpre\u003e\u003ccode class="language-shell"\u003echifra chunks manifest --fmt txt | tail -n 1
-\u003c/code\u003e\u003c/pre\u003e
-\u003cp\u003eThis outputs something like this:\u003c/p\u003e
-\u003cpre\u003e\u003ccode\u003e012909804-012912694     QmSQvJ5GPyc8juthKgvMaonxm2t2m939MphyMhBRuHKJzt  QmVCZdXD9EMU9jR6HKp8V1bC74DQDCzGurLxnK6KnbV2LP
-\u003c/code\u003e\u003c/pre\u003e
-\u003cp\u003eThe first field of the output provides the block range for the latest chunk. So, you could see when the last block of the latest
-range was published by running \u003ccode\u003echifra when\u003c/code\u003e on the last record:\u003c/p\u003e
-\u003cpre\u003e\u003ccode class="language-shell"\u003e\$chifra when 12912694
-blocknumber     timestamp       date    name
-12912694        1627451435      2021-07-28 05:50:35 UTC
-\u003c/code\u003e\u003c/pre\u003e
+\u003cp\u003eTo view the latest manifest published by TrueBlocks (note that there may be other publishers), pass our publisher id: \u003ccode\u003e0xf503017d7baf7fbc0fff7492b751025c6a78179b\u003c/code\u003e and the string \u003ccode\u003emainnet\u003c/code\u003e to the \u003ccode\u003emanifestHashMap()\u003c/code\u003e method of the UnchainedIndex_V2 contract at https://etherscan.io/address/0x0c316b7042b419d07d343f2f4f5bd54ff731183d#readContract. This will return the \u003ccode\u003eLATEST_IPFS_HASH\u003c/code\u003e of the manifest. To fetch the manifest, use an IPFS client and \u003ccode\u003eipfs get \u0026lt;LATEST_IPFS_HASH\u0026gt;\u003c/code\u003e or a gateway (such as the one TrueBlocks maintains) \u003ccode\u003ehttps://ipfs.unchainedindex.io/ipfs/LATEST_IPFS_HASH\u003c/code\u003e.\u003c/p\u003e
+\u003cp\u003eEdit the resulting file to see the latest published data.\u003c/p\u003e
+\u003cp\u003eAlternatively, you may always use \u003ccode\u003echifra chunks manifest\u003c/code\u003e to see where the latest published index is at.\u003c/p\u003e
 `}).add({id:9,href:"/docs/prologue/design-philosophy/",title:"Design philosophy",description:"The philosophy behind the technical design of TrueBlocks",content:`\u003ch2 id="the-three-commandments"\u003eThe three commandments\u003c/h2\u003e
 \u003col\u003e
 \u003cli\u003e
@@ -851,7 +838,7 @@ symbol = \u0026quot;ETH\u0026quot;
 \u003cp\u003eDepending on your setup, you may get the following error message when you run some \u003ccode\u003echifra\u003c/code\u003e commands:\u003c/p\u003e
 \u003cpre\u003e\u003ccode class="language-shell"\u003e  Warning: A request to your Ethereum node (http://localhost:8545) resulted
   in the following error [Could not connect to server]. Specify a valid
-  rpcProvider by editing \$CONFIG/trueblocks.toml.
+  rpcProvider by editing $CONFIG/trueblocks.toml.
 \u003c/code\u003e\u003c/pre\u003e
 \u003cp\u003eIf you get this error, edit the configuration file mentioned. The file is well documented, so refer to that file for further information.\u003c/p\u003e
 \u003cp\u003eWhen the \u003ccode\u003echifra status\u003c/code\u003e command returns a valid response, you may move to the next section. If
@@ -1408,7 +1395,7 @@ Flags:
 \u003c/code\u003e\u003c/pre\u003e
 \u003ch3 id="configuration"\u003econfiguration\u003c/h3\u003e
 \u003cp\u003eEach of the following additional configurable command line options are available.\u003c/p\u003e
-\u003cp\u003e\u003cstrong\u003eConfiguration file:\u003c/strong\u003e \u003ccode\u003e\$CONFIG/\$CHAIN/blockScrape.toml\u003c/code\u003e\u003cbr\u003e
+\u003cp\u003e\u003cstrong\u003eConfiguration file:\u003c/strong\u003e \u003ccode\u003e$CONFIG/$CHAIN/blockScrape.toml\u003c/code\u003e\u003cbr\u003e
 \u003cstrong\u003eConfiguration group:\u003c/strong\u003e \u003ccode\u003e[settings]\u003c/code\u003e\u003c/p\u003e
 \u003ctable\u003e
 \u003cthead\u003e
@@ -1613,11 +1600,11 @@ chifra blocks 100
 \u003c/tr\u003e
 \u003ctr\u003e
 \u003ctd\u003ecachePath\u003c/td\u003e
-\u003ctd\u003eLocation of binary cache\u003cbr /\u003e\$CONFIG/cache/\u003c/td\u003e
+\u003ctd\u003eLocation of binary cache\u003cbr /\u003e$CONFIG/cache/\u003c/td\u003e
 \u003c/tr\u003e
 \u003ctr\u003e
 \u003ctd\u003eindexPath\u003c/td\u003e
-\u003ctd\u003eLocation of unchained index\u003cbr /\u003e\$CONFIG/unchained/\u003c/td\u003e
+\u003ctd\u003eLocation of unchained index\u003cbr /\u003e$CONFIG/unchained/\u003c/td\u003e
 \u003c/tr\u003e
 \u003ctr\u003e
 \u003ctd\u003eetherscan_key\u003c/td\u003e
