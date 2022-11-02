@@ -190,7 +190,7 @@ or ask us on discord.\u003c/p\u003e
 \u003cul\u003e
 \u003cli\u003e
 \u003cp\u003eFor Linux\u003c/p\u003e
-\u003cpre\u003e\u003ccode class="language-shell"\u003esudo apt install build-essential git cmake ninja-build python python-dev libcurl3-dev clang-format jq
+\u003cpre\u003e\u003ccode class="language-shell"\u003esudo apt install build-essential git cmake ninja-build python3 python3-dev libcurl4-openssl-dev clang-format jq
 \u003c/code\u003e\u003c/pre\u003e
 \u003c/li\u003e
 \u003cli\u003e
