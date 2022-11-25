@@ -944,10 +944,14 @@ Arguments:
   addrs - one or more addresses (0x...) to list (required)
 
 Flags:
-  -U, --count        display only the count of records for each monitor
-  -x, --fmt string   export format, one of [none|json*|txt|csv]
-  -v, --verbose      enable verbose (increase detail with --log_level)
-  -h, --help         display this help screen
+  -U, --count               display only the count of records for each monitor
+  -c, --first_record uint   the first record to process (default 1)
+  -e, --max_records uint    the maximum number of records to process (default 250)
+  -F, --first_block uint    first block to export (inclusive, ignored when freshening)
+  -L, --last_block uint     last block to export (inclusive, ignored when freshening)
+  -x, --fmt string          export format, one of [none|json*|txt|csv]
+  -v, --verbose             enable verbose (increase detail with --log_level)
+  -h, --help                display this help screen
 
 Notes:
   - No other options are permitted when --silent is selected.
@@ -974,22 +978,22 @@ Flags:
   -r, --receipts            export receipts instead of transactional data
   -l, --logs                export logs instead of transactional data
   -t, --traces              export traces instead of transactional data
-  -A, --statements          export reconciliations instead of transactional data (assumes --accounting option)
   -n, --neighbors           export the neighbors of the given address
   -C, --accounting          attach accounting records to the exported data (applies to transactions export only)
+  -A, --statements          for the accounting options only, export only statements
   -a, --articulate          articulate transactions, traces, logs, and outputs
   -i, --cache               write transactions to the cache (see notes)
   -R, --cache_traces        write traces to the cache (see notes)
   -U, --count               only available for --appearances mode, if present, return only the number of records
-  -c, --first_record uint   the first record to process
-  -e, --max_records uint    the maximum number of records to process before reporting (default 250)
+  -c, --first_record uint   the first record to process (default 1)
+  -e, --max_records uint    the maximum number of records to process (default 250)
       --relevant            for log and accounting export only, export only logs relevant to one of the given export addresses
       --emitter strings     for log export only, export only logs if emitted by one of these address(es)
       --topic strings       for log export only, export only logs with this topic(s)
-      --asset strings       for the statements option only, export only reconciliations for this asset
-  -f, --flow string         for the statements option only, export only statements with incoming value or outgoing value
+      --asset strings       for the accounting options only, export statements only for this asset
+  -f, --flow string         for the accounting options only, export statements with incoming, outgoing, or zero value
                             One of [ in | out | zero ]
-  -y, --factory             scan for contract creations from the given address(es) and report address of those contracts
+  -y, --factory             for --traces only, report addresses created by (or self-destructed by) the given address(es)
   -u, --unripe              export transactions labeled upripe (i.e. less than 28 blocks old)
   -F, --first_block uint    first block to process (inclusive)
   -L, --last_block uint     last block to process (inclusive)
@@ -1003,6 +1007,7 @@ Notes:
   - For the --logs option, you may optionally specify one or more --emitter, one or more --topics, or both.
   - The --logs option is significantly faster if you provide an --emitter or a --topic.
   - Neighbors include every address that appears in any transaction in which the export address also appears.
+  - If provided, --max_records dominates, also, if provided, --first_block overrides --first_record.
 \u003c/code\u003e\u003c/pre\u003e
 \u003cp\u003e\u003cstrong\u003eSource code\u003c/strong\u003e: \u003ca href="https://github.com/TrueBlocks/trueblocks-core/tree/master/src/apps/chifra/internal/export"\u003e\u003ccode\u003einternal/export\u003c/code\u003e\u003c/a\u003e\u003c/p\u003e
 \u003ch2 id="chifra-monitors"\u003echifra monitors\u003c/h2\u003e
@@ -1024,6 +1029,8 @@ Flags:
       --delete        delete a monitor, but do not remove it
       --undelete      undelete a previously deleted monitor
       --remove        remove a previously deleted monitor
+      --decache       removes a monitor and all associated data from the cache
+      --list          list monitors in the cache (--verbose for more detail)
       --watch         continually scan for new blocks and extract data for monitored addresses
   -s, --sleep float   seconds to sleep between monitor passes (default 14)
   -x, --fmt string    export format, one of [none|json*|txt|csv]
@@ -1033,6 +1040,7 @@ Flags:
 Notes:
   - An address must start with '0x' and be forty-two characters long.
   - If no address is presented to the --clean command, all monitors will be cleaned.
+  - The --decache option will remove all cache items (blocks, txs, traces, recons) for the given address(es).
 \u003c/code\u003e\u003c/pre\u003e
 \u003cp\u003e\u003cstrong\u003eSource code\u003c/strong\u003e: \u003ca href="https://github.com/TrueBlocks/trueblocks-core/tree/master/src/apps/chifra/internal/monitors"\u003e\u003ccode\u003einternal/monitors\u003c/code\u003e\u003c/a\u003e\u003c/p\u003e
 \u003ch2 id="chifra-names"\u003echifra names\u003c/h2\u003e
@@ -1151,16 +1159,16 @@ Arguments:
   transactions - a space-separated list of one or more transaction identifiers (required)
 
 Flags:
-  -a, --articulate          articulate the retrieved data if ABIs can be found
-  -t, --trace               include the transaction's traces in the results
-  -u, --uniq                display a list of uniq addresses found in the transaction
-  -f, --flow string         for the uniq option only, export only from or to (including trace from or to)
-                            One of [ from | to ]
-  -A, --statements string   reconcile the transaction as per the provided address
-  -o, --cache               force the results of the query into the tx cache (and the trace cache if applicable)
-  -x, --fmt string          export format, one of [none|json*|txt|csv]
-  -v, --verbose             enable verbose (increase detail with --log_level)
-  -h, --help                display this help screen
+  -a, --articulate           articulate the retrieved data if ABIs can be found
+  -t, --trace                include the transaction's traces in the results
+  -u, --uniq                 display a list of uniq addresses found in the transaction
+  -f, --flow string          for the uniq option only, export only from or to (including trace from or to)
+                             One of [ from | to ]
+  -A, --account_for string   reconcile the transaction as per the provided address
+  -o, --cache                force the results of the query into the tx cache (and the trace cache if applicable)
+  -x, --fmt string           export format, one of [none|json*|txt|csv]
+  -v, --verbose              enable verbose (increase detail with --log_level)
+  -h, --help                 display this help screen
 
 Notes:
   - The transactions list may be one or more transaction hashes, blockNumber.transactionID pairs, or a blockHash.transactionID pairs.
@@ -1235,7 +1243,7 @@ Flags:
   -a, --articulate      articulate the retrieved data if ABIs can be found
   -f, --filter string   call the node's trace_filter routine with bang-separated filter
   -d, --statediff       export state diff traces (not implemented)
-  -c, --count           show the number of traces for the transaction only (fast)
+  -U, --count           show the number of traces for the transaction only (fast)
   -x, --fmt string      export format, one of [none|json*|txt|csv]
   -v, --verbose         enable verbose (increase detail with --log_level)
   -h, --help            display this help screen
@@ -1264,6 +1272,10 @@ Arguments:
 Flags:
   -l, --list         export a list of the 'special' blocks
   -t, --timestamps   display or process timestamps
+  -U, --count        with --timestamps only, returns the number of timestamps in the cache
+  -r, --repair       with --timestamps only, repairs block(s) in the block range by re-querying from the chain
+  -c, --check        with --timestamps only, checks the validity of the timestamp data
+      --update       with --timestamps only, bring the timestamp database forward to the latest block
   -x, --fmt string   export format, one of [none|json*|txt|csv]
   -v, --verbose      enable verbose (increase detail with --log_level)
   -h, --help         display this help screen

@@ -2,7 +2,7 @@
 You may also name addresses; grab the ABI file for a given address; add, delete, and remove monitors, and, most importantly, export transactional histories to various formats, This includes re-directing output to remote or local databases.
 chifra list chifra list takes one or more addresses, queries the index of appearances, and builds TrueBlocks monitors."><meta name=twitter:site content="@TrueBlocks"><meta name=twitter:creator content="@TrueBlocks"><meta property="og:title" content="Accounts"><meta property="og:description" content="This group of commands is at the heart of TrueBlocks. They allow you to produce and analyze transactional histories for a given Ethereum address.
 You may also name addresses; grab the ABI file for a given address; add, delete, and remove monitors, and, most importantly, export transactional histories to various formats, This includes re-directing output to remote or local databases.
-chifra list chifra list takes one or more addresses, queries the index of appearances, and builds TrueBlocks monitors."><meta property="og:type" content="article"><meta property="og:url" content="/docs/chifra/accounts/"><meta property="og:image" content="https://trueblocks.io/trueblocks.png"><meta property="article:published_time" content="2022-10-08T19:54:08+00:00"><meta property="article:modified_time" content="2022-10-17T20:04:42-04:00"><meta property="og:site_name" content="TrueBlocks"><meta property="og:locale" content="en_US"><script type=application/ld+json>{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"\/"},{"@type":"ListItem","position":2,"name":"Docschifraaccounts","item":"\/docschifraaccounts\/"}]}</script><meta name=theme-color content="#fff"><link rel=apple-touch-icon sizes=180x180 href=/apple-touch-icon.png><link rel=icon type=image/png sizes=32x32 href=/favicon-32x32.png><link rel=icon type=image/png sizes=16x16 href=/favicon-16x16.png><link rel=manifest href=/site.webmanifest></head><body class="docs single"><div class="header-bar fixed-top"></div><script>(localStorage.getItem("theme")==="dark"||localStorage.getItem("theme")===null)&&document.body.classList.add("dark")</script><header class="navbar fixed-top navbar-expand-md navbar-light"><div class=container><input class="menu-btn order-0" type=checkbox id=menu-btn>
+chifra list chifra list takes one or more addresses, queries the index of appearances, and builds TrueBlocks monitors."><meta property="og:type" content="article"><meta property="og:url" content="/docs/chifra/accounts/"><meta property="og:image" content="https://trueblocks.io/trueblocks.png"><meta property="article:published_time" content="2022-11-25T10:46:46+00:00"><meta property="article:modified_time" content="2022-11-25T13:09:57-05:00"><meta property="og:site_name" content="TrueBlocks"><meta property="og:locale" content="en_US"><script type=application/ld+json>{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"\/"},{"@type":"ListItem","position":2,"name":"Docschifraaccounts","item":"\/docschifraaccounts\/"}]}</script><meta name=theme-color content="#fff"><link rel=apple-touch-icon sizes=180x180 href=/apple-touch-icon.png><link rel=icon type=image/png sizes=32x32 href=/favicon-32x32.png><link rel=icon type=image/png sizes=16x16 href=/favicon-16x16.png><link rel=manifest href=/site.webmanifest></head><body class="docs single"><div class="header-bar fixed-top"></div><script>(localStorage.getItem("theme")==="dark"||localStorage.getItem("theme")===null)&&document.body.classList.add("dark")</script><header class="navbar fixed-top navbar-expand-md navbar-light"><div class=container><input class="menu-btn order-0" type=checkbox id=menu-btn>
 <label class="menu-icon d-md-none" for=menu-btn><span class=navicon></span></label>
 <a class="navbar-brand order-1 order-md-0 me-auto" href=/>TrueBlocks</a>
 <button id=mode class="btn btn-link order-2 order-md-4" type=button aria-label="Toggle mode">
@@ -17,10 +17,14 @@ Arguments:
   addrs - one or more addresses (0x...) to list (required)
 
 Flags:
-  -U, --count        display only the count of records for each monitor
-  -x, --fmt string   export format, one of [none|json*|txt|csv]
-  -v, --verbose      enable verbose (increase detail with --log_level)
-  -h, --help         display this help screen
+  -U, --count               display only the count of records for each monitor
+  -c, --first_record uint   the first record to process (default 1)
+  -e, --max_records uint    the maximum number of records to process (default 250)
+  -F, --first_block uint    first block to export (inclusive, ignored when freshening)
+  -L, --last_block uint     last block to export (inclusive, ignored when freshening)
+  -x, --fmt string          export format, one of [none|json*|txt|csv]
+  -v, --verbose             enable verbose (increase detail with --log_level)
+  -h, --help                display this help screen
 
 Notes:
   - No other options are permitted when --silent is selected.
@@ -40,22 +44,22 @@ Flags:
   -r, --receipts            export receipts instead of transactional data
   -l, --logs                export logs instead of transactional data
   -t, --traces              export traces instead of transactional data
-  -A, --statements          export reconciliations instead of transactional data (assumes --accounting option)
   -n, --neighbors           export the neighbors of the given address
   -C, --accounting          attach accounting records to the exported data (applies to transactions export only)
+  -A, --statements          for the accounting options only, export only statements
   -a, --articulate          articulate transactions, traces, logs, and outputs
   -i, --cache               write transactions to the cache (see notes)
   -R, --cache_traces        write traces to the cache (see notes)
   -U, --count               only available for --appearances mode, if present, return only the number of records
-  -c, --first_record uint   the first record to process
-  -e, --max_records uint    the maximum number of records to process before reporting (default 250)
+  -c, --first_record uint   the first record to process (default 1)
+  -e, --max_records uint    the maximum number of records to process (default 250)
       --relevant            for log and accounting export only, export only logs relevant to one of the given export addresses
       --emitter strings     for log export only, export only logs if emitted by one of these address(es)
       --topic strings       for log export only, export only logs with this topic(s)
-      --asset strings       for the statements option only, export only reconciliations for this asset
-  -f, --flow string         for the statements option only, export only statements with incoming value or outgoing value
+      --asset strings       for the accounting options only, export statements only for this asset
+  -f, --flow string         for the accounting options only, export statements with incoming, outgoing, or zero value
                             One of [ in | out | zero ]
-  -y, --factory             scan for contract creations from the given address(es) and report address of those contracts
+  -y, --factory             for --traces only, report addresses created by (or self-destructed by) the given address(es)
   -u, --unripe              export transactions labeled upripe (i.e. less than 28 blocks old)
   -F, --first_block uint    first block to process (inclusive)
   -L, --last_block uint     last block to process (inclusive)
@@ -69,6 +73,7 @@ Notes:
   - For the --logs option, you may optionally specify one or more --emitter, one or more --topics, or both.
   - The --logs option is significantly faster if you provide an --emitter or a --topic.
   - Neighbors include every address that appears in any transaction in which the export address also appears.
+  - If provided, --max_records dominates, also, if provided, --first_block overrides --first_record.
 </code></pre><p><strong>Source code</strong>: <a href=https://github.com/TrueBlocks/trueblocks-core/tree/master/src/apps/chifra/internal/export><code>internal/export</code></a></p><h2 id=chifra-monitors>chifra monitors<a href=#chifra-monitors class=anchor aria-hidden=true>#</a></h2><p>A TrueBlocks monitor tool has two purposes. The first is to <code>--watch</code> a set of addresses. This function is in its early stages and will be better explained elsewhere. Please see an example of what one may do with <code>chifra monitors --watch</code> <a href=https://tokenomics.io/>here</a>.</p><p>A &ldquo;monitor&rdquo; is simply a file on a hard drive that represents the transactional history of a given Ethereum address. Monitors are very small, being only the <code>&lt;block_no>&lt;tx_id></code> pair representing each appearance of an address. Monitor files are only created when a user expresses interest in a particular address. In this way, TrueBlock is able to continue to work on small desktop or even laptop computers. (See <code>chifra list</code>.)</p><p>You may use the <code>--delete</code> command to delete (or <code>--undelete</code> if already deleted) an address. The monitor is not removed from your computer if you delete it. It is just marked as being deleted making it invisible to the TrueBlocks explorer.</p><p>Use the <code>--remove</code> command to permanently remove a monitor from your computer. This is an irreversible operation and requires the monitor to have been previously deleted.</p><pre><code class=language-[plaintext]>Purpose:
   Add, remove, clean, and list address monitors.
 
@@ -83,6 +88,8 @@ Flags:
       --delete        delete a monitor, but do not remove it
       --undelete      undelete a previously deleted monitor
       --remove        remove a previously deleted monitor
+      --decache       removes a monitor and all associated data from the cache
+      --list          list monitors in the cache (--verbose for more detail)
       --watch         continually scan for new blocks and extract data for monitored addresses
   -s, --sleep float   seconds to sleep between monitor passes (default 14)
   -x, --fmt string    export format, one of [none|json*|txt|csv]
@@ -92,6 +99,7 @@ Flags:
 Notes:
   - An address must start with '0x' and be forty-two characters long.
   - If no address is presented to the --clean command, all monitors will be cleaned.
+  - The --decache option will remove all cache items (blocks, txs, traces, recons) for the given address(es).
 </code></pre><p><strong>Source code</strong>: <a href=https://github.com/TrueBlocks/trueblocks-core/tree/master/src/apps/chifra/internal/monitors><code>internal/monitors</code></a></p><h2 id=chifra-names>chifra names<a href=#chifra-names class=anchor aria-hidden=true>#</a></h2><p><code>chifra names</code> is a surprisingly useful tool. It allows one to associate textual names with Ethereum addresses. One may ask why this is necessary given that ENS exists. The answer is a single word: &ldquo;privacy&rdquo;. ENS names are public. In many cases, users desire to keep personal addresses private. Try to do this on a website.</p><p>Like <code>chifra abis</code>, this tool is useful from the command line but is primarily used in support of other tools, especially <code>chifra export</code> where naming addresses becomes the single best way to turn unintelligible blockchain data into understandable information.</p><p>The various options allow you to search and filter the results. The <code>tags</code> option is used primarily by the TrueBlocks explorer.</p><p>You may use the TrueBlocks explorer to manage (add, edit, delete) address-name associations.</p><pre><code class=language-[plaintext]>Purpose:
   Query addresses or names of well known accounts.
 
@@ -140,4 +148,4 @@ Notes:
   - Search for either four byte signatures or event signatures with the --find option.
 </code></pre><p><strong>Source code</strong>: <a href=https://github.com/TrueBlocks/trueblocks-core/tree/master/src/apps/chifra/internal/abis><code>internal/abis</code></a></p><p class=edit-page><a href=https://github.com/TrueBlocks/trueblocks-docs/blob/master/content/docs/chifra/accounts.md><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-edit-2"><path d="M17 3a2.828 2.828.0 114 4L7.5 20.5 2 22l1.5-5.5L17 3z"/></svg>Edit this page on GitHub</a></p><div class="docs-navigation d-flex justify-content-between"><a href=/docs/using/using-chifra/><div class="card my-1"><div class="card-body py-2">&larr; Some chifra examples</div></div></a><a class=ms-auto href=/docs/chifra/chaindata/><div class="card my-1"><div class="card-body py-2">Chain data &rarr;</div></div></a></div></main></div></div></div><footer class="footer text-muted"><div class=container><div class=row><div class="col-lg-8 order-last order-lg-first"><ul class=list-inline><li class=list-inline-item>Powered by <a href=https://gohugo.io/>Hugo</a> and <a href=https://getdoks.org/>Doks</a></li></ul></div><div class="col-lg-8 order-first order-lg-last text-lg-end"><ul class=list-inline><li class=list-inline-item><a href=https://github.com/TrueBlocks/trueblocks-docs>Improve the docs</a></li><li class=list-inline-item><a href=/privacy-policy/>Privacy</a></li></ul></div></div></div></footer><script src=/js/highlight.min.39c8701213290bff3f62f8bd4a85d5a89866c0e28d00395817ab598ba2b45df2cb63eb9afb36d0b00e8f6665d8baf67a2feb26a04839b46dfb9b18ed5bcebd44.js integrity="sha512-OchwEhMpC/8/Yvi9SoXVqJhmwOKNADlYF6tZi6K0XfLLY+ua+zbQsA6PZmXYuvZ6L+smoEg5tG37mxjtW869RA==" crossorigin=anonymous defer></script>
 <script src=/main.min.f3bde2190e84990b87c73e59ba47cc38313e0390ddf6ca54a7bf86d526a1341d4dd94a3f0633df60c28a64260d9788ffc40b47eb9f15bd4cc273ea45391751d5.js integrity="sha512-873iGQ6EmQuHxz5ZukfMODE+A5Dd9spUp7+G1SahNB1N2Uo/BjPfYMKKZCYNl4j/xAtH658VvUzCc+pFORdR1Q==" crossorigin=anonymous defer></script>
-<script src=/index.min.215bf4164ed721b8a74820c9845e1f37a6eec24a459b85b66bac4f4a6ca11c3e8de2b7a621d23e062df0d3f7b67a40dfc0b011a7ce6a9086c7092b34707653d2.js integrity="sha512-IVv0Fk7XIbinSCDJhF4fN6buwkpFm4W2a6xPSmyhHD6N4remIdI+Bi3w0/e2ekDfwLARp85qkIbHCSs0cHZT0g==" crossorigin=anonymous defer></script></body></html>
+<script src=/index.min.05c64189c4988583e0682095cc752d2af4c810292325060c4317dbd1d5d73a625dfdfec7e34f36c85acd0cdf185e12b0af3bf9d2b57d549761bdeede10d16ca6.js integrity="sha512-BcZBicSYhYPgaCCVzHUtKvTIECkjJQYMQxfb0dXXOmJd/f7H4082yFrNDN8YXhKwrzv50rV9VJdhve7eENFspg==" crossorigin=anonymous defer></script></body></html>
