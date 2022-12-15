@@ -800,38 +800,37 @@ symbol = \u0026quot;ETH\u0026quot;
   Purpose:  Access to all TrueBlocks tools (chifra \u0026lt;cmd\u0026gt; --help for more).
 
   Where:
-         ACCOUNTS
-           list          list every appearance of an address anywhere on the chain
-           export        export full detail of transactions for one or more addresses
-           monitors      add, remove, clean, and list address monitors
-           names         query addresses or names of well known accounts
-           abis          fetches the ABI for a smart contract
-         CHAIN DATA
-           blocks        retrieve one or more blocks from the chain or local cache
-           transactions  retrieve one or more transactions from the chain or local cache
-           receipts      retrieve receipts for the given transaction(s)
-           logs          retrieve logs for the given transaction(s)
-           traces        retrieve traces for the given transaction(s)
-           when          find block(s) based on date, blockNum, timestamp, or 'special'
-         CHAIN STATE
-           state         retrieve account balance(s) for one or more addresses at given block(s)
-           tokens        retrieve token balance(s) for one or more addresses at given block(s)
-         ADMIN
-           status        report on the status of the TrueBlocks system
-           serve         serve the TrueBlocks API using the flame server
-           scrape        scan the chain and update the TrueBlocks index of appearances
-           init          initialize the index of appearances by downloading Bloom filters
-           pins          manage pinned index of appearances and associated Bloom filters
-         OTHER
-           quotes        freshen and/or display Ethereum price data
-           explore       open an explorer for a given address, block, or transaction
-           slurp         fetch data from EtherScan for any address
+  Accounts:
+    list          list every appearance of an address anywhere on the chain
+    export        export full detail of transactions for one or more addresses
+    monitors      add, remove, clean, and list address monitors
+    names         query addresses or names of well known accounts
+    abis          fetches the ABI for a smart contract
+  Chain Data:
+    blocks        retrieve one or more blocks from the chain or local cache
+    transactions  retrieve one or more transactions from the chain or local cache
+    receipts      retrieve receipts for the given transaction(s)
+    logs          retrieve logs for the given transaction(s)
+    traces        retrieve traces for the given transaction(s)
+    when          find block(s) based on date, blockNum, timestamp, or 'special'
+  Chain State:
+    state         retrieve account balance(s) for one or more addresses at given block(s)
+    tokens        retrieve token balance(s) for one or more addresses at given block(s)
+  Admin:
+    config        report on and edit the configuration of the TrueBlocks system
+    daemon        initalize and control long-running processes such as the API and the scrapers
+    scrape        scan the chain and update the TrueBlocks index of appearances
+    chunks        manage, investigate, and display the Unchained Index
+    init          initialize the TrueBlocks system by downloading from IPFS
+  Other:
+    explore       open a local or remote explorer for one or more addresses, blocks, or transactions
+    slurp         fetch data from EtherScan for any address
 \u003c/code\u003e\u003c/pre\u003e
 \u003chr\u003e
 \u003cp\u003eYou may get more help on any command by typing \u003ccode\u003echifra \u0026lt;cmd\u0026gt; --help\u003c/code\u003e.\u003c/p\u003e
 \u003ch3 id="getting-status"\u003eGetting status\u003c/h3\u003e
-\u003cp\u003eLet\u0026rsquo;s look at an easy command to get started called \u003ccode\u003estatus\u003c/code\u003e.\u003c/p\u003e
-\u003cpre\u003e\u003ccode class="language-shell"\u003echifra status --terse
+\u003cp\u003eLet\u0026rsquo;s look at an easy command to get started called \u003ccode\u003econfig\u003c/code\u003e.\u003c/p\u003e
+\u003cpre\u003e\u003ccode class="language-shell"\u003echifra config
 \u003c/code\u003e\u003c/pre\u003e
 \u003cp\u003eIf you get a valid response, congratulations, your installation is working. You may skip ahead to the \u0026lsquo;Using TrueBlocks\u0026rsquo; section below.\u003c/p\u003e
 \u003ch3 id="---troubleshooting"\u003e\u0026ndash; Troubleshooting\u003c/h3\u003e
@@ -841,7 +840,7 @@ symbol = \u0026quot;ETH\u0026quot;
   rpcProvider by editing $CONFIG/trueblocks.toml.
 \u003c/code\u003e\u003c/pre\u003e
 \u003cp\u003eIf you get this error, edit the configuration file mentioned. The file is well documented, so refer to that file for further information.\u003c/p\u003e
-\u003cp\u003eWhen the \u003ccode\u003echifra status\u003c/code\u003e command returns a valid response, you may move to the next section. If
+\u003cp\u003eWhen the \u003ccode\u003echifra config\u003c/code\u003e command returns a valid response, you may move to the next section. If
 you continue to have trouble, join our \u003ca href="https://discord.gg/kAFcZH2x7K"\u003ediscord disscussion\u003c/a\u003e.\u003c/p\u003e
 \u003ch2 id="using-chifra"\u003eUsing chifra\u003c/h2\u003e
 \u003cp\u003eIf you\u0026rsquo;ve gotten this far, you\u0026rsquo;re ready to use TrueBlocks.\u003c/p\u003e
@@ -868,7 +867,7 @@ you continue to have trouble, join our \u003ca href="https://discord.gg/kAFcZH2x
 \u003c/code\u003e\u003c/pre\u003e
 \u003ch2 id="getting-system-status"\u003eGetting System Status\u003c/h2\u003e
 \u003cp\u003eThe \u003ccode\u003echifra\u003c/code\u003e command gives you access to all of TrueBlocks\u0026rsquo; functionality. Get system status by typing\u003c/p\u003e
-\u003cpre\u003e\u003ccode class="language-shell"\u003echifra status --terse
+\u003cpre\u003e\u003ccode class="language-shell"\u003echifra config
 \u003c/code\u003e\u003c/pre\u003e
 \u003ch2 id="getting-blockchain-data"\u003eGetting Blockchain Data\u003c/h2\u003e
 \u003cp\u003eLet\u0026rsquo;s see if we can get some actual blockchain data.\u003c/p\u003e
@@ -945,6 +944,7 @@ Arguments:
 
 Flags:
   -U, --count               display only the count of records for each monitor
+  -n, --no_zero             suppress the display of zero appearance accounts
   -c, --first_record uint   the first record to process (default 1)
   -e, --max_records uint    the maximum number of records to process (default 250)
   -F, --first_block uint    first block to export (inclusive, ignored when freshening)
@@ -1365,27 +1365,56 @@ You can query the status; query for information about TrueBlocks caches;
 control the creation, sharing, and pinning of the TrueBlocks index of appearances;
 and even serve the data through an API.\u003c/p\u003e
 \u003cp\u003e\u003ca href="/api"\u003eSee the API documentation for all information about using the API\u003c/a\u003e.\u003c/p\u003e
-\u003ch2 id="chifra-serve"\u003echifra serve\u003c/h2\u003e
-\u003cp\u003e\u003ccode\u003echifra serve\u003c/code\u003e delivers a JSON API for each of the \u003ccode\u003echifra\u003c/code\u003e commands along with each of its options.
-It does this through \u003ccode\u003eflame\u003c/code\u003e server, which is written in Go.\u003c/p\u003e
-\u003cp\u003eAnother way to get help to run \u003ccode\u003echifra --help\u003c/code\u003e or \u003ccode\u003echifra \u0026lt;cmd\u0026gt; --help\u003c/code\u003e on your command line. See below for an example of converting command line options to a call to the API. There\u0026rsquo;s a one-to-one correspondence between the command line tools and options and the API routes and their options.\u003c/p\u003e
+\u003ch2 id="chifra-config"\u003echifra config\u003c/h2\u003e
+\u003cp\u003eThe \u003ccode\u003echifra config\u003c/code\u003e program allows you to manage the various TrueBlocks caches. You may list all of the caches, some of the cache, or even individual caches either in terse or full detail. The cache of interest is specified with the \u003ccode\u003emodes\u003c/code\u003e option.\u003c/p\u003e
+\u003cp\u003eTrueBlocks maintains caches for the index of address appearances, named addresses, abi files, as well as other data including blockchain data, and address monitors.\u003c/p\u003e
 \u003cpre\u003e\u003ccode class="language-[plaintext]"\u003ePurpose:
-  Serve the TrueBlocks API using the flame server.
+  Report on and edit the configuration of the TrueBlocks system.
 
 Usage:
-  chifra serve [flags]
+  chifra config \u0026lt;mode\u0026gt; [mode...] [flags]
+
+Arguments:
+  modes - either show or edit the configuration
+	One or more of [ show | edit ]
 
 Flags:
-  -p, --port string   specify the server's port (default \u0026quot;:8080\u0026quot;)
-  -x, --fmt string    export format, one of [none|json*|txt|csv]
-  -v, --verbose       enable verbose (increase detail with --log_level)
-  -h, --help          display this help screen
+      --module strings   the type of information to show or edit
+                         One or more of [ index | monitors | names | abis | caches | some | all ]
+  -d, --details          include details about items found in monitors, slurps, abis, or price caches
+  -t, --types strings    for caches module only, which type(s) of cache to report
+                         One or more of [ blocks | txs | traces | slurps | all ]
+  -x, --fmt string       export format, one of [none|json*|txt|csv]
+  -v, --verbose          enable verbose (increase detail with --log_level)
+  -h, --help             display this help screen
+\u003c/code\u003e\u003c/pre\u003e
+\u003cp\u003e\u003cstrong\u003eSource code\u003c/strong\u003e: \u003ca href="https://github.com/TrueBlocks/trueblocks-core/tree/master/src/apps/chifra/internal/config"\u003e\u003ccode\u003einternal/config\u003c/code\u003e\u003c/a\u003e\u003c/p\u003e
+\u003ch2 id="chifra-daemon"\u003echifra daemon\u003c/h2\u003e
+\u003cp\u003e\u003ccode\u003echifra daemon\u003c/code\u003e manages chifra\u0026rsquo;s long-running processes include its JSON API server. Each of the \u003ccode\u003echifra\u003c/code\u003e commands along with all of its options, are provided not only by the command line, but also the API server. We call this process the \u003ccode\u003eflame\u003c/code\u003e server, which is written in Go.\u003c/p\u003e
+\u003cp\u003eIn the future, this daemon may also manage other long-running processes.\u003c/p\u003e
+\u003cp\u003eAnother way to get help to run \u003ccode\u003echifra --help\u003c/code\u003e or \u003ccode\u003echifra \u0026lt;cmd\u0026gt; --help\u003c/code\u003e on your command line. See below for an example of converting command line options to a call to the API. There\u0026rsquo;s a one-to-one correspondence between the command line tools and options and the API routes and their options.\u003c/p\u003e
+\u003cpre\u003e\u003ccode class="language-[plaintext]"\u003ePurpose:
+  Initalize and control long-running processes such as the API and the scrapers.
+
+Usage:
+  chifra daemon [flags]
+
+Flags:
+  -p, --port string     specify the server's port (default \u0026quot;:8080\u0026quot;)
+  -s, --scrape string   start the scraper, initialize it with either just blooms or entire index, generate for new blocks
+                        One of [ off | blooms | full-index ]
+  -m, --monitor         instruct the node to start the monitors tool
+  -a, --api string      instruct the node to start the API server
+                        One of [ off | on ] (default \u0026quot;on\u0026quot;)
+  -x, --fmt string      export format, one of [none|json*|txt|csv]
+  -v, --verbose         enable verbose (increase detail with --log_level)
+  -h, --help            display this help screen
 
 Notes:
-  - To start API open terminal window and run chifra serve.
-  - See the API documentation for more information.
+  - To start API open terminal window and run chifra daemon.
+  - See the API documentation (https://trueblocks.io/api) for more information.
 \u003c/code\u003e\u003c/pre\u003e
-\u003cp\u003e\u003cstrong\u003eSource code\u003c/strong\u003e: \u003ca href="https://github.com/TrueBlocks/trueblocks-core/tree/master/src/apps/chifra/server"\u003e\u003ccode\u003eserver\u003c/code\u003e\u003c/a\u003e\u003c/p\u003e
+\u003cp\u003e\u003cstrong\u003eSource code\u003c/strong\u003e: \u003ca href="https://github.com/TrueBlocks/trueblocks-core/tree/master/src/apps/chifra/internal/daemon"\u003e\u003ccode\u003einternal/daemon\u003c/code\u003e\u003c/a\u003e\u003c/p\u003e
 \u003ch2 id="chifra-scrape"\u003echifra scrape\u003c/h2\u003e
 \u003cp\u003eThe \u003ccode\u003echifra scrape\u003c/code\u003e application creates TrueBlocks\u0026rsquo; chunked index of address appearances \u0026ndash; the fundamental data structure of the entire system. It also, optionally, pins each chunk of the index to IPFS.\u003c/p\u003e
 \u003cp\u003e\u003ccode\u003echifra scrape\u003c/code\u003e is a long running process, therefore we advise you run it as a service or in terminal multiplexer such as \u003ccode\u003etmux\u003c/code\u003e. You may start and stop \u003ccode\u003echifra scrape\u003c/code\u003e as needed, but doing so means the scraper will not be keeping up with the front of teh blockchain. The next time it starts, it will have to catch up to the chain, a process that may take several hours depending on how long ago it was last run. See the section below and the \u0026ldquo;Papers\u0026rdquo; section of our website for more information on how the scraping process works and prerequisites for it proper operation.\u003c/p\u003e
@@ -1886,7 +1915,7 @@ chifra blocks 100
 \u003c/tr\u003e
 \u003ctr\u003e
 \u003ctd\u003eapi_provider\u003c/td\u003e
-\u003ctd\u003eThe location of the API endpoint gotten from \u003ccode\u003echifra serve\u003c/code\u003e\u003cbr /\u003ehttp://localhost:8080\u003c/td\u003e
+\u003ctd\u003eThe location of the API endpoint gotten from \u003ccode\u003echifra daemon\u003c/code\u003e\u003cbr /\u003ehttp://localhost:8080\u003c/td\u003e
 \u003c/tr\u003e
 \u003ctr\u003e
 \u003ctd\u003erun_local\u003c/td\u003e
