@@ -428,7 +428,7 @@ You can still use scrape, but you need to
 \u003cp\u003e\u003cstrong\u003eInitial set up time\u003c/strong\u003e: This method requires a locally-running tracing / archive node such as dAppNode running Erigon. Early users have reported 2-4 days to build the index from scratch. (You may wish to run \u003ccode\u003echifra scrape\u003c/code\u003e in an application like \u003ccode\u003etmux\u003c/code\u003e, so you can close the terminal window while it builds.)\u003c/p\u003e
 \u003cp\u003e\u003cstrong\u003eStorage use\u003c/strong\u003e: About 60GB.\u003c/p\u003e
 \u003cp\u003e\u003cstrong\u003eHow it works\u003c/strong\u003e:\u003c/p\u003e
-\u003cp\u003eThe end result of \u003ccode\u003echifra scrape\u003c/code\u003e is the same as the end result of \u003ccode\u003echifra init --all\u003c/code\u003e. However, the process is crucially different: rather than downloading the index that we publish (that is, trusting us), \u003ccode\u003echifra scrape\u003c/code\u003e \u003cem\u003ebuilds the index on your local machine connecting only with your local-running RPC endpoint\u003c/em\u003e, which means if you trust your own setup, you can trust the data.\u003c/p\u003e
+\u003cp\u003eThe end result of \u003ccode\u003echifa scrape\u003c/code\u003e is the same as the end result of \u003ccode\u003echifra init --all\u003c/code\u003e. However, the process is crucially different: rather than downloading the index that we publish (that is, trusting us), \u003ccode\u003echifra scrape\u003c/code\u003e \u003cem\u003ebuilds the index on your local machine connecting only with your local-running RPC endpoint\u003c/em\u003e, which means if you trust your own setup, you can trust the data.\u003c/p\u003e
 \u003cp\u003e(One note: It\u0026rsquo;s possible to run against any RPC endpoint \u0026ndash; remote or local \u0026ndash; but because the TrueBlocks scraper hits the node continually and very aggressively, you will probably get rate-limited against a shared RPC server such as Infura.)\u003c/p\u003e
 \u003cp\u003eA good explanation of this whole process requires a long form article. For now, the curious may look at the best documentation available, the \u003ccode\u003esrc\u003c/code\u003e directory of the source code.\u003c/p\u003e
 \u003ch2 id="one-final-note-on-building--making-the-index"\u003eOne final note on building / making the index\u003c/h2\u003e
@@ -1007,7 +1007,7 @@ Notes:
   - For the --logs option, you may optionally specify one or more --emitter, one or more --topics, or both.
   - The --logs option is significantly faster if you provide an --emitter or a --topic.
   - Neighbors include every address that appears in any transaction in which the export address also appears.
-  - If provided, --max_records dominates, also, if provided, --first_block overrides --first_record.
+  - If provided, --max_records dominates, also, if provided, --first_record overrides --first_block.
 \u003c/code\u003e\u003c/pre\u003e
 \u003cp\u003e\u003cstrong\u003eSource code\u003c/strong\u003e: \u003ca href="https://github.com/TrueBlocks/trueblocks-core/tree/master/src/apps/chifra/internal/export"\u003e\u003ccode\u003einternal/export\u003c/code\u003e\u003c/a\u003e\u003c/p\u003e
 \u003ch2 id="chifra-monitors"\u003echifra monitors\u003c/h2\u003e
