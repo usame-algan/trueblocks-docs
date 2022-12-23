@@ -1392,6 +1392,9 @@ Arguments:
   modes - either show or edit the configuration
 	One or more of [ show | edit ]
 
+Aliases:
+  config, status
+
 Flags:
       --module strings   the type of information to show or edit
                          One or more of [ index | monitors | names | abis | caches | some | all ]
@@ -1401,6 +1404,9 @@ Flags:
   -x, --fmt string       export format, one of [none|json*|txt|csv]
   -v, --verbose          enable verbose (increase detail with --log_level)
   -h, --help             display this help screen
+
+Notes:
+  - The 'status' alias is deprecated and will be removed shortly.
 \u003c/code\u003e\u003c/pre\u003e
 \u003cp\u003e\u003cstrong\u003eSource code\u003c/strong\u003e: \u003ca href="https://github.com/TrueBlocks/trueblocks-core/tree/master/src/apps/chifra/internal/config"\u003e\u003ccode\u003einternal/config\u003c/code\u003e\u003c/a\u003e\u003c/p\u003e
 \u003c!-- markdownlint-disable MD041 --\u003e
@@ -1413,6 +1419,9 @@ Flags:
 
 Usage:
   chifra daemon [flags]
+
+Aliases:
+  daemon, serve
 
 Flags:
   -p, --port string     specify the server's port (default \u0026quot;:8080\u0026quot;)
@@ -1428,6 +1437,7 @@ Flags:
 Notes:
   - To start API open terminal window and run chifra daemon.
   - See the API documentation (https://trueblocks.io/api) for more information.
+  - The 'serve' alias is deprecated and will be removed shortly.
 \u003c/code\u003e\u003c/pre\u003e
 \u003cp\u003e\u003cstrong\u003eSource code\u003c/strong\u003e: \u003ca href="https://github.com/TrueBlocks/trueblocks-core/tree/master/src/apps/chifra/internal/daemon"\u003e\u003ccode\u003einternal/daemon\u003c/code\u003e\u003c/a\u003e\u003c/p\u003e
 \u003c!-- markdownlint-disable MD041 --\u003e
@@ -1588,11 +1598,8 @@ Notes:
 \u003cli\u003e\u003ccode\u003echifra explore\u003c/code\u003e a quick way to open a blockchain explorer,\u003c/li\u003e
 \u003cli\u003e\u003ccode\u003eethslurp\u003c/code\u003e an older tool that lets you call data from EtherScan. (This has issues of centralization and data quality, see explanation in its section).\u003c/li\u003e
 \u003c/ul\u003e
-\u003cp\u003e\u003cdiv class="alert alert-warning d-flex" role="alert"\u003e
-  \u003cdiv class="flex-shrink-1 alert-icon"\u003e👉\u003c/div\u003e
-  \u003cdiv class="w-100"\u003eNote: some of these tools, like \`ethslurp\`, require an EtherScan key.\u003c/div\u003e
-\u003c/div\u003e
-\u003ca href="/docs/install/install-trueblocks/#3-update-the-configs-for-your-rpc-and-api-keys"\u003eFollow these instructions to add a key to your config\u003c/a\u003e\u003c/p\u003e
+\u003cp\u003eNote: some of these tools, like \u003ccode\u003eethslurp\u003c/code\u003e, require an EtherScan key.\u003c/p\u003e
+\u003cp\u003e\u003ca href="/docs/install/install-trueblocks/#3-update-the-configs-for-your-rpc-and-api-keys"\u003eFollow these instructions to add a key to your config\u003c/a\u003e\u003c/p\u003e
 \u003c!-- markdownlint-disable MD041 --\u003e
 \u003ch2 id="chifra-explore"\u003echifra explore\u003c/h2\u003e
 \u003cp\u003e\u003ccode\u003echifra explore\u003c/code\u003e opens Etherscan (and other explorers \u0026ndash; including our own) to the block, transaction hash, or address you specify. It\u0026rsquo;s a handy (configurable) way to open an explorer from the command line, nothing more.\u003c/p\u003e
