@@ -926,7 +926,8 @@ chifra traces --fmt json --articulate 4503002.1
 \u003cli\u003eOur \u003ca href="/tags/recipes"\u003eblog has a few longer \u0026ldquo;recipes\u0026rdquo;\u003c/a\u003efor accomplishing various tasks.\u003c/li\u003e
 \u003cli\u003eOur \u003ca href="/data-model/intro/"\u003edata model reference\u003c/a\u003e describes the fields that are returned with each command\u003c/li\u003e
 \u003c/ul\u003e
-`}).add({id:15,href:"/docs/chifra/accounts/",title:"Accounts",description:"",content:`\u003cp\u003eThis group of commands is at the heart of TrueBlocks. They allow you to produce and analyze transactional histories for a given Ethereum address.\u003c/p\u003e
+`}).add({id:15,href:"/docs/chifra/accounts/",title:"Accounts",description:"",content:`\u003c!-- markdownlint-disable MD033 MD036 MD041 --\u003e
+\u003cp\u003eThis group of commands is at the heart of TrueBlocks. They allow you to produce and analyze transactional histories for a given Ethereum address.\u003c/p\u003e
 \u003cp\u003eYou may also name addresses; grab the ABI file for a given address; add, delete, and remove monitors, and, most importantly, export transactional histories to various formats,
 This includes re-directing output to remote or local databases.\u003c/p\u003e
 \u003c!-- markdownlint-disable MD041 --\u003e
@@ -1109,7 +1110,8 @@ Notes:
   - Search for either four byte signatures or event signatures with the --find option.
 \u003c/code\u003e\u003c/pre\u003e
 \u003cp\u003e\u003cstrong\u003eSource code\u003c/strong\u003e: \u003ca href="https://github.com/TrueBlocks/trueblocks-core/tree/master/src/apps/chifra/internal/abis"\u003e\u003ccode\u003einternal/abis\u003c/code\u003e\u003c/a\u003e\u003c/p\u003e
-`}).add({id:16,href:"/docs/chifra/chaindata/",title:"Chain data",description:"",content:`\u003cp\u003eThe TrueBlocks tools extract raw blockchain data directly from the node.
+`}).add({id:16,href:"/docs/chifra/chaindata/",title:"Chain data",description:"",content:`\u003c!-- markdownlint-disable MD033 MD036 MD041 --\u003e
+\u003cp\u003eThe TrueBlocks tools extract raw blockchain data directly from the node.
 You may extract block data, transactional data, receipts, logs, and traces.
 Each tool has it own set of options, allowing you to get exactly the data that
 you want.\u003c/p\u003e
@@ -1297,18 +1299,15 @@ Notes:
   - Dates must be formatted in JSON format: YYYY-MM-DD[THH[:MM[:SS]]].
 \u003c/code\u003e\u003c/pre\u003e
 \u003cp\u003e\u003cstrong\u003eSource code\u003c/strong\u003e: \u003ca href="https://github.com/TrueBlocks/trueblocks-core/tree/master/src/apps/chifra/internal/when"\u003e\u003ccode\u003einternal/when\u003c/code\u003e\u003c/a\u003e\u003c/p\u003e
-`}).add({id:17,href:"/docs/chifra/chainstate/",title:"Chain state",description:"",content:`\u003cp\u003eThe two tools in this group deal with the \u003cem\u003eChain State\u003c/em\u003e.
-As chain state data concerns balances and byte code.
-it is distinct from Chain Data, which concerns things like blocks, transactions,
-or traces.\u003c/p\u003e
-\u003cp\u003eThe two tools are \u003ccode\u003echifra state\u003c/code\u003e and \u003ccode\u003echifra tokens\u003c/code\u003e.
-The first allows you to query account balances, the byte code of a smart contract (if available), the nonce, and other information about an address.
-The second tool, \u003ccode\u003echifra tokens\u003c/code\u003e, deals with ERC20 and ERC721 token balances and other data.\u003c/p\u003e
-\u003cdiv class="alert alert-warning d-flex" role="alert"\u003e
-  \u003cdiv class="flex-shrink-1 alert-icon"\u003e👉\u003c/div\u003e
-  \u003cdiv class="w-100"\u003eNote: The amount of information you can retrieve depends on the type of node you run. Archive nodes and tracing allow you to query historical state (that is, all the way back to the genesis block). TrueBlocks works with non-archive nodes, but they are much less informative.\u003c/div\u003e
-\u003c/div\u003e
-\u003c!-- markdownlint-disable MD041 --\u003e
+`}).add({id:17,href:"/docs/chifra/chainstate/",title:"Chain state",description:"",content:`\u003c!-- markdownlint-disable MD033 MD036 MD041 --\u003e
+\u003cp\u003eThe two tools in this group deal with the \u003cem\u003eChain State\u003c/em\u003e. As chain state data concerns balances and byte code. it is distinct
+from Chain Data, which concerns things like blocks, transactions, or traces.\u003c/p\u003e
+\u003cp\u003eThe two tools are \u003ccode\u003echifra state\u003c/code\u003e and \u003ccode\u003echifra tokens\u003c/code\u003e. The first allows you to query account balances, the byte code of a smart
+contract (if available), the nonce, and other information about an address. The second tool, \u003ccode\u003echifra tokens\u003c/code\u003e, deals with ERC20
+and ERC721 token balances and other data.\u003c/p\u003e
+\u003cp\u003eNote: The amount of information you can retrieve depends on the type of node you run. Archive nodes and tracing allow
+you to query historical state (that is, all the way back to the genesis block). TrueBlocks works with non-archive nodes, but
+they are much less informative.\u003c!-- markdownlint-disable MD041 --\u003e\u003c/p\u003e
 \u003ch2 id="chifra-state"\u003echifra state\u003c/h2\u003e
 \u003cp\u003eUse this tool to retrieve the balance of an address (or list of addresses) at the given block (or blocks). Specify multiple addresses and/or multiple blocks if you wish, but you must specify at least one address. If no block is specified, the latest block is reported.\u003c/p\u003e
 \u003cp\u003eYou may also query to see if an address is a smart contract as well as retrieve a contract\u0026rsquo;s byte code.\u003c/p\u003e
@@ -1373,7 +1372,8 @@ Notes:
   - Special blocks are detailed under chifra when --list.
 \u003c/code\u003e\u003c/pre\u003e
 \u003cp\u003e\u003cstrong\u003eSource code\u003c/strong\u003e: \u003ca href="https://github.com/TrueBlocks/trueblocks-core/tree/master/src/apps/chifra/internal/tokens"\u003e\u003ccode\u003einternal/tokens\u003c/code\u003e\u003c/a\u003e\u003c/p\u003e
-`}).add({id:18,href:"/docs/chifra/admin/",title:"Admin",description:"",content:`\u003cp\u003eThe Admin component allows you to query the status of the TrueBlocks system.
+`}).add({id:18,href:"/docs/chifra/admin/",title:"Admin",description:"",content:`\u003c!-- markdownlint-disable MD033 MD036 MD041 --\u003e
+\u003cp\u003eThe Admin component allows you to query the status of the TrueBlocks system.
 You can query the status; query for information about TrueBlocks caches;
 control the creation, sharing, and pinning of the TrueBlocks index of appearances;
 and even serve the data through an API.\u003c/p\u003e
@@ -1593,13 +1593,14 @@ Notes:
   - Re-run chifra init as often as you wish. It will repair or freshen the index.
 \u003c/code\u003e\u003c/pre\u003e
 \u003cp\u003e\u003cstrong\u003eSource code\u003c/strong\u003e: \u003ca href="https://github.com/TrueBlocks/trueblocks-core/tree/master/src/apps/chifra/internal/init"\u003e\u003ccode\u003einternal/init\u003c/code\u003e\u003c/a\u003e\u003c/p\u003e
-`}).add({id:19,href:"/docs/chifra/other/",title:"Other",description:"",content:`\u003cp\u003eThese commands call some useful miscellaneous tools:\u003c/p\u003e
+`}).add({id:19,href:"/docs/chifra/other/",title:"Other",description:"",content:`\u003c!-- markdownlint-disable MD033 MD036 MD041 --\u003e
+\u003cp\u003eThese commands call some useful miscellaneous tools:\u003c/p\u003e
 \u003cul\u003e
 \u003cli\u003e\u003ccode\u003echifra explore\u003c/code\u003e a quick way to open a blockchain explorer,\u003c/li\u003e
 \u003cli\u003e\u003ccode\u003eethslurp\u003c/code\u003e an older tool that lets you call data from EtherScan. (This has issues of centralization and data quality, see explanation in its section).\u003c/li\u003e
 \u003c/ul\u003e
-\u003cp\u003eNote: some of these tools, like \u003ccode\u003eethslurp\u003c/code\u003e, require an EtherScan key.\u003c/p\u003e
-\u003cp\u003e\u003ca href="/docs/install/install-trueblocks/#3-update-the-configs-for-your-rpc-and-api-keys"\u003eFollow these instructions to add a key to your config\u003c/a\u003e\u003c/p\u003e
+\u003cp\u003eNote: some of these tools, like \u003ccode\u003eethslurp\u003c/code\u003e, require an EtherScan key. \u003ca href="/docs/install/install-trueblocks/#3-update-the-configs-for-your-rpc-and-api-keys"\u003eFollow these instructions to add a key to
+your config\u003c/a\u003e\u003c/p\u003e
 \u003c!-- markdownlint-disable MD041 --\u003e
 \u003ch2 id="chifra-explore"\u003echifra explore\u003c/h2\u003e
 \u003cp\u003e\u003ccode\u003echifra explore\u003c/code\u003e opens Etherscan (and other explorers \u0026ndash; including our own) to the block, transaction hash, or address you specify. It\u0026rsquo;s a handy (configurable) way to open an explorer from the command line, nothing more.\u003c/p\u003e
@@ -1618,6 +1619,33 @@ Flags:
   -h, --help     display this help screen
 \u003c/code\u003e\u003c/pre\u003e
 \u003cp\u003e\u003cstrong\u003eSource code\u003c/strong\u003e: \u003ca href="https://github.com/TrueBlocks/trueblocks-core/tree/master/src/apps/chifra/internal/explore"\u003e\u003ccode\u003einternal/explore\u003c/code\u003e\u003c/a\u003e\u003c/p\u003e
+\u003c!-- markdownlint-disable MD041 --\u003e
+\u003ch2 id="chifra-slurp"\u003echifra slurp\u003c/h2\u003e
+\u003cp\u003e\u003ccode\u003echifra slurp\u003c/code\u003e is the first tool we built in the Ethereum space. It even has its \u003ca href="http://ethslurp.com"\u003eown website\u003c/a\u003e.\u003c/p\u003e
+\u003cp\u003eWhile it\u0026rsquo;s useful, it has two shortcomings. First, it is fully centralized, pulling its data from \u003ca href="http://etherscan.io"\u003ehttp://etherscan.io\u003c/a\u003e. Second, is that it does not report every transaction for a given account. This is actually a shortcoming with EtherScan. It\u0026rsquo;s too complicated to explain here, but see our blog.\u003c/p\u003e
+\u003cp\u003eWhile \u003ccode\u003echifra slurp\u003c/code\u003e has its shortcomings, it does provides some nice features. You may use it to pull any transaction initiated by an EOA for example or to explore mining rewards. Visit the above referenced website for more information.\u003c/p\u003e
+\u003cpre\u003e\u003ccode class="language-[plaintext]"\u003ePurpose:
+  Fetch data from EtherScan for any address.
+
+Usage:
+  chifra slurp [flags] \u0026lt;address\u0026gt; [address...] [block...]
+
+Arguments:
+  addrs - one or more addresses to slurp from Etherscan (required)
+  blocks - an optional range of blocks to slurp
+
+Flags:
+  -t, --types strings   which types of transactions to request
+                        One or more of [ ext | int | token | nfts | miner | uncles | all ]
+  -p, --appearances     show only the blocknumber.tx_id appearances of the exported transactions
+  -x, --fmt string      export format, one of [none|json*|txt|csv]
+  -v, --verbose         enable verbose (increase detail with --log_level)
+  -h, --help            display this help screen
+
+Notes:
+  - Portions of this software are Powered by Etherscan.io APIs.
+\u003c/code\u003e\u003c/pre\u003e
+\u003cp\u003e\u003cstrong\u003eSource code\u003c/strong\u003e: \u003ca href="https://github.com/TrueBlocks/trueblocks-core/tree/master/src/apps/chifra/internal/slurp"\u003e\u003ccode\u003einternal/slurp\u003c/code\u003e\u003c/a\u003e\u003c/p\u003e
 `}).add({id:20,href:"/docs/chifra/configs/",title:"Configurations",description:"",content:`\u003cp\u003eMany of the \u003ccode\u003echifra\u003c/code\u003e commands allow you to customize their behaviour through configuration files and/or environment variables. These options are documented here.\u003c/p\u003e
 \u003ch3 id="environment-variables"\u003eEnvironment Variables\u003c/h3\u003e
 \u003cp\u003eEach command-line option may be overridden by exporting an environment variable in your shell prior to running a \u003ccode\u003echifra\u003c/code\u003e command.\u003c/p\u003e
