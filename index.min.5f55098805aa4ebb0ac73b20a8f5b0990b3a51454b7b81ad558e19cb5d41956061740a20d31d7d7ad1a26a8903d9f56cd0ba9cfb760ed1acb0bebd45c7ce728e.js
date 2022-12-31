@@ -1110,8 +1110,7 @@ Notes:
 \u003cp\u003e\u003cstrong\u003eSource code\u003c/strong\u003e: \u003ca href="https://github.com/TrueBlocks/trueblocks-core/tree/master/src/apps/chifra/internal/names"\u003e\u003ccode\u003einternal/names\u003c/code\u003e\u003c/a\u003e\u003c/p\u003e
 \u003ch2 id="chifra-abis"\u003echifra abis\u003c/h2\u003e
 \u003c!-- markdownlint-disable MD041 --\u003e
-\u003cp\u003e+\u0026mdash;\u0026mdash;\u0026mdash;+\u0026mdash;\u0026mdash;\u0026mdash;+\u0026mdash;\u0026mdash;\u0026mdash;+\u0026mdash;\u0026mdash;\u0026mdash;+\u0026mdash;\u0026mdash;\u0026mdash;+\u0026mdash;\u0026mdash;\u0026mdash;+\u0026mdash;\u0026mdash;\u0026mdash;+\u0026mdash;\u0026mdash;\u0026mdash;+\u0026mdash;\u0026mdash;\u0026mdash;
-\u003ccode\u003echifra abis\u003c/code\u003e retrieves ABI files for the given address(es). It searches for the ABI in this order:
+\u003cp\u003e\u003ccode\u003echifra abis\u003c/code\u003e retrieves ABI files for the given address(es). It searches for the ABI in this order:
 the current local folder, the TrueBlocks cache, \u003ca href="http://etherscan.io"\u003eEtherscan\u003c/a\u003e, or (in the
 future) ENS and Sourcify.\u003c/p\u003e
 \u003cp\u003eWhile this tool may be used from the command line and the API, its primary purpose is in support of
