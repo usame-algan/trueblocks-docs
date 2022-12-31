@@ -965,6 +965,12 @@ Flags:
 Notes:
   - No other options are permitted when --silent is selected.
 \u003c/code\u003e\u003c/pre\u003e
+\u003cp\u003eData models produced by this tool:\u003c/p\u003e
+\u003cul\u003e
+\u003cli\u003e\u003ca href="/data-model/accounts/#appearance"\u003eappearance\u003c/a\u003e\u003c/li\u003e
+\u003cli\u003e\u003ca href="/data-model/accounts/#monitor"\u003emonitor\u003c/a\u003e\u003c/li\u003e
+\u003cli\u003e\u003ca href="/data-model/accounts/#appearancecount"\u003eappearancecount\u003c/a\u003e\u003c/li\u003e
+\u003c/ul\u003e
 \u003cp\u003e\u003cstrong\u003eSource code\u003c/strong\u003e: \u003ca href="https://github.com/TrueBlocks/trueblocks-core/tree/master/src/apps/chifra/internal/list"\u003e\u003ccode\u003einternal/list\u003c/code\u003e\u003c/a\u003e\u003c/p\u003e
 \u003ch2 id="chifra-export"\u003echifra export\u003c/h2\u003e
 \u003c!-- markdownlint-disable MD041 --\u003e
@@ -1026,6 +1032,22 @@ Notes:
   - Neighbors include every address that appears in any transaction in which the export address also appears.
   - If provided, --max_records dominates, also, if provided, --first_record overrides --first_block.
 \u003c/code\u003e\u003c/pre\u003e
+\u003cp\u003eData models produced by this tool:\u003c/p\u003e
+\u003cul\u003e
+\u003cli\u003e\u003ca href="/data-model/accounts/#appearance"\u003eappearance\u003c/a\u003e\u003c/li\u003e
+\u003cli\u003e\u003ca href="/data-model/accounts/#reconciliation"\u003ereconciliation\u003c/a\u003e\u003c/li\u003e
+\u003cli\u003e\u003ca href="/data-model/accounts/#monitor"\u003emonitor\u003c/a\u003e\u003c/li\u003e
+\u003cli\u003e\u003ca href="/data-model/accounts/#appearancecount"\u003eappearancecount\u003c/a\u003e\u003c/li\u003e
+\u003cli\u003e\u003ca href="/data-model/chaindata/#transaction"\u003etransaction\u003c/a\u003e\u003c/li\u003e
+\u003cli\u003e\u003ca href="/data-model/chaindata/#transfer"\u003etransfer\u003c/a\u003e\u003c/li\u003e
+\u003cli\u003e\u003ca href="/data-model/chaindata/#receipt"\u003ereceipt\u003c/a\u003e\u003c/li\u003e
+\u003cli\u003e\u003ca href="/data-model/chaindata/#log"\u003elog\u003c/a\u003e\u003c/li\u003e
+\u003cli\u003e\u003ca href="/data-model/chaindata/#trace"\u003etrace\u003c/a\u003e\u003c/li\u003e
+\u003cli\u003e\u003ca href="/data-model/chaindata/#traceaction"\u003etraceaction\u003c/a\u003e\u003c/li\u003e
+\u003cli\u003e\u003ca href="/data-model/chaindata/#traceresult"\u003etraceresult\u003c/a\u003e\u003c/li\u003e
+\u003cli\u003e\u003ca href="/data-model/other/#function"\u003efunction\u003c/a\u003e\u003c/li\u003e
+\u003cli\u003e\u003ca href="/data-model/other/#parameter"\u003eparameter\u003c/a\u003e\u003c/li\u003e
+\u003c/ul\u003e
 \u003cp\u003e\u003cstrong\u003eSource code\u003c/strong\u003e: \u003ca href="https://github.com/TrueBlocks/trueblocks-core/tree/master/src/apps/chifra/internal/export"\u003e\u003ccode\u003einternal/export\u003c/code\u003e\u003c/a\u003e\u003c/p\u003e
 \u003ch2 id="chifra-monitors"\u003echifra monitors\u003c/h2\u003e
 \u003c!-- markdownlint-disable MD041 --\u003e
@@ -1068,6 +1090,10 @@ Notes:
   - If no address is presented to the --clean command, all monitors will be cleaned.
   - The --decache option will remove all cache items (blocks, txs, traces, recons) for the given address(es).
 \u003c/code\u003e\u003c/pre\u003e
+\u003cp\u003eData models produced by this tool:\u003c/p\u003e
+\u003cul\u003e
+\u003cli\u003e\u003ca href="/data-model/accounts/#monitor"\u003emonitor\u003c/a\u003e\u003c/li\u003e
+\u003c/ul\u003e
 \u003cp\u003e\u003cstrong\u003eSource code\u003c/strong\u003e: \u003ca href="https://github.com/TrueBlocks/trueblocks-core/tree/master/src/apps/chifra/internal/monitors"\u003e\u003ccode\u003einternal/monitors\u003c/code\u003e\u003c/a\u003e\u003c/p\u003e
 \u003ch2 id="chifra-names"\u003echifra names\u003c/h2\u003e
 \u003c!-- markdownlint-disable MD041 --\u003e
@@ -1107,6 +1133,10 @@ Notes:
   - The tool will accept up to three terms, each of which must match against any field in the database.
   - The --match_case option enables case sensitive matching.
 \u003c/code\u003e\u003c/pre\u003e
+\u003cp\u003eData models produced by this tool:\u003c/p\u003e
+\u003cul\u003e
+\u003cli\u003e\u003ca href="/data-model/accounts/#name"\u003ename\u003c/a\u003e\u003c/li\u003e
+\u003c/ul\u003e
 \u003cp\u003e\u003cstrong\u003eSource code\u003c/strong\u003e: \u003ca href="https://github.com/TrueBlocks/trueblocks-core/tree/master/src/apps/chifra/internal/names"\u003e\u003ccode\u003einternal/names\u003c/code\u003e\u003c/a\u003e\u003c/p\u003e
 \u003ch2 id="chifra-abis"\u003echifra abis\u003c/h2\u003e
 \u003c!-- markdownlint-disable MD041 --\u003e
@@ -1147,6 +1177,12 @@ Notes:
   - For the --sol option, place the solidity files in the current working folder.
   - Search for either four byte signatures or event signatures with the --find option.
 \u003c/code\u003e\u003c/pre\u003e
+\u003cp\u003eData models produced by this tool:\u003c/p\u003e
+\u003cul\u003e
+\u003cli\u003e\u003ca href="/data-model/accounts/#abi"\u003eabi\u003c/a\u003e\u003c/li\u003e
+\u003cli\u003e\u003ca href="/data-model/other/#function"\u003efunction\u003c/a\u003e\u003c/li\u003e
+\u003cli\u003e\u003ca href="/data-model/other/#parameter"\u003eparameter\u003c/a\u003e\u003c/li\u003e
+\u003c/ul\u003e
 \u003cp\u003e\u003cstrong\u003eSource code\u003c/strong\u003e: \u003ca href="https://github.com/TrueBlocks/trueblocks-core/tree/master/src/apps/chifra/internal/abis"\u003e\u003ccode\u003einternal/abis\u003c/code\u003e\u003c/a\u003e\u003c/p\u003e
 `}).add({id:16,href:"/docs/chifra/chaindata/",title:"Chain data",description:"",content:`\u003c!-- markdownlint-disable MD033 MD036 MD041 --\u003e
 \u003cp\u003eThe TrueBlocks tools extract raw blockchain data directly from the node. You may extract block
@@ -1194,6 +1230,10 @@ Notes:
   - Multiple topics match on topic0, topic1, and so on, not on different topic0's.
   - Large block ranges may crash the node, use --big_range to specify a larger range.
 \u003c/code\u003e\u003c/pre\u003e
+\u003cp\u003eData models produced by this tool:\u003c/p\u003e
+\u003cul\u003e
+\u003cli\u003e\u003ca href="/data-model/chaindata/#block"\u003eblock\u003c/a\u003e\u003c/li\u003e
+\u003c/ul\u003e
 \u003cp\u003e\u003cstrong\u003eSource code\u003c/strong\u003e: \u003ca href="https://github.com/TrueBlocks/trueblocks-core/tree/master/src/apps/chifra/internal/blocks"\u003e\u003ccode\u003einternal/blocks\u003c/code\u003e\u003c/a\u003e\u003c/p\u003e
 \u003ch2 id="chifra-transactions"\u003echifra transactions\u003c/h2\u003e
 \u003c!-- markdownlint-disable MD041 --\u003e
@@ -1232,6 +1272,11 @@ Notes:
   - This tool checks for valid input syntax, but does not check that the transaction requested actually exists.
   - If the queried node does not store historical state, the results for most older transactions are undefined.
 \u003c/code\u003e\u003c/pre\u003e
+\u003cp\u003eData models produced by this tool:\u003c/p\u003e
+\u003cul\u003e
+\u003cli\u003e\u003ca href="/data-model/chaindata/#transaction"\u003etransaction\u003c/a\u003e\u003c/li\u003e
+\u003cli\u003e\u003ca href="/data-model/chaindata/#transfer"\u003etransfer\u003c/a\u003e\u003c/li\u003e
+\u003c/ul\u003e
 \u003cp\u003e\u003cstrong\u003eSource code\u003c/strong\u003e: \u003ca href="https://github.com/TrueBlocks/trueblocks-core/tree/master/src/apps/chifra/internal/transactions"\u003e\u003ccode\u003einternal/transactions\u003c/code\u003e\u003c/a\u003e\u003c/p\u003e
 \u003ch2 id="chifra-receipts"\u003echifra receipts\u003c/h2\u003e
 \u003c!-- markdownlint-disable MD041 --\u003e
@@ -1262,6 +1307,10 @@ Notes:
   - This tool checks for valid input syntax, but does not check that the transaction requested actually exists.
   - If the queried node does not store historical state, the results for most older transactions are undefined.
 \u003c/code\u003e\u003c/pre\u003e
+\u003cp\u003eData models produced by this tool:\u003c/p\u003e
+\u003cul\u003e
+\u003cli\u003e\u003ca href="/data-model/chaindata/#receipt"\u003ereceipt\u003c/a\u003e\u003c/li\u003e
+\u003c/ul\u003e
 \u003cp\u003e\u003cstrong\u003eSource code\u003c/strong\u003e: \u003ca href="https://github.com/TrueBlocks/trueblocks-core/tree/master/src/apps/chifra/internal/receipts"\u003e\u003ccode\u003einternal/receipts\u003c/code\u003e\u003c/a\u003e\u003c/p\u003e
 \u003ch2 id="chifra-logs"\u003echifra logs\u003c/h2\u003e
 \u003c!-- markdownlint-disable MD041 --\u003e
@@ -1290,6 +1339,10 @@ Notes:
   - If the queried node does not store historical state, the results for most older transactions are undefined.
   - If you specify a 32-byte hash, it will be assumed to be a transaction hash, if the transaction is not found, it will be used as a topic.
 \u003c/code\u003e\u003c/pre\u003e
+\u003cp\u003eData models produced by this tool:\u003c/p\u003e
+\u003cul\u003e
+\u003cli\u003e\u003ca href="/data-model/chaindata/#log"\u003elog\u003c/a\u003e\u003c/li\u003e
+\u003c/ul\u003e
 \u003cp\u003e\u003cstrong\u003eSource code\u003c/strong\u003e: \u003ca href="https://github.com/TrueBlocks/trueblocks-core/tree/master/src/apps/chifra/internal/logs"\u003e\u003ccode\u003einternal/logs\u003c/code\u003e\u003c/a\u003e\u003c/p\u003e
 \u003ch2 id="chifra-traces"\u003echifra traces\u003c/h2\u003e
 \u003c!-- markdownlint-disable MD041 --\u003e
@@ -1324,6 +1377,12 @@ Notes:
   - A bang separated filter has the following fields (at least one of which is required) and is separated with a bang (!): fromBlk, toBlk, fromAddr, toAddr, after, count.
   - A state diff trace describes, for each modified address, what changed during that trace.
 \u003c/code\u003e\u003c/pre\u003e
+\u003cp\u003eData models produced by this tool:\u003c/p\u003e
+\u003cul\u003e
+\u003cli\u003e\u003ca href="/data-model/chaindata/#trace"\u003etrace\u003c/a\u003e\u003c/li\u003e
+\u003cli\u003e\u003ca href="/data-model/chaindata/#traceaction"\u003etraceaction\u003c/a\u003e\u003c/li\u003e
+\u003cli\u003e\u003ca href="/data-model/chaindata/#traceresult"\u003etraceresult\u003c/a\u003e\u003c/li\u003e
+\u003c/ul\u003e
 \u003cp\u003e\u003cstrong\u003eSource code\u003c/strong\u003e: \u003ca href="https://github.com/TrueBlocks/trueblocks-core/tree/master/src/apps/chifra/internal/traces"\u003e\u003ccode\u003einternal/traces\u003c/code\u003e\u003c/a\u003e\u003c/p\u003e
 \u003ch2 id="chifra-when"\u003echifra when\u003c/h2\u003e
 \u003c!-- markdownlint-disable MD041 --\u003e
@@ -1361,6 +1420,10 @@ Notes:
   - Block numbers, timestamps, or dates in the future are estimated with 13 second blocks.
   - Dates must be formatted in JSON format: YYYY-MM-DD[THH[:MM[:SS]]].
 \u003c/code\u003e\u003c/pre\u003e
+\u003cp\u003eData models produced by this tool:\u003c/p\u003e
+\u003cul\u003e
+\u003cli\u003e\u003ca href="/data-model/chaindata/#datedblock"\u003edatedblock\u003c/a\u003e\u003c/li\u003e
+\u003c/ul\u003e
 \u003cp\u003e\u003cstrong\u003eSource code\u003c/strong\u003e: \u003ca href="https://github.com/TrueBlocks/trueblocks-core/tree/master/src/apps/chifra/internal/when"\u003e\u003ccode\u003einternal/when\u003c/code\u003e\u003c/a\u003e\u003c/p\u003e
 `}).add({id:17,href:"/docs/chifra/chainstate/",title:"Chain state",description:"",content:`\u003c!-- markdownlint-disable MD033 MD036 MD041 --\u003e
 \u003cp\u003eThe two tools in this group deal with the \u003cem\u003eChain State\u003c/em\u003e. As chain state data concerns balances and
@@ -1407,6 +1470,11 @@ Notes:
   - Balance is the default mode. To select a single mode use none first, followed by that mode.
   - You may specify multiple modes on a single line.
 \u003c/code\u003e\u003c/pre\u003e
+\u003cp\u003eData models produced by this tool:\u003c/p\u003e
+\u003cul\u003e
+\u003cli\u003e\u003ca href="/data-model/chainstate/#ethstate"\u003eethstate\u003c/a\u003e\u003c/li\u003e
+\u003cli\u003e\u003ca href="/data-model/chainstate/#ethcall"\u003eethcall\u003c/a\u003e\u003c/li\u003e
+\u003c/ul\u003e
 \u003cp\u003e\u003cstrong\u003eSource code\u003c/strong\u003e: \u003ca href="https://github.com/TrueBlocks/trueblocks-core/tree/master/src/apps/chifra/internal/state"\u003e\u003ccode\u003einternal/state\u003c/code\u003e\u003c/a\u003e\u003c/p\u003e
 \u003ch2 id="chifra-tokens"\u003echifra tokens\u003c/h2\u003e
 \u003c!-- markdownlint-disable MD041 --\u003e
@@ -1446,6 +1514,10 @@ Notes:
   - If the queried node does not store historical state, the results are undefined.
   - Special blocks are detailed under chifra when --list.
 \u003c/code\u003e\u003c/pre\u003e
+\u003cp\u003eData models produced by this tool:\u003c/p\u003e
+\u003cul\u003e
+\u003cli\u003e\u003ca href="/data-model/chainstate/#tokenbalance"\u003etokenbalance\u003c/a\u003e\u003c/li\u003e
+\u003c/ul\u003e
 \u003cp\u003e\u003cstrong\u003eSource code\u003c/strong\u003e: \u003ca href="https://github.com/TrueBlocks/trueblocks-core/tree/master/src/apps/chifra/internal/tokens"\u003e\u003ccode\u003einternal/tokens\u003c/code\u003e\u003c/a\u003e\u003c/p\u003e
 `}).add({id:18,href:"/docs/chifra/admin/",title:"Admin",description:"",content:`\u003c!-- markdownlint-disable MD033 MD036 MD041 --\u003e
 \u003cp\u003eThe Admin component allows you to query the status of the TrueBlocks system. You can query the
@@ -1485,6 +1557,16 @@ Flags:
 Notes:
   - The 'status' alias is deprecated and will be removed shortly.
 \u003c/code\u003e\u003c/pre\u003e
+\u003cp\u003eData models produced by this tool:\u003c/p\u003e
+\u003cul\u003e
+\u003cli\u003e\u003ca href="/data-model/accounts/#monitor"\u003emonitor\u003c/a\u003e\u003c/li\u003e
+\u003cli\u003e\u003ca href="/data-model/admin/#status"\u003estatus\u003c/a\u003e\u003c/li\u003e
+\u003cli\u003e\u003ca href="/data-model/admin/#cache"\u003ecache\u003c/a\u003e\u003c/li\u003e
+\u003cli\u003e\u003ca href="/data-model/admin/#cacheentry"\u003ecacheentry\u003c/a\u003e\u003c/li\u003e
+\u003cli\u003e\u003ca href="/data-model/admin/#indexcacheitem"\u003eindexcacheitem\u003c/a\u003e\u003c/li\u003e
+\u003cli\u003e\u003ca href="/data-model/admin/#chain"\u003echain\u003c/a\u003e\u003c/li\u003e
+\u003cli\u003e\u003ca href="/data-model/admin/#key"\u003ekey\u003c/a\u003e\u003c/li\u003e
+\u003c/ul\u003e
 \u003cp\u003e\u003cstrong\u003eSource code\u003c/strong\u003e: \u003ca href="https://github.com/TrueBlocks/trueblocks-core/tree/master/src/apps/chifra/internal/config"\u003e\u003ccode\u003einternal/config\u003c/code\u003e\u003c/a\u003e\u003c/p\u003e
 \u003ch2 id="chifra-daemon"\u003echifra daemon\u003c/h2\u003e
 \u003c!-- markdownlint-disable MD041 --\u003e
@@ -1521,6 +1603,10 @@ Notes:
   - See the API documentation (https://trueblocks.io/api) for more information.
   - The 'serve' alias is deprecated and will be removed shortly.
 \u003c/code\u003e\u003c/pre\u003e
+\u003cp\u003eData models produced by this tool:\u003c/p\u003e
+\u003cul\u003e
+\u003cli\u003enone\u003c/li\u003e
+\u003c/ul\u003e
 \u003cp\u003e\u003cstrong\u003eSource code\u003c/strong\u003e: \u003ca href="https://github.com/TrueBlocks/trueblocks-core/tree/master/src/apps/chifra/internal/daemon"\u003e\u003ccode\u003einternal/daemon\u003c/code\u003e\u003c/a\u003e\u003c/p\u003e
 \u003ch2 id="chifra-scrape"\u003echifra scrape\u003c/h2\u003e
 \u003c!-- markdownlint-disable MD041 --\u003e
@@ -1554,6 +1640,11 @@ Flags:
   -v, --verbose          enable verbose (increase detail with --log_level)
   -h, --help             display this help screen
 \u003c/code\u003e\u003c/pre\u003e
+\u003cp\u003eData models produced by this tool:\u003c/p\u003e
+\u003cul\u003e
+\u003cli\u003e\u003ca href="/data-model/admin/#manifest"\u003emanifest\u003c/a\u003e\u003c/li\u003e
+\u003cli\u003e\u003ca href="/data-model/admin/#pinnedchunk"\u003epinnedchunk\u003c/a\u003e\u003c/li\u003e
+\u003c/ul\u003e
 \u003ch3 id="configuration"\u003econfiguration\u003c/h3\u003e
 \u003cp\u003eEach of the following additional configurable command line options are available.\u003c/p\u003e
 \u003cp\u003e\u003cstrong\u003eConfiguration file:\u003c/strong\u003e \u003ccode\u003e$CONFIG/$CHAIN/blockScrape.toml\u003c/code\u003e\u003cbr\u003e
@@ -1678,6 +1769,16 @@ Notes:
   - You may combine the --pin and --publish options.
   - The --belongs option is only available in the index mode.
 \u003c/code\u003e\u003c/pre\u003e
+\u003cp\u003eData models produced by this tool:\u003c/p\u003e
+\u003cul\u003e
+\u003cli\u003e\u003ca href="/data-model/admin/#manifest"\u003emanifest\u003c/a\u003e\u003c/li\u003e
+\u003cli\u003e\u003ca href="/data-model/admin/#pinnedchunk"\u003epinnedchunk\u003c/a\u003e\u003c/li\u003e
+\u003cli\u003e\u003ca href="/data-model/admin/#chunkindex"\u003echunkindex\u003c/a\u003e\u003c/li\u003e
+\u003cli\u003e\u003ca href="/data-model/admin/#chunkblooms"\u003echunkblooms\u003c/a\u003e\u003c/li\u003e
+\u003cli\u003e\u003ca href="/data-model/admin/#chunkaddresses"\u003echunkaddresses\u003c/a\u003e\u003c/li\u003e
+\u003cli\u003e\u003ca href="/data-model/admin/#chunkappearances"\u003echunkappearances\u003c/a\u003e\u003c/li\u003e
+\u003cli\u003e\u003ca href="/data-model/admin/#chunkstats"\u003echunkstats\u003c/a\u003e\u003c/li\u003e
+\u003c/ul\u003e
 \u003cp\u003e\u003cstrong\u003eSource code\u003c/strong\u003e: \u003ca href="https://github.com/TrueBlocks/trueblocks-core/tree/master/src/apps/chifra/internal/chunks"\u003e\u003ccode\u003einternal/chunks\u003c/code\u003e\u003c/a\u003e\u003c/p\u003e
 \u003ch2 id="chifra-init"\u003echifra init\u003c/h2\u003e
 \u003c!-- markdownlint-disable MD041 --\u003e
@@ -1713,6 +1814,11 @@ Flags:
 Notes:
   - Re-run chifra init as often as you wish. It will repair or freshen the index.
 \u003c/code\u003e\u003c/pre\u003e
+\u003cp\u003eData models produced by this tool:\u003c/p\u003e
+\u003cul\u003e
+\u003cli\u003e\u003ca href="/data-model/admin/#manifest"\u003emanifest\u003c/a\u003e\u003c/li\u003e
+\u003cli\u003e\u003ca href="/data-model/admin/#pinnedchunk"\u003epinnedchunk\u003c/a\u003e\u003c/li\u003e
+\u003c/ul\u003e
 \u003cp\u003e\u003cstrong\u003eSource code\u003c/strong\u003e: \u003ca href="https://github.com/TrueBlocks/trueblocks-core/tree/master/src/apps/chifra/internal/init"\u003e\u003ccode\u003einternal/init\u003c/code\u003e\u003c/a\u003e\u003c/p\u003e
 `}).add({id:19,href:"/docs/chifra/other/",title:"Other",description:"",content:`\u003c!-- markdownlint-disable MD033 MD036 MD041 --\u003e
 \u003cp\u003eThese commands call some useful miscellaneous tools:\u003c/p\u003e
@@ -1742,6 +1848,10 @@ Flags:
   -g, --google   search google excluding popular blockchain explorers
   -h, --help     display this help screen
 \u003c/code\u003e\u003c/pre\u003e
+\u003cp\u003eData models produced by this tool:\u003c/p\u003e
+\u003cul\u003e
+\u003cli\u003enone\u003c/li\u003e
+\u003c/ul\u003e
 \u003cp\u003e\u003cstrong\u003eSource code\u003c/strong\u003e: \u003ca href="https://github.com/TrueBlocks/trueblocks-core/tree/master/src/apps/chifra/internal/explore"\u003e\u003ccode\u003einternal/explore\u003c/code\u003e\u003c/a\u003e\u003c/p\u003e
 \u003ch2 id="chifra-slurp"\u003echifra slurp\u003c/h2\u003e
 \u003c!-- markdownlint-disable MD041 --\u003e
@@ -1774,6 +1884,10 @@ Flags:
 Notes:
   - Portions of this software are Powered by Etherscan.io APIs.
 \u003c/code\u003e\u003c/pre\u003e
+\u003cp\u003eData models produced by this tool:\u003c/p\u003e
+\u003cul\u003e
+\u003cli\u003e\u003ca href="/data-model/chaindata/#transaction"\u003etransaction\u003c/a\u003e\u003c/li\u003e
+\u003c/ul\u003e
 \u003cp\u003e\u003cstrong\u003eSource code\u003c/strong\u003e: \u003ca href="https://github.com/TrueBlocks/trueblocks-core/tree/master/src/apps/chifra/internal/slurp"\u003e\u003ccode\u003einternal/slurp\u003c/code\u003e\u003c/a\u003e\u003c/p\u003e
 `}).add({id:20,href:"/docs/chifra/configs/",title:"Configurations",description:"",content:`\u003cp\u003eMany of the \u003ccode\u003echifra\u003c/code\u003e commands allow you to customize their behaviour through configuration files
 and/or environment variables. These options are documented here.\u003c/p\u003e
