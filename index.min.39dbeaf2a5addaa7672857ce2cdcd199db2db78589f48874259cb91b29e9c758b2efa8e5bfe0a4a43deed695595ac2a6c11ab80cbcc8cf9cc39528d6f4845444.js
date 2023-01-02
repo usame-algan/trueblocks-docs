@@ -1704,6 +1704,11 @@ Flags:
 \u003cli\u003e\u003ca href="/data-model/admin/#manifest"\u003emanifest\u003c/a\u003e\u003c/li\u003e
 \u003cli\u003e\u003ca href="/data-model/admin/#pinnedchunk"\u003epinnedchunk\u003c/a\u003e\u003c/li\u003e
 \u003c/ul\u003e
+\u003cp\u003eLinks:\u003c/p\u003e
+\u003cul\u003e
+\u003cli\u003e\u003ca href="/api/#operation/admin-scrape"\u003eapi docs\u003c/a\u003e\u003c/li\u003e
+\u003cli\u003e\u003ca href="https://github.com/TrueBlocks/trueblocks-core/tree/master/src/apps/chifra/internal/scrape"\u003esource code\u003c/a\u003e\u003c/li\u003e
+\u003c/ul\u003e
 \u003ch3 id="configuration"\u003econfiguration\u003c/h3\u003e
 \u003cp\u003eEach of the following additional configurable command line options are available.\u003c/p\u003e
 \u003cp\u003e\u003cstrong\u003eConfiguration file:\u003c/strong\u003e \u003ccode\u003e$CONFIG/$CHAIN/blockScrape.toml\u003c/code\u003e\u003cbr\u003e
@@ -1789,11 +1794,6 @@ archive\u0026rdquo; RPC endpoint. The Erigon blockchain node, given its minimal 
 node and its support of the required \u003ccode\u003etrace_\u003c/code\u003e endpoint routines, is highly recommended.\u003c/p\u003e
 \u003cp\u003ePlease \u003ca href="https://trueblocks.io/blog/a-long-winded-explanation-of-trueblocks/"\u003esee this article\u003c/a\u003e for
 more information about running the scraper and building and sharing the index of appearances.\u003c/p\u003e
-\u003cp\u003eLinks:\u003c/p\u003e
-\u003cul\u003e
-\u003cli\u003e\u003ca href="/api/#operation/admin-scrape"\u003eapi docs\u003c/a\u003e\u003c/li\u003e
-\u003cli\u003e\u003ca href="https://github.com/TrueBlocks/trueblocks-core/tree/master/src/apps/chifra/internal/scrape"\u003esource code\u003c/a\u003e\u003c/li\u003e
-\u003c/ul\u003e
 \u003ch2 id="chifra-chunks"\u003echifra chunks\u003c/h2\u003e
 \u003c!-- markdownlint-disable MD041 --\u003e
 \u003cp\u003eThe chifra chunks routine provides tools for interacting with, checking the validity of, cleaning up,
