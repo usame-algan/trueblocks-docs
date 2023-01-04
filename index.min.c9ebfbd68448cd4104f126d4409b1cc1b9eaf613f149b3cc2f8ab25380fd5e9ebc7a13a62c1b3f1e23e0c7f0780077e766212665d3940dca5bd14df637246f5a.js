@@ -1477,7 +1477,7 @@ Notes:
 \u003c/code\u003e\u003c/pre\u003e
 \u003cp\u003eData models produced by this tool:\u003c/p\u003e
 \u003cul\u003e
-\u003cli\u003e\u003ca href="/data-model/chaindata/#datedblock"\u003edatedblock\u003c/a\u003e\u003c/li\u003e
+\u003cli\u003e\u003ca href="/data-model/chaindata/#namedblock"\u003enamedblock\u003c/a\u003e\u003c/li\u003e
 \u003c/ul\u003e
 \u003cp\u003eLinks:\u003c/p\u003e
 \u003cul\u003e
