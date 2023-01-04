@@ -110,196 +110,95 @@ telling them, with near perfect data, exactly what you spend your money on.\u003
 environment to provide you ingress and egress to the chain.\u003c/p\u003e
 \u003ch2 id="solution"\u003eSolution\u003c/h2\u003e
 \u003cp\u003e\u003ca href="https://dappnode.io/"\u003edAppNode\u003c/a\u003e, \u003ca href="https://github.com/ledgerwatch/erigon"\u003eErigon\u003c/a\u003e and TrueBlocks.\u003c/p\u003e
-`}).add({id:6,href:"/docs/install/install-trueblocks/",title:"Install TrueBlocks core",description:"TrueBlocks works on Linux and Mac",content:`\u003c!---
-The links in this section are hard coded so that can be pasted into the
-directory README.
---\u003e
-\u003cp\u003eThese instructions assume you can navigate the command line and edit configuration files.
-If you need help with a particular step, see the \u003ca href="/docs/install/install-trueblocks/#troubleshooting"\u003einstallation\u0026rsquo;s troubleshooting section\u003c/a\u003e.\u003c/p\u003e
-\u003ch2 id="quick-install"\u003eQuick Install\u003c/h2\u003e
-\u003col start="0"\u003e
-\u003cli\u003eUpdate GoLang installation
+`}).add({id:6,href:"/docs/install/install-trueblocks/",title:"Install TrueBlocks Core",description:"TrueBlocks works on Linux and Mac",content:`\u003cp\u003eThese instructions assume you can navigate the command line and edit configuration files.
+If you need help with a particular step, see the \u003ca href="/docs/install/install-troubleshooting"\u003einstallation\u0026rsquo;s troubleshooting section\u003c/a\u003e.\u003c/p\u003e
+\u003ch2 id="installation"\u003eInstallation\u003c/h2\u003e
 \u003cul\u003e
-\u003cli\u003e\u003ccode\u003ego version\u003c/code\u003e\u003c/li\u003e
-\u003cli\u003e\u003cem\u003eIf your version is less than 1.16,\u003c/em\u003e \u003ca href="/docs/install/install-trueblocks/#how-do-i-check-my-go-version"\u003einstall Go\u003c/a\u003e\u003c/li\u003e
-\u003c/ul\u003e
-\u003c/li\u003e
-\u003c/ol\u003e
-\u003cbr/\u003e
-\u003col\u003e
 \u003cli\u003e
-\u003cp\u003eCheck other build dependancies or install\u003c/p\u003e
+\u003cp\u003eOpen a terminal window.\u003c/p\u003e
+\u003c/li\u003e
+\u003cli\u003e
+\u003cp\u003eType \u003ccode\u003ego version\u003c/code\u003e. If Go is not installed or your version is less than 1.18.0, \u003ca href="https://go.dev/doc/install"\u003einstall the latest version of Go\u003c/a\u003e\u003c/p\u003e
+\u003c/li\u003e
+\u003cli\u003e
+\u003cp\u003eInstall or upgrade the build dependancies: \u003cem\u003egit\u003c/em\u003e, \u003cem\u003ecmake\u003c/em\u003e, \u003cem\u003eninja\u003c/em\u003e, \u003cem\u003ecurl\u003c/em\u003e, \u003cem\u003epython\u003c/em\u003e, \u003cem\u003eclang-format\u003c/em\u003e, \u003cem\u003ejq\u003c/em\u003e\u003c/p\u003e
 \u003cul\u003e
-\u003cli\u003e☑ \u003ca href="/docs/install/install-trueblocks/#how-do-i-install-packages-on-the-command-line"\u003eInstall the other dependencies\u003c/a\u003e
-\u003cbr/\u003e\u003cbr/\u003e\u003c/li\u003e
+\u003cli\u003e\u003ca href="/docs/install/install-trueblocks/#how-do-i-install-packages-on-the-command-line"\u003eInstall dependencies\u003c/a\u003e
+\u003cbr\u003e\u003cbr\u003e\u003c/li\u003e
 \u003c/ul\u003e
 \u003c/li\u003e
 \u003cli\u003e
-\u003cp\u003eClone the repo and compile from the codebase.\u003c/p\u003e
-\u003cp\u003e\u003csmall\u003e\u003cem\u003eWhile TrueBlocks is still alpha, use the \u003ccode\u003edevelop\u003c/code\u003e branch (we hope to release beta by January, 2022).\u003c/em\u003e\u003c/small\u003e\u003c/p\u003e
-\u003cpre\u003e\u003ccode class="language-shell"\u003egit clone -b develop https://github.com/trueblocks/trueblocks-core
+\u003cp\u003eClone the repo and compile the executable:\u003c/p\u003e
+\u003c/li\u003e
+\u003c/ul\u003e
+\u003cpre\u003e\u003ccode class="language-shell"\u003egit clone https://github.com/TrueBlocks/trueblocks-core
 cd trueblocks-core
-git checkout develop
 mkdir build \u0026amp;\u0026amp; cd build
 cmake ../src
-make
+make                   # may be faster with make -j \u0026lt;nproc\u0026gt;
 \u003c/code\u003e\u003c/pre\u003e
-\u003cp\u003e\u003csmall\u003e\u003cem\u003e(You may use \u003ccode\u003emake -j nproc\u003c/code\u003e to parallelize the build.)\u003c/em\u003e\u003c/small\u003e\u003c/p\u003e
-\u003c/li\u003e
-\u003cli\u003e
-\u003cp\u003eAdd \u003ccode\u003etrueblocks-core/bin\u003c/code\u003e to your shell PATH.\u003c/p\u003e
-\u003c/li\u003e
-\u003cli\u003e
-\u003cp\u003eFind your TrueBlocks configuration directory. It should be in one of these places:\u003c/p\u003e
-\u003cul\u003e
-\u003cli\u003eOn linux at \u003ccode\u003e~/.local/share/trueblocks\u003c/code\u003e\u003c/li\u003e
-\u003cli\u003eOn mac at \u003ccode\u003e~/Library/Application Support/TrueBlocks\u003c/code\u003e\u003c/li\u003e
-\u003cli\u003eIf you\u0026rsquo;ve configured it, wherever the location of \u003ccode\u003e$XDG_CONFIG_HOME\u003c/code\u003e is
-\u003cbr/\u003e\u003cbr/\u003e\u003c/li\u003e
-\u003c/ul\u003e
-\u003c/li\u003e
-\u003cli\u003e
-\u003cp\u003eIn the configuration directory, edit \u003ccode\u003etrueblocks.toml\u003c/code\u003e to add your RPC and
-API keys. It should look something like this:\u003c/p\u003e
-\u003cpre\u003e\u003ccode class="language-toml"\u003e[settings]
-rpcProvider = \u0026quot;\u0026lt;url-to-rpc-endpoint\u0026gt;\u0026quot;
-\u003c/code\u003e\u003c/pre\u003e
-\u003c/li\u003e
-\u003cli\u003e
-\u003cp\u003eTest a command!\u003c/p\u003e
-\u003cpre\u003e\u003ccode class="language-shell"\u003echifra blocks 12345
-\u003c/code\u003e\u003c/pre\u003e
-\u003c/li\u003e
-\u003c/ol\u003e
-\u003ch3 id="optional-steps"\u003eOptional steps\u003c/h3\u003e
-\u003col start="6"\u003e
-\u003cli\u003eTo make deep data queries, \u003ca href="/docs/install/get-the-index/"\u003eget the index\u003c/a\u003e\u003c/li\u003e
-\u003cli\u003eTo explore the data visually, \u003ca href="/docs/install/install-explorer/"\u003einstall the explorer application\u003c/a\u003e.\u003c/li\u003e
-\u003c/ol\u003e
-\u003ch2 id="troubleshooting"\u003eTroubleshooting\u003c/h2\u003e
-\u003cp\u003eHere are some problems users have run into at each step.
-If you\u0026rsquo;re still having trouble, \u003ca href="https://github.com/TrueBlocks/trueblocks-core/issues"\u003ecreate an issue\u003c/a\u003e,
-or ask us on discord.\u003c/p\u003e
-\u003ch3 id="dependencies"\u003eDependencies\u003c/h3\u003e
-\u003ch4 id="how-do-i-check-my-go-version"\u003eHow do I check my Go version?\u003c/h4\u003e
-\u003cp\u003eRun this command\u003c/p\u003e
-\u003cpre\u003e\u003ccode class="language-shell"\u003ego version
-\u003c/code\u003e\u003c/pre\u003e
-\u003cp\u003eTrueBlocks needs version 1.16.x or later. If you to install or update Go, \u003ca href="https://golang.org/doc/install"\u003esee here\u003c/a\u003e.\u003c/p\u003e
-\u003ch4 id="how-do-i-install-packages-on-the-command-line"\u003eHow do I install packages on the command line?\u003c/h4\u003e
 \u003cul\u003e
 \u003cli\u003e
-\u003cp\u003eFor Linux\u003c/p\u003e
-\u003cpre\u003e\u003ccode class="language-shell"\u003esudo apt install build-essential git cmake ninja-build python3 python3-dev libcurl4-openssl-dev clang-format jq
-\u003c/code\u003e\u003c/pre\u003e
+\u003cp\u003eAdd \u003ccode\u003e./trueblocks-core/bin\u003c/code\u003e to your shell\u0026rsquo;s $PATH. Check Google if you don\u0026rsquo;t know what this means.\u003c/p\u003e
 \u003c/li\u003e
 \u003cli\u003e
-\u003cp\u003eFor Mac:\u003c/p\u003e
-\u003cp\u003e\u003cem\u003eFor best results, we recommend running MacOS Big Sur or later.\u003c/em\u003e\u003c/p\u003e
-\u003cpre\u003e\u003ccode class="language-shell"\u003ebrew install cmake ninja
-brew install git
-brew install clang-format
-brew install jq
-\u003c/code\u003e\u003c/pre\u003e
+\u003cp\u003eType \u003ccode\u003echifra config --paths\u003c/code\u003e. This will produce a display similar to the following (ignore any errors). Note the \u003ccode\u003e$CONFIG\u003c/code\u003e paths.\u003c/p\u003e
 \u003c/li\u003e
 \u003c/ul\u003e
-\u003ch3 id="compiling"\u003eCompiling\u003c/h3\u003e
-\u003ch4 id="how-many-cores-can-i-use-to-make-trueblocks"\u003eHow many cores can I use to make TrueBlocks?\u003c/h4\u003e
-\u003cp\u003eWhen you run \u003ccode\u003emake\u003c/code\u003e, you can speed up the build by parallelizing with\u003c/p\u003e
-\u003cpre\u003e\u003ccode class="language-shell"\u003emake -j \u0026lt;ncores\u0026gt;
+\u003cpre\u003e\u003ccode class="language-[shell]"\u003echifra status --paths:
+  Config: $HOME/Library/Application Support/TrueBlocks/
+  Cache : $HOME/Library/Application Support/TrueBlocks/cache/mainnet
+  Index : $HOME/Library/Application Support/TrueBlocks/unchained/mainnet
 \u003c/code\u003e\u003c/pre\u003e
-\u003cp\u003eWhere \u003ccode\u003e\u0026lt;ncores\u0026gt;\u003c/code\u003e represents the number of cores to devote to the job.
-How many cores can you use? That depends on many factors. A handy tool is \u003ccode\u003enproc\u003c/code\u003e,
-which identifies the machine\u0026rsquo;s number of available processing units.\u003c/p\u003e
-\u003cp\u003eIf you have \u003ccode\u003enproc\u003c/code\u003e installed, you can safely parallelize the build with this command\u003c/p\u003e
-\u003cpre\u003e\u003ccode class="language-shell"\u003emake -j \`nproc\`
-\u003c/code\u003e\u003c/pre\u003e
-\u003ch4 id="how-do-i-know-if-compilation-was-successful"\u003eHow do I know if compilation was successful?\u003c/h4\u003e
-\u003cp\u003eFrom the \u003ccode\u003etrueblocks-core\u003c/code\u003e directory, test your install with this command:\u003c/p\u003e
-\u003cpre\u003e\u003ccode class="language-shell"\u003e../bin/chifra --version
-\u003c/code\u003e\u003c/pre\u003e
-\u003cp\u003eYou should get a version string similar to this:\u003c/p\u003e
-\u003cpre\u003e\u003ccode class="language-shell"\u003etrueBlocks GHC-TrueBlocks//0.9.0-alpha-409aa9388-20210503
-\u003c/code\u003e\u003c/pre\u003e
-\u003cp\u003eIf nothing outputs, the build has failed. Try repeating the instructions.
-If it still fails, make an issue.\u003c/p\u003e
-\u003ch3 id="how-do-i-export-to-path"\u003eHow do I export to PATH?\u003c/h3\u003e
-\u003cp\u003e\u003ccode\u003echifra\u003c/code\u003e only works if its underlying tools are found in your \u003ccode\u003e$PATH.\u003c/code\u003e
-To find the full path, run this from the top of the \u003ccode\u003etrueblocks-core\u003c/code\u003e directory.\u003c/p\u003e
-\u003cpre\u003e\u003ccode class="language-shell"\u003ecd bin \u0026amp;\u0026amp; pwd \u0026amp;\u0026amp; cd -
-\u003c/code\u003e\u003c/pre\u003e
-\u003cp\u003eAdd the result of that command to your shell’s \u003ccode\u003e$PATH\u003c/code\u003e.\u003c/p\u003e
-\u003cp\u003eHow you do that depends on your system.
-In Bash, you\u0026rsquo;re probably going to put something like this in your \u003ccode\u003e.bashrc\u003c/code\u003e:\u003c/p\u003e
-\u003cpre\u003e\u003ccode class="language-shell"\u003eexport PATH=\${PATH}:\u0026lt;/path/to/trueblocks-core/directory\u0026gt;/bin
-\u003c/code\u003e\u003c/pre\u003e
-\u003cp\u003eIf you are confused, a Google search may be in order…\u003c/p\u003e
-\u003ch3 id="configuration"\u003eConfiguration\u003c/h3\u003e
-\u003ch4 id="where-is-the-configuration"\u003eWhere is the configuration?\u003c/h4\u003e
-\u003cp\u003eWhere your configuration folder is depends on your operating system
-and environment.\u003c/p\u003e
 \u003cul\u003e
-\u003cli\u003eIf \u003ccode\u003eXDG_CONFIG_HOME\u003c/code\u003e is set, your configuration is there\u003c/li\u003e
-\u003cli\u003eOtherwise, on Linux: \u003ccode\u003e~/.local/share/trueblocks\u003c/code\u003e\u003c/li\u003e
-\u003cli\u003eOtherwise, on Mac: \u003ccode\u003e~/Library/Application Support/TrueBlocks\u003c/code\u003e\u003c/li\u003e
-\u003cli\u003eOtherwise, you\u0026rsquo;re out of luck\u0026ndash;we only support Linux and Mac\u003c/li\u003e
+\u003cli\u003eNext, edit a configuration file called \u003ccode\u003e$CONFIG/trueBlocks.toml\u003c/code\u003e. Edit this file and locate the \u003ccode\u003e[chains.mainnet]\u003c/code\u003e section. Add a valid RPC endpoint. If you don\u0026rsquo;t know what this means, search Google.\u003c/li\u003e
 \u003c/ul\u003e
-\u003cp\u003eThe primary or base configuration file (\u003ccode\u003etrueBlocks.toml\u003c/code\u003e) must exist at one
-of the above locations for \u003ccode\u003echifra\u003c/code\u003e to work.\u003c/p\u003e
-\u003cp\u003eWith the recent addition of support for multi-chain, there has arisen the need
-for per-chain configuration as well (for example, values such as \u003ccode\u003erpcProvider\u003c/code\u003e or
-\u003ccode\u003eremoteExplorer\u003c/code\u003e are unique per chain).\u003c/p\u003e
-\u003cp\u003eThis issue is discussed here \u003ca href="#"\u003eTODO: PLACE_HOLDER\u003c/a\u003e.\u003c/p\u003e
-\u003ch4 id="how-do-i-specify-an-rpc-endpoint"\u003eHow do I specify an RPC endpoint?\u003c/h4\u003e
-\u003cp\u003eBy default, TrueBlocks looks for the RPC at \u003ccode\u003ehttp://localhost:8545/\u003c/code\u003e.\u003c/p\u003e
-\u003cp\u003eIf you are using a remote RPC such as Infura or your own local RPC at
-a different port, you will need to modify that value.\u003c/p\u003e
-\u003cp\u003eAs is true of all configuration values, you coudl use an environment
-variable as described above, but you may also edit \u003ccode\u003etrueBlocks.toml\u003c/code\u003e.\u003c/p\u003e
-\u003cp\u003eThe format of that file is documented \u003ca href="#"\u003eTODO: PLACE_HOLDER\u003c/a\u003e.\u003c/p\u003e
-\u003ch4 id="how-do-i-add-a-etherscan-key"\u003eHow do I add a EtherScan key?\u003c/h4\u003e
-\u003cp\u003eSome small part of TrueBlocks requires an EtherScan API key. In particular
-this is the \u003ca href="/docs/chifra/chaindata/"\u003e\u003ccode\u003e--articulate\u003c/code\u003e option\u003c/a\u003e. We are working
-hard to remove this centralized dependency, but in the mean time you
-may get a warning of a missing key.\u003c/p\u003e
-\u003cp\u003eHere’s an example of a remote RPC for Infura and an EtherScan API key.
-\u003cem\u003e\u003cstrong\u003eWarning: see the note below\u003c/strong\u003e\u003c/em\u003e\u003c/p\u003e
-\u003cpre\u003e\u003ccode class="language-TOML"\u003e[settings]
-default_chain=mainnet
-etherscan_key = \u0026quot;\u0026lt;key_value\u0026gt;\u0026quot;
+\u003cpre\u003e\u003ccode class="language-[shell]"\u003e[chains.mainnet]
+...
+rpcProvider = \u0026quot;http://localhost:8545\u0026quot;
+...
+\u003c/code\u003e\u003c/pre\u003e
+\u003cul\u003e
+\u003cli\u003eIf you wish to use the \u003ccode\u003e--articulate\u003c/code\u003e feature (you probably do), add an API key to the following section:\u003c/li\u003e
+\u003c/ul\u003e
+\u003cpre\u003e\u003ccode class="language-[shell]"\u003e[keys.etherscan]
+...
+apiKey = \u0026quot;\u0026lt;your Etherscan api key\u0026gt;\u0026quot;   # optional
+...
+\u003c/code\u003e\u003c/pre\u003e
+\u003cul\u003e
+\u003cli\u003eYou should be able to now run the following command, which should return this data:\u003c/li\u003e
+\u003c/ul\u003e
+\u003cpre\u003e\u003ccode class="language-[shell]"\u003eprompt]\u0026gt; chifra blocks 12
 
-[mainnet]
-rpcProvider = \u0026quot;https://mainnet.infura.io/v3/\u0026lt;key_value\u0026gt;\u0026quot;
+{
+  \u0026quot;data\u0026quot;: [
+    {
+      \u0026quot;gasLimit\u0026quot;: 5000,
+      \u0026quot;gasUsed\u0026quot;: 0,
+      \u0026quot;hash\u0026quot;: \u0026quot;0xc63f666315fa1eae17e354fab532aeeecf549be93e358737d0648f50d57083a0\u0026quot;,
+      \u0026quot;blockNumber\u0026quot;: 12,
+      \u0026quot;parentHash\u0026quot;: \u0026quot;0x3f5e756c3efcb93099361b7ddd0dabfeaa592439437c1c836e443ccb81e93242\u0026quot;,
+      \u0026quot;miner\u0026quot;: \u0026quot;0x0193d941b50d91be6567c7ee1c0fe7af498b4137\u0026quot;,
+      \u0026quot;difficulty\u0026quot;: 17179844608,
+      \u0026quot;finalized\u0026quot;: true,
+      \u0026quot;timestamp\u0026quot;: 1438270144,
+      \u0026quot;baseFeePerGas\u0026quot;: 0
+    }
+  ]
+}
 \u003c/code\u003e\u003c/pre\u003e
-\u003cp\u003e\u003cem\u003e\u003cstrong\u003eNote:\u003c/strong\u003e\u003c/em\u003e Until mutli-chain is fully supported, put the \u003ccode\u003erpcProvider\u003c/code\u003e value
-in the \u003ccode\u003e[settings]\u003c/code\u003e group.\u003c/p\u003e
-\u003cp\u003e\u003cem\u003e\u003cstrong\u003eNote:\u003c/strong\u003e\u003c/em\u003e The EtherScan key is not \u003cem\u003eper-chain\u003c/em\u003e.\u003c/p\u003e
-\u003ch3 id="why-do-i-need-the-index-of-appearances"\u003eWhy do I need the index of appearances?\u003c/h3\u003e
-\u003cp\u003eIf you\u0026rsquo;re only querying basic block or transaction data, you don\u0026rsquo;t really
-need the index of appearances.\u003c/p\u003e
-\u003cp\u003eHowever, most of our users with to explore the entire history of their own
-addresses. If you wish to do that, you will need the index.\u003c/p\u003e
-\u003cp\u003eThere are multiple options for getting the index, which the
-\u003ca href="/docs/install/get-the-index"\u003eHow Can I Get the Index?\u003c/a\u003e article covers
-in more detail.\u003c/p\u003e
-\u003cp\u003eNo matter which method you use, downloading or creating the index will take
-somewhere between a few minutes and a day or two. So you might want to play
-around with some \u003ca href="/docs/chifra/chaindata"\u003echifra blockchain commands\u003c/a\u003e first.\u003c/p\u003e
-\u003ch3 id="no-tracing"\u003eWhat if my node doesn\u0026rsquo;t have tracing or archiving?\u003c/h3\u003e
-\u003cp\u003eIf the node you\u0026rsquo;re running does not support OpenEthereum style tracing or it
-is not an archive node, you may get an error telling you such.\u003c/p\u003e
-\u003cp\u003eSomething like\u003c/p\u003e
-\u003cblockquote\u003e
-\u003cp\u003e\u003ccode\u003e --accounting requires historical balances. The RPC server does not have them. Quitting...\u003c/code\u003e\u003c/p\u003e
-\u003c/blockquote\u003e
-\u003cp\u003eYou may disable this warning by editing a configuration file. Find the file
-called \u003ccode\u003eblockScrape.toml\u003c/code\u003e in your configuration folder (in a multi-chain environment
-this will be in the chain-specific config file, otherwise at the top level).\u003c/p\u003e
-\u003cp\u003eAdd the following setting to the file (which you may create if it doesn\u0026rsquo;t exist):\u003c/p\u003e
-\u003cpre\u003e\u003ccode class="language-toml"\u003e[requires]
-tracing = false
-archive = false
-\u003c/code\u003e\u003c/pre\u003e
+\u003cul\u003e
+\u003cli\u003e
+\u003cp\u003eAssuming the above works, you\u0026rsquo;re system is properly installed. If not, see the \u003ca href="/docs/install/install-troubleshooting"\u003eTroubleShooting section\u003c/a\u003e. There\u0026rsquo;s a lot left to learn. Have fun:\u003c/p\u003e
+\u003cul\u003e
+\u003cli\u003e\u003ca href="/docs/install/get-the-index/"\u003eTo use the Unchained Index\u003c/a\u003e\u003c/li\u003e
+\u003cli\u003e\u003ca href="https://github.com/TrueBlocks/trueblocks-core/tree/master/src/examples"\u003eTo explore some examples\u003c/a\u003e\u003c/li\u003e
+\u003cli\u003e\u003ca href="/tags/recipes/"\u003eTo view some data science recipies\u003c/a\u003e\u003c/li\u003e
+\u003cli\u003e\u003ca href="/docs/install/install-explorer/"\u003eTo use the explorer application\u003c/a\u003e.\u003c/li\u003e
+\u003c/ul\u003e
+\u003c/li\u003e
+\u003c/ul\u003e
 `}).add({id:7,href:"/docs/prologue/about-trueblocks/",title:"About TrueBlocks",description:"How does TrueBlocks address the problem",content:`\u003ch2 id="trueblocks-provides-a-solution"\u003eTrueBlocks provides a solution\u003c/h2\u003e
 \u003cp\u003eWe think there are at least three fundamental problems with the current Ethereum ecosystem:\u003c/p\u003e
 \u003col\u003e
@@ -350,7 +249,7 @@ said\u003c/a\u003e:\u003c/p\u003e
 \u003c/blockquote\u003e
 \u003ch2 id="more-words"\u003eMore words!\u003c/h2\u003e
 \u003cp\u003eWe\u0026rsquo;ve got more words for you. \u003ca href="/blog/a-long-winded-explanation-of-trueblocks/"\u003eThis blog post covers these topics in much more detail\u003c/a\u003e.\u003c/p\u003e
-`}).add({id:8,href:"/docs/install/get-the-index/",title:"Build Unchained Index",description:"There are three ways to get the index. Each way involves some tradeoff between initialization time, storage use, and local access.",content:`\u003ctable\u003e
+`}).add({id:8,href:"/docs/install/get-the-index/",title:"Build the Unchained Index",description:"There are three ways to get the index. Each way involves some tradeoff between initialization time, storage use, and local access.",content:`\u003ctable\u003e
 \u003cthead\u003e
 \u003ctr\u003e
 \u003cth\u003eIf you want to\u0026hellip;\u003c/th\u003e
@@ -616,7 +515,7 @@ However, if we have to make a tradeoff, these values come after the core values.
 \u003cli\u003eEveryone needs to do accounting and pay taxes\u003c/li\u003e
 \u003cli\u003eThe node can, and should be, be improved\u003c/li\u003e
 \u003c/ul\u003e
-`}).add({id:10,href:"/docs/install/install-explorer/",title:"Install TrueBlocks explorer",description:"Explorer is the GUI frontend for TrueBlocks ",content:`\u003cp\u003eFirst, make sure that you have the \u003ccode\u003echifra-core\u003c/code\u003e backend up and running,
+`}).add({id:10,href:"/docs/install/install-explorer/",title:"Install the Explorer",description:"Explorer is the GUI frontend for TrueBlocks ",content:`\u003cp\u003eFirst, make sure that you have the \u003ccode\u003echifra-core\u003c/code\u003e backend up and running,
 then run the application from \u003ca href="https://github.com/TrueBlocks/trueblocks-explorer"\u003ea clone of the explorer repo\u003c/a\u003e.\u003c/p\u003e
 \u003ch2 id="before-you-begin"\u003eBefore you begin\u003c/h2\u003e
 \u003cp\u003e☑ Set up the trueblocks backend using the \u003ca href="/docs/install/install-trueblocks"\u003echifra installation instructions\u003c/a\u003e\u003c/p\u003e
@@ -669,7 +568,114 @@ of building an index from your own node:\u003c/p\u003e
 \u003cli\u003eYou must trust the data TrueBlocks publishes (though you can verify the build)\u003c/li\u003e
 \u003cli\u003eYou can only query up to the last time TrueBlocks published the manifest\u003c/li\u003e
 \u003c/ul\u003e
-`}).add({id:12,href:"/docs/prologue/multi-chain/",title:"Multi chain",description:"Instructions for accessing multiple chains from chifra",content:`\u003ch2 id="accessing-multiple-chains"\u003eAccessing multiple chains\u003c/h2\u003e
+`}).add({id:12,href:"/docs/install/install-troubleshooting/",title:"Troubleshooting",description:"Solutions to Common Problems",content:`\u003cp\u003eThis section lists solutions to problems some users have run into with the installation. If you continue to have trouble, \u003ca href="https://github.com/TrueBlocks/trueblocks-core/issues"\u003ecreate an issue\u003c/a\u003e, or ask us on discord.\u003c/p\u003e
+\u003ch3 id="dependencies"\u003eDependencies\u003c/h3\u003e
+\u003ch4 id="how-do-i-check-my-go-version"\u003eHow do I check my Go version?\u003c/h4\u003e
+\u003cp\u003eRun this command\u003c/p\u003e
+\u003cpre\u003e\u003ccode class="language-shell"\u003ego version
+\u003c/code\u003e\u003c/pre\u003e
+\u003cp\u003eTrueBlocks needs version 1.16.x or later. If you to install or update Go, \u003ca href="https://golang.org/doc/install"\u003esee here\u003c/a\u003e.\u003c/p\u003e
+\u003ch4 id="how-do-i-install-packages-on-the-command-line"\u003eHow do I install packages on the command line?\u003c/h4\u003e
+\u003cp\u003e\u003cstrong\u003eLinux:\u003c/strong\u003e \u003ccode\u003esudo apt install build-essential git cmake ninja-build python3 python3-dev libcurl4-openssl-dev clang-format jq\u003c/code\u003e\u003c/p\u003e
+\u003cp\u003e\u003cstrong\u003eMac:\u003c/strong\u003e \u003ccode\u003ebrew install cmake ninja git clang-format jq\u003c/code\u003e\u003c/p\u003e
+\u003ch3 id="compiling"\u003eCompiling\u003c/h3\u003e
+\u003ch4 id="how-many-cores-can-i-use-to-make-trueblocks"\u003eHow many cores can I use to make TrueBlocks?\u003c/h4\u003e
+\u003cp\u003eWhen you run \u003ccode\u003emake\u003c/code\u003e, you can speed up the build by parallelizing with\u003c/p\u003e
+\u003cpre\u003e\u003ccode class="language-shell"\u003emake -j \u0026lt;ncores\u0026gt;
+\u003c/code\u003e\u003c/pre\u003e
+\u003cp\u003eWhere \u003ccode\u003e\u0026lt;ncores\u0026gt;\u003c/code\u003e represents the number of cores to devote to the job.
+How many cores can you use? That depends on many factors. A handy tool is \u003ccode\u003enproc\u003c/code\u003e,
+which identifies the machine\u0026rsquo;s number of available processing units.\u003c/p\u003e
+\u003cp\u003eIf you have \u003ccode\u003enproc\u003c/code\u003e installed, you can safely parallelize the build with this command\u003c/p\u003e
+\u003cpre\u003e\u003ccode class="language-shell"\u003emake -j \`nproc\`
+\u003c/code\u003e\u003c/pre\u003e
+\u003ch4 id="how-do-i-know-if-compilation-was-successful"\u003eHow do I know if compilation was successful?\u003c/h4\u003e
+\u003cp\u003eFrom the \u003ccode\u003etrueblocks-core\u003c/code\u003e directory, test your install with this command:\u003c/p\u003e
+\u003cpre\u003e\u003ccode class="language-shell"\u003e../bin/chifra --version
+\u003c/code\u003e\u003c/pre\u003e
+\u003cp\u003eYou should get a version string similar to this:\u003c/p\u003e
+\u003cpre\u003e\u003ccode class="language-shell"\u003etrueBlocks GHC-TrueBlocks//0.9.0-alpha-409aa9388-20210503
+\u003c/code\u003e\u003c/pre\u003e
+\u003cp\u003eIf nothing outputs, the build has failed. Try repeating the instructions.
+If it still fails, make an issue.\u003c/p\u003e
+\u003ch3 id="how-do-i-export-to-path"\u003eHow do I export to PATH?\u003c/h3\u003e
+\u003cp\u003e\u003ccode\u003echifra\u003c/code\u003e only works if its underlying tools are found in your \u003ccode\u003e$PATH.\u003c/code\u003e
+To find the full path, run this from the top of the \u003ccode\u003etrueblocks-core\u003c/code\u003e directory.\u003c/p\u003e
+\u003cpre\u003e\u003ccode class="language-shell"\u003ecd bin \u0026amp;\u0026amp; pwd \u0026amp;\u0026amp; cd -
+\u003c/code\u003e\u003c/pre\u003e
+\u003cp\u003eAdd the result of that command to your shell’s \u003ccode\u003e$PATH\u003c/code\u003e.\u003c/p\u003e
+\u003cp\u003eHow you do that depends on your system.
+In Bash, you\u0026rsquo;re probably going to put something like this in your \u003ccode\u003e.bashrc\u003c/code\u003e:\u003c/p\u003e
+\u003cpre\u003e\u003ccode class="language-shell"\u003eexport PATH=\${PATH}:\u0026lt;/path/to/trueblocks-core/directory\u0026gt;/bin
+\u003c/code\u003e\u003c/pre\u003e
+\u003cp\u003eIf you are confused, a Google search may be in order…\u003c/p\u003e
+\u003ch3 id="configuration"\u003eConfiguration\u003c/h3\u003e
+\u003ch4 id="where-is-the-configuration"\u003eWhere is the configuration?\u003c/h4\u003e
+\u003cp\u003eWhere your configuration folder is depends on your operating system
+and environment.\u003c/p\u003e
+\u003cul\u003e
+\u003cli\u003eIf \u003ccode\u003eXDG_CONFIG_HOME\u003c/code\u003e is set, your configuration is there\u003c/li\u003e
+\u003cli\u003eOtherwise, on Linux: \u003ccode\u003e~/.local/share/trueblocks\u003c/code\u003e\u003c/li\u003e
+\u003cli\u003eOtherwise, on Mac: \u003ccode\u003e~/Library/Application Support/TrueBlocks\u003c/code\u003e\u003c/li\u003e
+\u003cli\u003eOtherwise, you\u0026rsquo;re out of luck\u0026ndash;we only support Linux and Mac\u003c/li\u003e
+\u003c/ul\u003e
+\u003cp\u003eThe primary or base configuration file (\u003ccode\u003etrueBlocks.toml\u003c/code\u003e) must exist at one
+of the above locations for \u003ccode\u003echifra\u003c/code\u003e to work.\u003c/p\u003e
+\u003cp\u003eWith the recent addition of support for multi-chain, there has arisen the need
+for per-chain configuration as well (for example, values such as \u003ccode\u003erpcProvider\u003c/code\u003e or
+\u003ccode\u003eremoteExplorer\u003c/code\u003e are unique per chain).\u003c/p\u003e
+\u003cp\u003eThis issue is discussed here \u003ca href="#"\u003eTODO: PLACE_HOLDER\u003c/a\u003e.\u003c/p\u003e
+\u003ch4 id="how-do-i-specify-an-rpc-endpoint"\u003eHow do I specify an RPC endpoint?\u003c/h4\u003e
+\u003cp\u003eBy default, TrueBlocks looks for the RPC at \u003ccode\u003ehttp://localhost:8545/\u003c/code\u003e.\u003c/p\u003e
+\u003cp\u003eIf you are using a remote RPC such as Infura or your own local RPC at
+a different port, you will need to modify that value.\u003c/p\u003e
+\u003cp\u003eAs is true of all configuration values, you coudl use an environment
+variable as described above, but you may also edit \u003ccode\u003etrueBlocks.toml\u003c/code\u003e.\u003c/p\u003e
+\u003cp\u003eThe format of that file is documented \u003ca href="#"\u003eTODO: PLACE_HOLDER\u003c/a\u003e.\u003c/p\u003e
+\u003ch4 id="how-do-i-add-a-etherscan-key"\u003eHow do I add a EtherScan key?\u003c/h4\u003e
+\u003cp\u003eSome small part of TrueBlocks requires an EtherScan API key. In particular
+this is the \u003ca href="/docs/chifra/chaindata/"\u003e\u003ccode\u003e--articulate\u003c/code\u003e option\u003c/a\u003e. We are working
+hard to remove this centralized dependency, but in the mean time you
+may get a warning of a missing key.\u003c/p\u003e
+\u003cp\u003eHere’s an example of a remote RPC for Infura and an EtherScan API key.
+\u003cem\u003e\u003cstrong\u003eWarning: see the note below\u003c/strong\u003e\u003c/em\u003e\u003c/p\u003e
+\u003cpre\u003e\u003ccode class="language-TOML"\u003e[settings]
+default_chain=mainnet
+etherscan_key = \u0026quot;\u0026lt;key_value\u0026gt;\u0026quot;
+
+[mainnet]
+rpcProvider = \u0026quot;https://mainnet.infura.io/v3/\u0026lt;key_value\u0026gt;\u0026quot;
+\u003c/code\u003e\u003c/pre\u003e
+\u003cp\u003e\u003cem\u003e\u003cstrong\u003eNote:\u003c/strong\u003e\u003c/em\u003e Until mutli-chain is fully supported, put the \u003ccode\u003erpcProvider\u003c/code\u003e value
+in the \u003ccode\u003e[settings]\u003c/code\u003e group.\u003c/p\u003e
+\u003cp\u003e\u003cem\u003e\u003cstrong\u003eNote:\u003c/strong\u003e\u003c/em\u003e The EtherScan key is not \u003cem\u003eper-chain\u003c/em\u003e.\u003c/p\u003e
+\u003ch3 id="why-do-i-need-the-index-of-appearances"\u003eWhy do I need the index of appearances?\u003c/h3\u003e
+\u003cp\u003eIf you\u0026rsquo;re only querying basic block or transaction data, you don\u0026rsquo;t really
+need the index of appearances.\u003c/p\u003e
+\u003cp\u003eHowever, most of our users with to explore the entire history of their own
+addresses. If you wish to do that, you will need the index.\u003c/p\u003e
+\u003cp\u003eThere are multiple options for getting the index, which the
+\u003ca href="/docs/install/get-the-index"\u003eHow Can I Get the Index?\u003c/a\u003e article covers
+in more detail.\u003c/p\u003e
+\u003cp\u003eNo matter which method you use, downloading or creating the index will take
+somewhere between a few minutes and a day or two. So you might want to play
+around with some \u003ca href="/docs/chifra/chaindata"\u003echifra blockchain commands\u003c/a\u003e first.\u003c/p\u003e
+\u003ch3 id="no-tracing"\u003eWhat if my node doesn\u0026rsquo;t have tracing or archiving?\u003c/h3\u003e
+\u003cp\u003eIf the node you\u0026rsquo;re running does not support OpenEthereum style tracing or it
+is not an archive node, you may get an error telling you such.\u003c/p\u003e
+\u003cp\u003eSomething like\u003c/p\u003e
+\u003cblockquote\u003e
+\u003cp\u003e\u003ccode\u003e --accounting requires historical balances. The RPC server does not have them. Quitting...\u003c/code\u003e\u003c/p\u003e
+\u003c/blockquote\u003e
+\u003cp\u003eYou may disable this warning by editing a configuration file. Find the file
+called \u003ccode\u003eblockScrape.toml\u003c/code\u003e in your configuration folder (in a multi-chain environment
+this will be in the chain-specific config file, otherwise at the top level).\u003c/p\u003e
+\u003cp\u003eAdd the following setting to the file (which you may create if it doesn\u0026rsquo;t exist):\u003c/p\u003e
+\u003cpre\u003e\u003ccode class="language-toml"\u003e[requires]
+tracing = false
+archive = false
+\u003c/code\u003e\u003c/pre\u003e
+`}).add({id:13,href:"/docs/prologue/multi-chain/",title:"Multi chain",description:"Instructions for accessing multiple chains from chifra",content:`\u003ch2 id="accessing-multiple-chains"\u003eAccessing multiple chains\u003c/h2\u003e
 \u003cp\u003eAs of version 0.25.0-alpha, TrueBlocks supports accessing data from any EVM-based blockchain that supports the requisite RPC endpoints. This includes most blockchains we know of.\u003c/p\u003e
 \u003cp\u003eIn order to use this new feature, you have to do almost nothing. All you have to do is add \u003ccode\u003e--chain \u0026lt;chainname\u0026gt;\u003c/code\u003e to any chifra command (except one or two as detailed below).\u003c/p\u003e
 \u003cp\u003eFor example:\u003c/p\u003e
@@ -791,7 +797,7 @@ symbol = \u0026quot;ETH\u0026quot;
 \u003cp\u003ePricing using UniSwap only works on the mainnet. In the future, once more standardization appears relative to pricing on multiple chains, this choice will be revisited.\u003c/p\u003e
 \u003c/li\u003e
 \u003c/ol\u003e
-`}).add({id:13,href:"/docs/using/introducing-chifra/",title:"Introducing chifra",description:"First introduction to chifra",content:`\u003cp\u003eSimilar to \u003ccode\u003egit\u003c/code\u003e, TrueBlocks has an overarching command called \u003ccode\u003echifra\u003c/code\u003e that gives you access to all of the other subcommands.\u003c/p\u003e
+`}).add({id:14,href:"/docs/using/introducing-chifra/",title:"Introducing chifra",description:"First introduction to chifra",content:`\u003cp\u003eSimilar to \u003ccode\u003egit\u003c/code\u003e, TrueBlocks has an overarching command called \u003ccode\u003echifra\u003c/code\u003e that gives you access to all of the other subcommands.\u003c/p\u003e
 \u003cp\u003eType:\u003c/p\u003e
 \u003cpre\u003e\u003ccode class="language-shell"\u003echifra
 \u003c/code\u003e\u003c/pre\u003e
@@ -853,7 +859,7 @@ you continue to have trouble, join our \u003ca href="https://discord.gg/kAFcZH2x
 \u003ch2 id="conclusion"\u003eConclusion\u003c/h2\u003e
 \u003cp\u003eBy this point, you should have TrueBlocks properly installed and be able to get simple blockchain data from your node. All of the chifra commands should now work. The next section further introduces you to \u003ccode\u003echifra\u003c/code\u003e.\u003c/p\u003e
 \u003cp\u003ePlease see the \u003ca href="/docs/using/using-chifra/"\u003eUsing Chifra\u003c/a\u003e page to proceed.\u003c/p\u003e
-`}).add({id:14,href:"/docs/using/using-chifra/",title:"Some chifra examples",description:"How to use TrueBlocks to get useful data",content:`\u003cp\u003eA few more examples in more detail.\u003c/p\u003e
+`}).add({id:15,href:"/docs/using/using-chifra/",title:"Some chifra examples",description:"How to use TrueBlocks to get useful data",content:`\u003cp\u003eA few more examples in more detail.\u003c/p\u003e
 \u003ch2 id="getting-help"\u003eGetting Help\u003c/h2\u003e
 \u003cp\u003eEvery \u003ccode\u003echifra\u003c/code\u003e sub-command comes with an associated help page. To get help for \u003ccode\u003echifra\u003c/code\u003e itself, simply type\u003c/p\u003e
 \u003cpre\u003e\u003ccode class="language-shell"\u003echifra
@@ -926,7 +932,7 @@ chifra traces --fmt json --articulate 4503002.1
 \u003cli\u003eOur \u003ca href="/tags/recipes"\u003eblog has a few longer \u0026ldquo;recipes\u0026rdquo;\u003c/a\u003efor accomplishing various tasks.\u003c/li\u003e
 \u003cli\u003eOur \u003ca href="/data-model/intro/"\u003edata model reference\u003c/a\u003e describes the fields that are returned with each command\u003c/li\u003e
 \u003c/ul\u003e
-`}).add({id:15,href:"/docs/chifra/accounts/",title:"Accounts",description:"",content:`\u003c!-- markdownlint-disable MD033 MD036 MD041 --\u003e
+`}).add({id:16,href:"/docs/chifra/accounts/",title:"Accounts",description:"",content:`\u003c!-- markdownlint-disable MD033 MD036 MD041 --\u003e
 \u003cp\u003eThis group of commands is at the heart of TrueBlocks. They allow you to produce and analyze
 transactional histories for a given Ethereum address.\u003c/p\u003e
 \u003cp\u003eYou may also name addresses; grab the ABI file for a given address; add, delete, and remove
@@ -1204,7 +1210,7 @@ Notes:
 \u003cli\u003e\u003ca href="/api/#operation/accounts-abis"\u003eapi docs\u003c/a\u003e\u003c/li\u003e
 \u003cli\u003e\u003ca href="https://github.com/TrueBlocks/trueblocks-core/tree/master/src/apps/chifra/internal/abis"\u003esource code\u003c/a\u003e\u003c/li\u003e
 \u003c/ul\u003e
-`}).add({id:16,href:"/docs/chifra/chaindata/",title:"Chain data",description:"",content:`\u003c!-- markdownlint-disable MD033 MD036 MD041 --\u003e
+`}).add({id:17,href:"/docs/chifra/chaindata/",title:"Chain data",description:"",content:`\u003c!-- markdownlint-disable MD033 MD036 MD041 --\u003e
 \u003cp\u003eThe TrueBlocks tools extract raw blockchain data directly from the node. You may extract block
 data, transactional data, receipts, logs, and traces. Each tool has it own set of options,
 allowing you to get exactly the data that you want.\u003c/p\u003e
@@ -1469,7 +1475,7 @@ Notes:
 \u003cli\u003e\u003ca href="/api/#operation/chaindata-when"\u003eapi docs\u003c/a\u003e\u003c/li\u003e
 \u003cli\u003e\u003ca href="https://github.com/TrueBlocks/trueblocks-core/tree/master/src/apps/chifra/internal/when"\u003esource code\u003c/a\u003e\u003c/li\u003e
 \u003c/ul\u003e
-`}).add({id:17,href:"/docs/chifra/chainstate/",title:"Chain state",description:"",content:`\u003c!-- markdownlint-disable MD033 MD036 MD041 --\u003e
+`}).add({id:18,href:"/docs/chifra/chainstate/",title:"Chain state",description:"",content:`\u003c!-- markdownlint-disable MD033 MD036 MD041 --\u003e
 \u003cp\u003eThe two tools in this group deal with the \u003cem\u003eChain State\u003c/em\u003e. As chain state data concerns balances and
 byte code. it is distinct from Chain Data, which concerns things like blocks, transactions, or
 traces.\u003c/p\u003e
@@ -1571,7 +1577,7 @@ Notes:
 \u003cli\u003e\u003ca href="/api/#operation/chainstate-tokens"\u003eapi docs\u003c/a\u003e\u003c/li\u003e
 \u003cli\u003e\u003ca href="https://github.com/TrueBlocks/trueblocks-core/tree/master/src/apps/chifra/internal/tokens"\u003esource code\u003c/a\u003e\u003c/li\u003e
 \u003c/ul\u003e
-`}).add({id:18,href:"/docs/chifra/admin/",title:"Admin",description:"",content:`\u003c!-- markdownlint-disable MD033 MD036 MD041 --\u003e
+`}).add({id:19,href:"/docs/chifra/admin/",title:"Admin",description:"",content:`\u003c!-- markdownlint-disable MD033 MD036 MD041 --\u003e
 \u003cp\u003eThe Admin component allows you to query the status of the TrueBlocks system. You can query the
 status; query for information about TrueBlocks caches; control the creation, sharing, and pinning
 of the TrueBlocks index of appearances; and even serve the data through an API.\u003c/p\u003e
@@ -1891,7 +1897,7 @@ Notes:
 \u003cli\u003e\u003ca href="/api/#operation/admin-init"\u003eapi docs\u003c/a\u003e\u003c/li\u003e
 \u003cli\u003e\u003ca href="https://github.com/TrueBlocks/trueblocks-core/tree/master/src/apps/chifra/internal/init"\u003esource code\u003c/a\u003e\u003c/li\u003e
 \u003c/ul\u003e
-`}).add({id:19,href:"/docs/chifra/other/",title:"Other",description:"",content:`\u003c!-- markdownlint-disable MD033 MD036 MD041 --\u003e
+`}).add({id:20,href:"/docs/chifra/other/",title:"Other",description:"",content:`\u003c!-- markdownlint-disable MD033 MD036 MD041 --\u003e
 \u003cp\u003eThese commands call some useful miscellaneous tools:\u003c/p\u003e
 \u003cul\u003e
 \u003cli\u003e\u003ccode\u003echifra explore\u003c/code\u003e a quick way to open a blockchain explorer,\u003c/li\u003e
@@ -1968,7 +1974,7 @@ Notes:
 \u003cli\u003e\u003ca href="/api/#operation/other-slurp"\u003eapi docs\u003c/a\u003e\u003c/li\u003e
 \u003cli\u003e\u003ca href="https://github.com/TrueBlocks/trueblocks-core/tree/master/src/apps/chifra/internal/slurp"\u003esource code\u003c/a\u003e\u003c/li\u003e
 \u003c/ul\u003e
-`}).add({id:20,href:"/docs/chifra/configs/",title:"Configurations",description:"",content:`\u003cp\u003eMany of the \u003ccode\u003echifra\u003c/code\u003e commands allow you to customize their behaviour through configuration files
+`}).add({id:21,href:"/docs/chifra/configs/",title:"Configurations",description:"",content:`\u003cp\u003eMany of the \u003ccode\u003echifra\u003c/code\u003e commands allow you to customize their behaviour through configuration files
 and/or environment variables. These options are documented here.\u003c/p\u003e
 \u003ch3 id="environment-variables"\u003eEnvironment Variables\u003c/h3\u003e
 \u003cp\u003eEach command-line option may be overridden by exporting an environment variable in your shell prior
@@ -2455,7 +2461,7 @@ configuration per chain.\u003c/p\u003e
 \u003c/tr\u003e
 \u003c/tbody\u003e
 \u003c/table\u003e
-`}).add({id:21,href:"/docs/chifra/",title:"Chifra Command Line",description:"The TrueBlocks CLI",content:`\u003cp\u003eThe chifra command provides access to all the applications and tools available:\u003c/p\u003e
+`}).add({id:22,href:"/docs/chifra/",title:"Chifra Command Line",description:"The TrueBlocks CLI",content:`\u003cp\u003eThe chifra command provides access to all the applications and tools available:\u003c/p\u003e
 \u003cpre\u003e\u003ccode class="language-[shell]"\u003ePurpose:
   Access to all TrueBlocks tools (chifra \u0026lt;cmd\u0026gt; --help for more).
 
@@ -2491,4 +2497,4 @@ configuration per chain.\u003c/p\u003e
   Use \u0026quot;chifra [command] --help\u0026quot; for more information about a command.
 \u003c/code\u003e\u003c/pre\u003e
 \u003cp\u003eClick on the links to the left for more information on each command\u003c/p\u003e
-`}).add({id:22,href:"/docs/prologue/",title:"Prologue",description:"Prologue Doks.",content:""}),userinput.addEventListener("input",n,!0),suggestions.addEventListener("click",s,!0);function n(){var n,r=this.value,o=e.search(r,{limit:5,index:["content"],enrich:!0}),i=suggestions.childNodes,s=0,c=o.length;for(suggestions.classList.remove("d-none"),o.forEach(function(e){n=document.createElement("div"),n.innerHTML="<a href><span></span><span></span></a>",a=n.querySelector("a"),t=n.querySelector("span:first-child"),d=n.querySelector("span:nth-child(2)"),a.href=e.result[s].doc.href,t.textContent=e.result[s].doc.title,d.textContent=e.result[s].doc.description,suggestions.appendChild(n)});i.length>c;)suggestions.removeChild(i[s])}function s(){for(;suggestions.lastChild;)suggestions.removeChild(suggestions.lastChild);return!1}})()
+`}).add({id:23,href:"/docs/prologue/",title:"Prologue",description:"Prologue Doks.",content:""}),userinput.addEventListener("input",n,!0),suggestions.addEventListener("click",s,!0);function n(){var n,r=this.value,o=e.search(r,{limit:5,index:["content"],enrich:!0}),i=suggestions.childNodes,s=0,c=o.length;for(suggestions.classList.remove("d-none"),o.forEach(function(e){n=document.createElement("div"),n.innerHTML="<a href><span></span><span></span></a>",a=n.querySelector("a"),t=n.querySelector("span:first-child"),d=n.querySelector("span:nth-child(2)"),a.href=e.result[s].doc.href,t.textContent=e.result[s].doc.title,d.textContent=e.result[s].doc.description,suggestions.appendChild(n)});i.length>c;)suggestions.removeChild(i[s])}function s(){for(;suggestions.lastChild;)suggestions.removeChild(suggestions.lastChild);return!1}})()
