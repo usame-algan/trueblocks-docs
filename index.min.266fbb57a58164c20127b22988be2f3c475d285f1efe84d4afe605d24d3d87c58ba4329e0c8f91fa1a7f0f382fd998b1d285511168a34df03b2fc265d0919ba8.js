@@ -166,12 +166,12 @@ rpcProvider = \u0026quot;http://localhost:8545\u0026quot;
 apiKey = \u0026quot;\u0026lt;your Etherscan api key\u0026gt;\u0026quot;   # optional
 ...
 \u003c/code\u003e\u003c/pre\u003e
-\u003cul\u003e
-\u003cli\u003eYou should be able to now run the following command, which should return this data:\u003c/li\u003e
-\u003c/ul\u003e
-\u003cpre\u003e\u003ccode class="language-[shell]"\u003eprompt]\u0026gt; chifra blocks 12
-
-{
+\u003ch2 id="testing-the-install"\u003eTesting the install\u003c/h2\u003e
+\u003cp\u003eIf you\u0026rsquo;ve installed things properly, you should be able to now run the following command, which should return this data:\u003c/p\u003e
+\u003cpre\u003e\u003ccode class="language-[shell]"\u003echifra blocks 12
+\u003c/code\u003e\u003c/pre\u003e
+\u003cp\u003eYou should get results similar to these:\u003c/p\u003e
+\u003cpre\u003e\u003ccode class="language-[shell]"\u003e{
   \u0026quot;data\u0026quot;: [
     {
       \u0026quot;gasLimit\u0026quot;: 5000,
@@ -189,15 +189,15 @@ apiKey = \u0026quot;\u0026lt;your Etherscan api key\u0026gt;\u0026quot;   # opti
 }
 \u003c/code\u003e\u003c/pre\u003e
 \u003cul\u003e
-\u003cli\u003e
-\u003cp\u003eAssuming the above works, you\u0026rsquo;re system is properly installed. If not, see the \u003ca href="/docs/install/install-troubleshooting"\u003eTroubleShooting section\u003c/a\u003e. There\u0026rsquo;s a lot left to learn. Have fun:\u003c/p\u003e
-\u003cul\u003e
-\u003cli\u003e\u003ca href="/docs/install/get-the-index/"\u003eTo use the Unchained Index\u003c/a\u003e\u003c/li\u003e
-\u003cli\u003e\u003ca href="https://github.com/TrueBlocks/trueblocks-core/tree/master/src/examples"\u003eTo explore some examples\u003c/a\u003e\u003c/li\u003e
-\u003cli\u003e\u003ca href="/tags/recipes/"\u003eTo view some data science recipies\u003c/a\u003e\u003c/li\u003e
-\u003cli\u003e\u003ca href="/docs/install/install-explorer/"\u003eTo use the explorer application\u003c/a\u003e.\u003c/li\u003e
+\u003cli\u003eAssuming the above works, you\u0026rsquo;re system is properly installed. If not, see the \u003ca href="/docs/install/install-troubleshooting"\u003eTroubleShooting section\u003c/a\u003e.\u003c/li\u003e
 \u003c/ul\u003e
-\u003c/li\u003e
+\u003ch2 id="more-information"\u003eMore information\u003c/h2\u003e
+\u003cp\u003eThere\u0026rsquo;s a lot left to learn. Have fun:\u003c/p\u003e
+\u003cul\u003e
+\u003cli\u003e\u003ca href="/docs/install/get-the-index/"\u003eUsing the Unchained Index\u003c/a\u003e\u003c/li\u003e
+\u003cli\u003e\u003ca href="https://github.com/TrueBlocks/trueblocks-core/tree/master/src/examples"\u003eExplore some coding examples\u003c/a\u003e\u003c/li\u003e
+\u003cli\u003e\u003ca href="/tags/recipes/"\u003eView data science recipies\u003c/a\u003e\u003c/li\u003e
+\u003cli\u003e\u003ca href="/docs/install/install-explorer/"\u003eUse the explorer application\u003c/a\u003e\u003c/li\u003e
 \u003c/ul\u003e
 `}).add({id:7,href:"/docs/prologue/about-trueblocks/",title:"About TrueBlocks",description:"How does TrueBlocks address the problem",content:`\u003ch2 id="trueblocks-provides-a-solution"\u003eTrueBlocks provides a solution\u003c/h2\u003e
 \u003cp\u003eWe think there are at least three fundamental problems with the current Ethereum ecosystem:\u003c/p\u003e
@@ -569,36 +569,29 @@ of building an index from your own node:\u003c/p\u003e
 \u003cli\u003eYou can only query up to the last time TrueBlocks published the manifest\u003c/li\u003e
 \u003c/ul\u003e
 `}).add({id:12,href:"/docs/install/install-troubleshooting/",title:"Troubleshooting",description:"Solutions to Common Problems",content:`\u003cp\u003eThis section lists solutions to problems some users have run into with the installation. If you continue to have trouble, \u003ca href="https://github.com/TrueBlocks/trueblocks-core/issues"\u003ecreate an issue\u003c/a\u003e, or ask us on discord.\u003c/p\u003e
-\u003ch3 id="dependencies"\u003eDependencies\u003c/h3\u003e
+\u003ch2 id="dependencies"\u003eDependencies\u003c/h2\u003e
+\u003ch3 id="installing-go"\u003eInstalling go\u003c/h3\u003e
 \u003ch4 id="how-do-i-check-my-go-version"\u003eHow do I check my Go version?\u003c/h4\u003e
 \u003cp\u003eRun this command\u003c/p\u003e
 \u003cpre\u003e\u003ccode class="language-shell"\u003ego version
 \u003c/code\u003e\u003c/pre\u003e
 \u003cp\u003eTrueBlocks needs version 1.16.x or later. If you to install or update Go, \u003ca href="https://golang.org/doc/install"\u003esee here\u003c/a\u003e.\u003c/p\u003e
-\u003ch4 id="how-do-i-install-packages-on-the-command-line"\u003eHow do I install packages on the command line?\u003c/h4\u003e
+\u003ch3 id="installing-build-tools"\u003eInstalling build tools\u003c/h3\u003e
+\u003ch4 id="how-do-i-install-the-build-packages-for-my-system"\u003eHow do I install the build packages for my system?\u003c/h4\u003e
 \u003cp\u003e\u003cstrong\u003eLinux:\u003c/strong\u003e \u003ccode\u003esudo apt install build-essential git cmake ninja-build python3 python3-dev libcurl4-openssl-dev clang-format jq\u003c/code\u003e\u003c/p\u003e
 \u003cp\u003e\u003cstrong\u003eMac:\u003c/strong\u003e \u003ccode\u003ebrew install cmake ninja git clang-format jq\u003c/code\u003e\u003c/p\u003e
-\u003ch3 id="compiling"\u003eCompiling\u003c/h3\u003e
-\u003ch4 id="how-many-cores-can-i-use-to-make-trueblocks"\u003eHow many cores can I use to make TrueBlocks?\u003c/h4\u003e
-\u003cp\u003eWhen you run \u003ccode\u003emake\u003c/code\u003e, you can speed up the build by parallelizing with\u003c/p\u003e
-\u003cpre\u003e\u003ccode class="language-shell"\u003emake -j \u0026lt;ncores\u0026gt;
-\u003c/code\u003e\u003c/pre\u003e
-\u003cp\u003eWhere \u003ccode\u003e\u0026lt;ncores\u0026gt;\u003c/code\u003e represents the number of cores to devote to the job.
-How many cores can you use? That depends on many factors. A handy tool is \u003ccode\u003enproc\u003c/code\u003e,
-which identifies the machine\u0026rsquo;s number of available processing units.\u003c/p\u003e
-\u003cp\u003eIf you have \u003ccode\u003enproc\u003c/code\u003e installed, you can safely parallelize the build with this command\u003c/p\u003e
-\u003cpre\u003e\u003ccode class="language-shell"\u003emake -j \`nproc\`
-\u003c/code\u003e\u003c/pre\u003e
-\u003ch4 id="how-do-i-know-if-compilation-was-successful"\u003eHow do I know if compilation was successful?\u003c/h4\u003e
-\u003cp\u003eFrom the \u003ccode\u003etrueblocks-core\u003c/code\u003e directory, test your install with this command:\u003c/p\u003e
-\u003cpre\u003e\u003ccode class="language-shell"\u003e../bin/chifra --version
+\u003ch2 id="building-trueblocks"\u003eBuilding TrueBlocks\u003c/h2\u003e
+\u003ch3 id="did-it-work"\u003eDid it work?\u003c/h3\u003e
+\u003ch4 id="how-do-i-know-if-compilation-worked"\u003eHow do I know if compilation worked?\u003c/h4\u003e
+\u003cp\u003eFrom the \u003ccode\u003e./trueblocks-core/build\u003c/code\u003e folder, test your installation with this command:\u003c/p\u003e
+\u003cpre\u003e\u003ccode class="language-shell"\u003e../bin/chifra version
 \u003c/code\u003e\u003c/pre\u003e
 \u003cp\u003eYou should get a version string similar to this:\u003c/p\u003e
 \u003cpre\u003e\u003ccode class="language-shell"\u003etrueBlocks GHC-TrueBlocks//0.9.0-alpha-409aa9388-20210503
 \u003c/code\u003e\u003c/pre\u003e
-\u003cp\u003eIf nothing outputs, the build has failed. Try repeating the instructions.
-If it still fails, make an issue.\u003c/p\u003e
-\u003ch3 id="how-do-i-export-to-path"\u003eHow do I export to PATH?\u003c/h3\u003e
+\u003cp\u003eIf nothing outputs, your installation or the build has failed. Try repeating the installation instructions. If it still fails, make an issue or join our discord.\u003c/p\u003e
+\u003ch3 id="exporting-your-path"\u003eExporting your PATH\u003c/h3\u003e
+\u003ch4 id="how-do-i-export-my-path"\u003eHow do I export my PATH?\u003c/h4\u003e
 \u003cp\u003e\u003ccode\u003echifra\u003c/code\u003e only works if its underlying tools are found in your \u003ccode\u003e$PATH.\u003c/code\u003e
 To find the full path, run this from the top of the \u003ccode\u003etrueblocks-core\u003c/code\u003e directory.\u003c/p\u003e
 \u003cpre\u003e\u003ccode class="language-shell"\u003ecd bin \u0026amp;\u0026amp; pwd \u0026amp;\u0026amp; cd -
@@ -609,8 +602,20 @@ In Bash, you\u0026rsquo;re probably going to put something like this in your \u0
 \u003cpre\u003e\u003ccode class="language-shell"\u003eexport PATH=\${PATH}:\u0026lt;/path/to/trueblocks-core/directory\u0026gt;/bin
 \u003c/code\u003e\u003c/pre\u003e
 \u003cp\u003eIf you are confused, a Google search may be in order…\u003c/p\u003e
-\u003ch3 id="configuration"\u003eConfiguration\u003c/h3\u003e
-\u003ch4 id="where-is-the-configuration"\u003eWhere is the configuration?\u003c/h4\u003e
+\u003ch3 id="number-of-cores"\u003eNumber of cores\u003c/h3\u003e
+\u003ch4 id="how-many-cores-can-i-use-to-make-trueblocks"\u003eHow many cores can I use to make TrueBlocks?\u003c/h4\u003e
+\u003cp\u003eWhen you run \u003ccode\u003emake\u003c/code\u003e, you can speed up the build by parallelizing with\u003c/p\u003e
+\u003cpre\u003e\u003ccode class="language-shell"\u003emake -j \u0026lt;ncores\u0026gt;
+\u003c/code\u003e\u003c/pre\u003e
+\u003cp\u003eWhere \u003ccode\u003e\u0026lt;ncores\u0026gt;\u003c/code\u003e represents the number of cores to devote to the job.
+How many cores can you use? That depends on many factors. A handy tool is \u003ccode\u003enproc\u003c/code\u003e,
+which identifies the machine\u0026rsquo;s number of available processing units.\u003c/p\u003e
+\u003cp\u003eIf you have \u003ccode\u003enproc\u003c/code\u003e installed, you can safely parallelize the build with this command\u003c/p\u003e
+\u003cpre\u003e\u003ccode class="language-shell"\u003emake -j \`nproc\`
+\u003c/code\u003e\u003c/pre\u003e
+\u003ch2 id="configuration"\u003eConfiguration\u003c/h2\u003e
+\u003ch3 id="where"\u003eWhere?\u003c/h3\u003e
+\u003ch4 id="where-are-the-configuration-files"\u003eWhere are the configuration files?\u003c/h4\u003e
 \u003cp\u003eWhere your configuration folder is depends on your operating system
 and environment.\u003c/p\u003e
 \u003cul\u003e
@@ -625,6 +630,7 @@ of the above locations for \u003ccode\u003echifra\u003c/code\u003e to work.\u003
 for per-chain configuration as well (for example, values such as \u003ccode\u003erpcProvider\u003c/code\u003e or
 \u003ccode\u003eremoteExplorer\u003c/code\u003e are unique per chain).\u003c/p\u003e
 \u003cp\u003eThis issue is discussed here \u003ca href="#"\u003eTODO: PLACE_HOLDER\u003c/a\u003e.\u003c/p\u003e
+\u003ch3 id="rpc-endpoint"\u003eRPC endpoint\u003c/h3\u003e
 \u003ch4 id="how-do-i-specify-an-rpc-endpoint"\u003eHow do I specify an RPC endpoint?\u003c/h4\u003e
 \u003cp\u003eBy default, TrueBlocks looks for the RPC at \u003ccode\u003ehttp://localhost:8545/\u003c/code\u003e.\u003c/p\u003e
 \u003cp\u003eIf you are using a remote RPC such as Infura or your own local RPC at
@@ -632,6 +638,7 @@ a different port, you will need to modify that value.\u003c/p\u003e
 \u003cp\u003eAs is true of all configuration values, you coudl use an environment
 variable as described above, but you may also edit \u003ccode\u003etrueBlocks.toml\u003c/code\u003e.\u003c/p\u003e
 \u003cp\u003eThe format of that file is documented \u003ca href="#"\u003eTODO: PLACE_HOLDER\u003c/a\u003e.\u003c/p\u003e
+\u003ch3 id="api-keys"\u003eAPI keys\u003c/h3\u003e
 \u003ch4 id="how-do-i-add-a-etherscan-key"\u003eHow do I add a EtherScan key?\u003c/h4\u003e
 \u003cp\u003eSome small part of TrueBlocks requires an EtherScan API key. In particular
 this is the \u003ca href="/docs/chifra/chaindata/"\u003e\u003ccode\u003e--articulate\u003c/code\u003e option\u003c/a\u003e. We are working
@@ -649,7 +656,8 @@ rpcProvider = \u0026quot;https://mainnet.infura.io/v3/\u0026lt;key_value\u0026gt
 \u003cp\u003e\u003cem\u003e\u003cstrong\u003eNote:\u003c/strong\u003e\u003c/em\u003e Until mutli-chain is fully supported, put the \u003ccode\u003erpcProvider\u003c/code\u003e value
 in the \u003ccode\u003e[settings]\u003c/code\u003e group.\u003c/p\u003e
 \u003cp\u003e\u003cem\u003e\u003cstrong\u003eNote:\u003c/strong\u003e\u003c/em\u003e The EtherScan key is not \u003cem\u003eper-chain\u003c/em\u003e.\u003c/p\u003e
-\u003ch3 id="why-do-i-need-the-index-of-appearances"\u003eWhy do I need the index of appearances?\u003c/h3\u003e
+\u003ch3 id="do-i-need-the-index"\u003eDo I need the index?\u003c/h3\u003e
+\u003ch4 id="why-do-i-need-the-index-of-appearances"\u003eWhy do I need the index of appearances?\u003c/h4\u003e
 \u003cp\u003eIf you\u0026rsquo;re only querying basic block or transaction data, you don\u0026rsquo;t really
 need the index of appearances.\u003c/p\u003e
 \u003cp\u003eHowever, most of our users with to explore the entire history of their own
@@ -660,7 +668,8 @@ in more detail.\u003c/p\u003e
 \u003cp\u003eNo matter which method you use, downloading or creating the index will take
 somewhere between a few minutes and a day or two. So you might want to play
 around with some \u003ca href="/docs/chifra/chaindata"\u003echifra blockchain commands\u003c/a\u003e first.\u003c/p\u003e
-\u003ch3 id="no-tracing"\u003eWhat if my node doesn\u0026rsquo;t have tracing or archiving?\u003c/h3\u003e
+\u003ch3 id="archive-nodes"\u003eArchive nodes\u003c/h3\u003e
+\u003ch4 id="no-tracing"\u003eWhat if my node doesn\u0026rsquo;t have tracing or archiving?\u003c/h4\u003e
 \u003cp\u003eIf the node you\u0026rsquo;re running does not support OpenEthereum style tracing or it
 is not an archive node, you may get an error telling you such.\u003c/p\u003e
 \u003cp\u003eSomething like\u003c/p\u003e
