@@ -62,7 +62,18 @@ var suggestions=document.getElementById("suggestions"),userinput=document.getEle
 \u003cp\u003eText about Licensing\u003c/p\u003e
 \u003ch3 id="about-us"\u003eAbout Us\u003c/h3\u003e
 \u003cp\u003eText about About Us\u003c/p\u003e
-`}).add({id:5,href:"/docs/",title:"Problem Statement",description:"TrueBlocks Docs",content:`\u003cp\u003eIf you\u0026rsquo;re like us, you fell in love with blockchains because of the promise they provide: world-wide, private, and permissionless
+`}).add({id:5,href:"/docs/",title:"Problem Statement",description:"TrueBlocks Docs",content:`\u003ch2 id="opendata-community-hackathon-2023"\u003eOpenData Community Hackathon 2023\u003c/h2\u003e
+\u003cp\u003e\u003cbig\u003e\u003cbig\u003e\u0026#8595\u003c/big\u003e\u003c/big\u003e\u003c/p\u003e
+\u003cp\u003e\u003cfont color=red\u003e\u003cb\u003eAre you here for the OpenData Community Hackathon?\u003c/b\u003e\u003c/font\u003e\u003c/p\u003e
+\u003cul\u003e
+\u003cli\u003e\u003ca href="https://github.com/TrueBlocks/trueblocks-docker"\u003eInstall docker version and get the Unchained Index\u003c/a\u003e\u003c/li\u003e
+\u003cli\u003eSome examples: \u003ca href="https://medium.com/coinmonks/commanding-the-line-ca5fe3496ae1"\u003ehere\u003c/a\u003e, \u003ca href="http://localhost:1313/tags/recipes/"\u003ehere\u003c/a\u003e, \u003ca href="https://tjayrush.medium.com/calling-smart-contracts-with-chifra-state-call-ea03b8d35ea7"\u003ehere\u003c/a\u003e, and \u003ca href="https://medium.com/coinmonks/the-rent-is-too-damn-high-part-i-dc6695b25259"\u003ehere\u003c/a\u003e\u003c/li\u003e
+\u003c/ul\u003e
+\u003cp\u003e\u003cbig\u003e\u003cbig\u003e\u0026#8593\u003c/big\u003e\u003c/big\u003e\u003c/p\u003e
+\u003ch2 id="opendata-community-hackathon-2023-1"\u003eOpenData Community Hackathon 2023\u003c/h2\u003e
+\u003chr\u003e
+\u003ch2 id="introduction"\u003eIntroduction\u003c/h2\u003e
+\u003cp\u003eIf you\u0026rsquo;re like us, you fell in love with blockchains because of the promise they provide: world-wide, private, and permissionless
 access to the most accurate and agreed-upon data ever produced. Near perfect data.\u003c/p\u003e
 \u003cp\u003eBut in reality, it\u0026rsquo;s as if we\u0026rsquo;re just lost at sea. Awash in bytes.\u003c/p\u003e
 \u003cimg src="/docs/img/steam-boat-off-a-harbor.jpg" alt="Who's stearing this boat?" width="500"/\u003e
