@@ -2152,7 +2152,7 @@ configuration per chain.\u003c/p\u003e
 \u003c/tr\u003e
 \u003ctr\u003e
 \u003ctd\u003eappearances\u003c/td\u003e
-\u003ctd\u003eDisplay format when exporting appearances\u003cbr /\u003eSTR_DISPLAY_APPEARANCEDISPLAY\u003c/td\u003e
+\u003ctd\u003eDisplay format when exporting appearances\u003cbr /\u003eSTR_DISPLAY_APPEARANCE\u003c/td\u003e
 \u003c/tr\u003e
 \u003ctr\u003e
 \u003ctd\u003eneighbor\u003c/td\u003e
