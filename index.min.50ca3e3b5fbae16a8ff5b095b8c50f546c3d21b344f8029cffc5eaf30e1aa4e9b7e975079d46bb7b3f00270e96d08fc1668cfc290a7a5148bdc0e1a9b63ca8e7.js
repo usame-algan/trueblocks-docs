@@ -67,7 +67,7 @@ var suggestions=document.getElementById("suggestions"),userinput=document.getEle
 \u003cp\u003e\u003cfont color=red\u003e\u003cb\u003eAre you here for the OpenData Community Hackathon?\u003c/b\u003e\u003c/font\u003e\u003c/p\u003e
 \u003cul\u003e
 \u003cli\u003e\u003ca href="https://github.com/TrueBlocks/trueblocks-docker"\u003eInstall docker version and get the Unchained Index\u003c/a\u003e\u003c/li\u003e
-\u003cli\u003eAfter that, some example usage: \u003ca href="https://trueblocks.io/blog/recipe-getting-erc20-transfer-events/"\u003ehere\u003c/a\u003e, \u003ca href="https://trueblocks.io/tags/recipes/"\u003ehere\u003c/a\u003e, \u003ca href="https://tjayrush.medium.com/calling-smart-contracts-with-chifra-state-call-ea03b8d35ea7"\u003ehere\u003c/a\u003e, and \u003ca href="https://medium.com/coinmonks/the-rent-is-too-damn-high-part-i-dc6695b25259"\u003ehere\u003c/a\u003e, \u003ca href="https://medium.com/coinmonks/commanding-the-line-ca5fe3496ae1"\u003ehere\u003c/a\u003e\u003c/li\u003e
+\u003cli\u003eAfter that, some example usage: \u003ca href="https://trueblocks.io/blog/recipe-getting-erc20-transfer-events/"\u003ehere\u003c/a\u003e, \u003ca href="https://trueblocks.io/tags/tutorials/"\u003ehere\u003c/a\u003e, \u003ca href="https://tjayrush.medium.com/calling-smart-contracts-with-chifra-state-call-ea03b8d35ea7"\u003ehere\u003c/a\u003e, and \u003ca href="https://medium.com/coinmonks/the-rent-is-too-damn-high-part-i-dc6695b25259"\u003ehere\u003c/a\u003e, \u003ca href="https://medium.com/coinmonks/commanding-the-line-ca5fe3496ae1"\u003ehere\u003c/a\u003e\u003c/li\u003e
 \u003c/ul\u003e
 \u003cp\u003e\u003cbig\u003e\u003cbig\u003e\u0026#8593\u003c/big\u003e\u003c/big\u003e\u003c/p\u003e
 \u003ch2 id="opendata-community-hackathon-2023-1"\u003eOpenData Community Hackathon 2023\u003c/h2\u003e
@@ -207,7 +207,7 @@ apiKey = \u0026quot;\u0026lt;your Etherscan api key\u0026gt;\u0026quot;   # opti
 \u003cul\u003e
 \u003cli\u003e\u003ca href="/docs/install/get-the-index/"\u003eUsing the Unchained Index\u003c/a\u003e\u003c/li\u003e
 \u003cli\u003e\u003ca href="https://github.com/TrueBlocks/trueblocks-core/tree/master/src/examples"\u003eExplore some coding examples\u003c/a\u003e\u003c/li\u003e
-\u003cli\u003e\u003ca href="/tags/recipes/"\u003eView data science recipies\u003c/a\u003e\u003c/li\u003e
+\u003cli\u003e\u003ca href="/tags/tutorials/"\u003eView data science recipies\u003c/a\u003e\u003c/li\u003e
 \u003cli\u003e\u003ca href="/docs/install/install-explorer/"\u003eUse the explorer application\u003c/a\u003e\u003c/li\u003e
 \u003c/ul\u003e
 `}).add({id:7,href:"/docs/prologue/about-trueblocks/",title:"About TrueBlocks",description:"How does TrueBlocks address the problem",content:`\u003ch2 id="trueblocks-provides-a-solution"\u003eTrueBlocks provides a solution\u003c/h2\u003e
@@ -949,7 +949,7 @@ chifra traces --fmt json --articulate 4503002.1
 \u003cp\u003eThere are many other \u003ccode\u003echifra\u003c/code\u003e commands including \u003ccode\u003elist\u003c/code\u003e and \u003ccode\u003eexport\u003c/code\u003e that we still study next. Other commands allow you to \u003ccode\u003eserve\u003c/code\u003e a JSON API presenting each command as an API route, \u003ccode\u003einit\u003c/code\u003e which pulls parts of the index data from IPFS, and \u003ccode\u003escrape\u003c/code\u003e which builds the index.\u003c/p\u003e
 \u003cp\u003eIn the following sections, each command is presented with its options and in more detail. In addition,\u003c/p\u003e
 \u003cul\u003e
-\u003cli\u003eOur \u003ca href="/tags/recipes"\u003eblog has a few longer \u0026ldquo;recipes\u0026rdquo;\u003c/a\u003efor accomplishing various tasks.\u003c/li\u003e
+\u003cli\u003eOur \u003ca href="/tags/tutorials"\u003eblog has a few longer \u0026ldquo;tutorials\u0026rdquo;\u003c/a\u003efor accomplishing various tasks.\u003c/li\u003e
 \u003cli\u003eOur \u003ca href="/data-model/intro/"\u003edata model reference\u003c/a\u003e describes the fields that are returned with each command\u003c/li\u003e
 \u003c/ul\u003e
 `}).add({id:16,href:"/docs/chifra/accounts/",title:"Accounts",description:"",content:`\u003c!-- markdownlint-disable MD033 MD036 MD041 --\u003e
