@@ -951,7 +951,7 @@ chifra traces --fmt json --articulate 4503002.1
 \u003cpre\u003e\u003ccode class="language-shell"\u003echifra logs --fmt json --articulate 4503002.2
 \u003c/code\u003e\u003c/pre\u003e
 \u003cp\u003eYou\u0026rsquo;ll see additional (and much more easy to understand) data. In particular, you\u0026rsquo;ll see an \u003ccode\u003earticulatedLog\u003c/code\u003e. That is \u0026ldquo;ugly log data presented in human-readable form.\u0026rdquo;\u003c/p\u003e
-\u003cp\u003eSee \u003ca href="/blog/recipe-getting-erc20-transfer-events/"\u003eGetting ERC20 Transfer Events\u003c/a\u003e for an example of using articulation.\u003c/p\u003e
+\u003cp\u003eSee \u003ca href="https://trueblocks.io/blog/how-many-erc20-tokens-do-you-have/"\u003eGetting ERC20 Transfer Events\u003c/a\u003e for an example of using articulation.\u003c/p\u003e
 \u003ch2 id="links-to-more-detail"\u003eLinks to more detail\u003c/h2\u003e
 \u003cp\u003eThere are many other \u003ccode\u003echifra\u003c/code\u003e commands including \u003ccode\u003elist\u003c/code\u003e and \u003ccode\u003eexport\u003c/code\u003e that we still study next. Other commands allow you to \u003ccode\u003eserve\u003c/code\u003e a JSON API presenting each command as an API route, \u003ccode\u003einit\u003c/code\u003e which pulls parts of the index data from IPFS, and \u003ccode\u003escrape\u003c/code\u003e which builds the index.\u003c/p\u003e
 \u003cp\u003eIn the following sections, each command is presented with its options and in more detail. In addition,\u003c/p\u003e
