@@ -62,17 +62,24 @@ var suggestions=document.getElementById("suggestions"),userinput=document.getEle
 \u003cp\u003eText about Licensing\u003c/p\u003e
 \u003ch3 id="about-us"\u003eAbout Us\u003c/h3\u003e
 \u003cp\u003eText about About Us\u003c/p\u003e
-`}).add({id:5,href:"/docs/",title:"Problem Statement",description:"TrueBlocks Docs",content:`\u003ch2 id="opendata-community-hackathon-2023"\u003eOpenData Community Hackathon 2023\u003c/h2\u003e
-\u003cp\u003e\u003cbig\u003e\u003cbig\u003e\u0026#8595\u003c/big\u003e\u003c/big\u003e\u003c/p\u003e
-\u003cp\u003e\u003cfont color=red\u003e\u003cb\u003eAre you here for the OpenData Community Hackathon?\u003c/b\u003e\u003c/font\u003e\u003c/p\u003e
+`}).add({id:5,href:"/docs/",title:"Introduction",description:"TrueBlocks Docs",content:`\u003cp\u003e\u003cfont color=red\u003e\u003cb\u003eAre you here for the OpenData Community Hackathon?\u003c/b\u003e\u003c/font\u003e\u003c/p\u003e
 \u003cul\u003e
-\u003cli\u003e\u003ca href="https://github.com/TrueBlocks/trueblocks-docker"\u003eInstall docker version and get the Unchained Index\u003c/a\u003e\u003c/li\u003e
-\u003cli\u003eAfter that, some example usage: \u003ca href="https://trueblocks.io/blog/recipe-getting-erc20-transfer-events/"\u003ehere\u003c/a\u003e, \u003ca href="https://trueblocks.io/tags/tutorials/"\u003ehere\u003c/a\u003e, \u003ca href="https://tjayrush.medium.com/calling-smart-contracts-with-chifra-state-call-ea03b8d35ea7"\u003ehere\u003c/a\u003e, and \u003ca href="https://medium.com/coinmonks/the-rent-is-too-damn-high-part-i-dc6695b25259"\u003ehere\u003c/a\u003e, \u003ca href="https://medium.com/coinmonks/commanding-the-line-ca5fe3496ae1"\u003ehere\u003c/a\u003e\u003c/li\u003e
+\u003cli\u003e\u003ca href="https://github.com/TrueBlocks/trueblocks-docker"\u003eInstall the docker version and download (or build) the Unchained Index\u003c/a\u003e\u003c/li\u003e
+\u003cli\u003eTutorials:
+\u003cul\u003e
+\u003cli\u003e\u003ca href="/blog/showing-erc-20-transfers/"\u003eShowing ERC20 transfers on the token contract\u003c/a\u003e\u003c/li\u003e
+\u003cli\u003e\u003ca href="https://tjayrush.medium.com/recipe-factories-ce78fa4c5f5b"\u003eListing contracts created by an address (including UniSwap)\u003c/a\u003e\u003c/li\u003e
+\u003cli\u003e\u003ca href="/blog/monthly-token-balances/"\u003eMonthly ERC20 token balance for one or more addresses\u003c/a\u003e\u003c/li\u003e
+\u003cli\u003e\u003ca href="https://tjayrush.medium.com/calling-smart-contracts-with-chifra-state-call-ea03b8d35ea7"\u003eCalling into smart contracts with \u003ccode\u003echifra state\u003c/code\u003e\u003c/a\u003e\u003c/li\u003e
+\u003cli\u003e\u003ca href="https://medium.com/coinmonks/the-rent-is-too-damn-high-part-i-dc6695b25259"\u003eThe Rent is Too Damn High\u003c/a\u003e\u003c/li\u003e
+\u003cli\u003e\u003ca href="https://medium.com/coinmonks/commanding-the-line-ca5fe3496ae1"\u003eCommanding the Line\u003c/a\u003e\u003c/li\u003e
+\u003c/ul\u003e
+\u003c/li\u003e
 \u003c/ul\u003e
 \u003cp\u003e\u003cbig\u003e\u003cbig\u003e\u0026#8593\u003c/big\u003e\u003c/big\u003e\u003c/p\u003e
-\u003ch2 id="opendata-community-hackathon-2023-1"\u003eOpenData Community Hackathon 2023\u003c/h2\u003e
 \u003chr\u003e
-\u003ch2 id="introduction"\u003eIntroduction\u003c/h2\u003e
+\u003cp\u003eAre blockchains really meeting their promise?\u003c/p\u003e
+\u003ch2 id="problem-statement"\u003eProblem Statement\u003c/h2\u003e
 \u003cp\u003eIf you\u0026rsquo;re like us, you fell in love with blockchains because of the promise they provide: world-wide, private, and permissionless
 access to the most accurate and agreed-upon data ever produced. Near perfect data.\u003c/p\u003e
 \u003cp\u003eBut in reality, it\u0026rsquo;s as if we\u0026rsquo;re just lost at sea. Awash in bytes.\u003c/p\u003e
@@ -84,7 +91,7 @@ access to the most accurate and agreed-upon data ever produced. Near perfect dat
 \u003ch2 id="accurate"\u003eAccurate\u003c/h2\u003e
 \u003cp\u003eBlockchains are supposed to be accurate. Are they? Well\u0026hellip;on-chain they are, but
 off-chain, not even close. Ask any crypto-accountant.\u003c/p\u003e
-\u003ch2 id="problem-statement"\u003eProblem statement\u003c/h2\u003e
+\u003ch2 id="problem-statement-1"\u003eProblem statement\u003c/h2\u003e
 \u003cp\u003eIt is true that anyone may send a transaction to a blockchain. All one needs is a wallet and access to an RPC\u0026hellip;
 wait\u0026hellip;access to an RPC\u0026hellip;is that permissionless? Unless you\u0026rsquo;re running your own node, no, it\u0026rsquo;s not.\u003c/p\u003e
 \u003cp\u003eIt\u0026rsquo;s worse than that. Not only must you ask permission to send a transaction, you must
@@ -121,7 +128,7 @@ telling them, with near perfect data, exactly what you spend your money on.\u003
 environment to provide you ingress and egress to the chain.\u003c/p\u003e
 \u003ch2 id="solution"\u003eSolution\u003c/h2\u003e
 \u003cp\u003e\u003ca href="https://dappnode.io/"\u003edAppNode\u003c/a\u003e, \u003ca href="https://github.com/ledgerwatch/erigon"\u003eErigon\u003c/a\u003e and TrueBlocks.\u003c/p\u003e
-`}).add({id:6,href:"/docs/install/install-trueblocks/",title:"Install TrueBlocks Core",description:"TrueBlocks works on Linux and Mac",content:`\u003cp\u003eThese instructions assume you can navigate the command line and edit configuration files.
+`}).add({id:6,href:"/docs/install/install-core/",title:"Install TrueBlocks Core",description:"TrueBlocks works on Linux and Mac",content:`\u003cp\u003eThese instructions assume you can navigate the command line and edit configuration files.
 If you need help with a particular step, see the \u003ca href="/docs/install/install-troubleshooting"\u003einstallation\u0026rsquo;s troubleshooting section\u003c/a\u003e.\u003c/p\u003e
 \u003ch2 id="installation"\u003eInstallation\u003c/h2\u003e
 \u003cul\u003e
@@ -134,7 +141,7 @@ If you need help with a particular step, see the \u003ca href="/docs/install/ins
 \u003cli\u003e
 \u003cp\u003eInstall or upgrade the build dependancies: \u003cem\u003egit\u003c/em\u003e, \u003cem\u003ecmake\u003c/em\u003e, \u003cem\u003eninja\u003c/em\u003e, \u003cem\u003ecurl\u003c/em\u003e, \u003cem\u003epython\u003c/em\u003e, \u003cem\u003eclang-format\u003c/em\u003e, \u003cem\u003ejq\u003c/em\u003e\u003c/p\u003e
 \u003cul\u003e
-\u003cli\u003e\u003ca href="/docs/install/install-trueblocks/#how-do-i-install-packages-on-the-command-line"\u003eInstall dependencies\u003c/a\u003e
+\u003cli\u003e\u003ca href="/docs/install/install-core/#how-do-i-install-packages-on-the-command-line"\u003eInstall dependencies\u003c/a\u003e
 \u003cbr\u003e\u003cbr\u003e\u003c/li\u003e
 \u003c/ul\u003e
 \u003c/li\u003e
@@ -331,7 +338,7 @@ In other words, the first time you run \u003ccode\u003echifra export \u0026lt;tr
 \u003cp\u003e👉 \u003cstrong\u003eNote\u003c/strong\u003e:
 If you don\u0026rsquo;t have a node with tracing or archiving, \u003ccode\u003escrape\u003c/code\u003e exits by default.
 You can still use scrape, but you need to
-\u003ca href="/docs/install/install-trueblocks#no-tracing"\u003eopen your config and disable these checks\u003c/a\u003e\u003c/p\u003e\u003c/p\u003e
+\u003ca href="/docs/install/install-core#no-tracing"\u003eopen your config and disable these checks\u003c/a\u003e\u003c/p\u003e\u003c/p\u003e
 \u003c/blockquote\u003e
 \u003cp\u003eTo build your own index without any downloading, run \u003ccode\u003echifra scrape\u003c/code\u003e.\u003c/p\u003e
 \u003cp\u003eFor detailed instructions, see the \u003ca href="/docs/chifra/admin#chifra-scrape"\u003e\u003ccode\u003echifra scrape\u003c/code\u003e command documentation\u003c/a\u003e.\u003c/p\u003e
@@ -529,7 +536,7 @@ However, if we have to make a tradeoff, these values come after the core values.
 `}).add({id:10,href:"/docs/install/install-explorer/",title:"Install the Explorer",description:"Explorer is the GUI frontend for TrueBlocks ",content:`\u003cp\u003eFirst, make sure that you have the \u003ccode\u003echifra-core\u003c/code\u003e backend up and running,
 then run the application from \u003ca href="https://github.com/TrueBlocks/trueblocks-explorer"\u003ea clone of the explorer repo\u003c/a\u003e.\u003c/p\u003e
 \u003ch2 id="before-you-begin"\u003eBefore you begin\u003c/h2\u003e
-\u003cp\u003e☑ Set up the trueblocks backend using the \u003ca href="/docs/install/install-trueblocks"\u003echifra installation instructions\u003c/a\u003e\u003c/p\u003e
+\u003cp\u003e☑ Set up the trueblocks backend using the \u003ca href="/docs/install/install-core"\u003echifra installation instructions\u003c/a\u003e\u003c/p\u003e
 \u003cp\u003e☑ In a terminal window, run the command \u003ccode\u003echifra serve\u003c/code\u003e\u003c/p\u003e
 \u003ch2 id="install"\u003eInstall\u003c/h2\u003e
 \u003cp\u003eKeep the \u003ccode\u003echifra serve\u003c/code\u003e process running.\u003c/p\u003e
@@ -884,7 +891,7 @@ you continue to have trouble, join our \u003ca href="https://discord.gg/kAFcZH2x
 \u003cp\u003eEvery \u003ccode\u003echifra\u003c/code\u003e sub-command comes with an associated help page. To get help for \u003ccode\u003echifra\u003c/code\u003e itself, simply type\u003c/p\u003e
 \u003cpre\u003e\u003ccode class="language-shell"\u003echifra
 \u003c/code\u003e\u003c/pre\u003e
-\u003cp\u003eA long list of commands should show. (If you have trouble, see the \u003ca href="/docs/install/install-trueblocks/"\u003eInstallation\u003c/a\u003e page.)\u003c/p\u003e
+\u003cp\u003eA long list of commands should show. (If you have trouble, see the \u003ca href="/docs/install/install-core/"\u003eInstallation\u003c/a\u003e page.)\u003c/p\u003e
 \u003cp\u003eTo get help for a specific command, type\u003c/p\u003e
 \u003cpre\u003e\u003ccode class="language-shell"\u003echifra \u0026lt;cmd\u0026gt; --help
 \u003c/code\u003e\u003c/pre\u003e
@@ -1924,7 +1931,7 @@ Notes:
 \u003cli\u003e\u003ccode\u003eethslurp\u003c/code\u003e an older tool that lets you call data from EtherScan. (This has issues of
 centralization and data quality, see explanation in its section).\u003c/li\u003e
 \u003c/ul\u003e
-\u003cp\u003eNote: some of these tools, like \u003ccode\u003eethslurp\u003c/code\u003e, require an EtherScan key. \u003ca href="/docs/install/install-trueblocks/#3-update-the-configs-for-your-rpc-and-api-keys"\u003eFollow these instructions
+\u003cp\u003eNote: some of these tools, like \u003ccode\u003eethslurp\u003c/code\u003e, require an EtherScan key. \u003ca href="/docs/install/install-core/#3-update-the-configs-for-your-rpc-and-api-keys"\u003eFollow these instructions
 to add a key to your config\u003c/a\u003e.\u003c/p\u003e
 \u003ch2 id="chifra-explore"\u003echifra explore\u003c/h2\u003e
 \u003c!-- markdownlint-disable MD041 --\u003e

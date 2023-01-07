@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Problem Statement on</title><link>/docs/</link><description>Recent content in Problem Statement on</description><generator>Hugo -- gohugo.io</generator><language>en-US</language><lastBuildDate>Tue, 06 Oct 2020 08:48:23 +0000</lastBuildDate><atom:link href="/docs/index.xml" rel="self" type="application/rss+xml"/><item><title>Dashboard</title><link>/docs/explorer/dashboard/</link><pubDate>Thu, 24 Feb 2022 13:56:33 -0500</pubDate><guid>/docs/explorer/dashboard/</guid><description>Monitors Text about Monitors
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Introduction on</title><link>/docs/</link><description>Recent content in Introduction on</description><generator>Hugo -- gohugo.io</generator><language>en-US</language><lastBuildDate>Tue, 06 Oct 2020 08:48:23 +0000</lastBuildDate><atom:link href="/docs/index.xml" rel="self" type="application/rss+xml"/><item><title>Dashboard</title><link>/docs/explorer/dashboard/</link><pubDate>Thu, 24 Feb 2022 13:56:33 -0500</pubDate><guid>/docs/explorer/dashboard/</guid><description>Monitors Text about Monitors
 Details Text about Details
 Charts Text about Charts
 History Text about History
@@ -25,7 +25,7 @@ Data Model Text about Data Model</description></item><item><title>Support</title
 Documentation Text about Documentation
 Hot Keys Text about Hot Keys
 Licensing Text about Licensing
-About Us Text about About Us</description></item><item><title>Install TrueBlocks Core</title><link>/docs/install/install-trueblocks/</link><pubDate>Mon, 16 Nov 2020 13:59:39 +0100</pubDate><guid>/docs/install/install-trueblocks/</guid><description>These instructions assume you can navigate the command line and edit configuration files. If you need help with a particular step, see the installation&amp;rsquo;s troubleshooting section.
+About Us Text about About Us</description></item><item><title>Install TrueBlocks Core</title><link>/docs/install/install-core/</link><pubDate>Mon, 16 Nov 2020 13:59:39 +0100</pubDate><guid>/docs/install/install-core/</guid><description>These instructions assume you can navigate the command line and edit configuration files. If you need help with a particular step, see the installation&amp;rsquo;s troubleshooting section.
 Installation Open a terminal window.
 Type go version. If Go is not installed or your version is less than 1.18.0, install the latest version of Go
 Install or upgrade the build dependancies: git, cmake, ninja, curl, python, clang-format, jq
