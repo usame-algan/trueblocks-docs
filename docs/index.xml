@@ -2,7 +2,8 @@
 Installation Open a terminal window.
 Type go version. If Go is not installed or your version is less than 1.18.0, install the latest version of Go
 Install or upgrade the build dependancies: git, cmake, ninja, curl, python, clang-format, jq
-Install dependencies Clone the repo and compile the executable:</description></item><item><title>Unchained Index</title><link>/docs/install/build-unchained-index/</link><pubDate>Mon, 09 Aug 2021 10:19:51 -0300</pubDate><guid>/docs/install/build-unchained-index/</guid><description>If you want&amp;hellip; and you don&amp;rsquo;t mind&amp;hellip; then use&amp;hellip; to minimize the size of the data stored locally and
+Install dependencies Clone the repo and compile the executable:</description></item><item><title>The link has moved</title><link>/docs/install/install-trueblocks/</link><pubDate>Mon, 16 Nov 2020 13:59:39 +0100</pubDate><guid>/docs/install/install-trueblocks/</guid><description>Install TrueBlocks
+How to Install Dependencies</description></item><item><title>Unchained Index</title><link>/docs/install/build-unchained-index/</link><pubDate>Mon, 09 Aug 2021 10:19:51 -0300</pubDate><guid>/docs/install/build-unchained-index/</guid><description>If you want&amp;hellip; and you don&amp;rsquo;t mind&amp;hellip; then use&amp;hellip; to minimize the size of the data stored locally and
 you want to get started faster&amp;hellip; slower first-time queries on new addresses, an index
 that&amp;rsquo;s slightly behind the head of the chain, an index
 created by someone else&amp;hellip; chifra init to maximize the speed of first-time queries for
