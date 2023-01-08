@@ -183,8 +183,8 @@ and your soon you\u0026rsquo;re running your own node.\u003c/p\u003e
 command line options is an API server which allows you to build blindly-fast desktop applications. We\u0026rsquo;ve built an example of
 such an application with our \u003ca href="/docs/install/install-explorer"\u003eAccount Explorer\u003c/a\u003e.\u003c/p\u003e
 \u003ch3 id="avoiding-winner-take-all"\u003eAvoiding winner-take-all\u003c/h3\u003e
-\u003cp\u003eIn it\u0026rsquo;s best incarnation, TrueBlocks runs locally against your own locally running node. If you build the thing yourself, no-one can take it away from you. After the initial syncronization of your node (Erigon, for example) which may take a few weeks, you can run one of TrueBlocks\u0026rsquo; command line tools called \u003ca href="/docs/chifra/admin/#chifra-scrape"\u003echifra scrape\u003c/a\u003e. This process takes a few days.\u003c/p\u003e
-\u003cp\u003eTo ease the burden of having to create the Unchained Index yourself, you may download it from IPFS using \u003ca href="/docs/chifra/admin/#chifra-init"\u003echifra init\u003c/a\u003e. Putting this data on IPFS has the very interesting consequence of sharing it. This makes it impossible for us (or anyone) to become the \u0026ldquo;holder of all data\u0026rdquo; which eventually leads to winner-take-all like Google. We want to purposfully avoid that.\u003c/p\u003e
+\u003cp\u003eIn it\u0026rsquo;s best incarnation, TrueBlocks runs locally against your own locally running node. If you build the thing yourself, no-one can take it away from you. After the initial syncronization of your node (Erigon, for example) which may take a few weeks, you can run one of TrueBlocks\u0026rsquo; command line tools called \u003ca href="/chifra/admin/#chifra-scrape"\u003echifra scrape\u003c/a\u003e. This process takes a few days.\u003c/p\u003e
+\u003cp\u003eTo ease the burden of having to create the Unchained Index yourself, you may download it from IPFS using \u003ca href="/chifra/admin/#chifra-init"\u003echifra init\u003c/a\u003e. Putting this data on IPFS has the very interesting consequence of sharing it. This makes it impossible for us (or anyone) to become the \u0026ldquo;holder of all data\u0026rdquo; which eventually leads to winner-take-all like Google. We want to purposfully avoid that.\u003c/p\u003e
 \u003cp\u003eThis whole process is \u003ca href="/docs/install/build-unchained-index/"\u003ebetter explained here\u003c/a\u003e.\u003c/p\u003e
 \u003ch2 id="unchained-index-provides-huge-advantages"\u003eUnchained Index provides huge advantages\u003c/h2\u003e
 \u003cp\u003eBesides the philosophical benefits, TrueBlocks is straight up more performant.\u003c/p\u003e
@@ -239,7 +239,7 @@ said\u003c/a\u003e:\u003c/p\u003e
 \u003ch3 id="use-chifra-init-to-get-a-subset-of-the-data"\u003eUse chifra init to get a subset of the data\u003c/h3\u003e
 \u003cp\u003eTo get only the Bloom filters, run \u003ccode\u003echifra init\u003c/code\u003e.\u003c/p\u003e
 \u003cp\u003eIf you do this, you will have to periodically re-run the command to update your index. (\u003ca href="#Supplementary-how-can-I-see-when-the-manifest-was-last-published"\u003eRead about the finding the latest manifest\u003c/a\u003e).\u003c/p\u003e
-\u003cp\u003eFor more information, see the \u003ca href="/docs/chifra/admin#chifra-init"\u003e\u003ccode\u003echifra init\u003c/code\u003e command documentation\u003c/a\u003e.\u003c/p\u003e
+\u003cp\u003eFor more information, see the \u003ca href="/chifra/admin#chifra-init"\u003e\u003ccode\u003echifra init\u003c/code\u003e command documentation\u003c/a\u003e.\u003c/p\u003e
 \u003cp\u003e\u003cstrong\u003eInitial set up time\u003c/strong\u003e: \u003ccode\u003echifra init\u003c/code\u003e takes only about a half an hour on a machine with a good connection. (We\u0026rsquo;ve had report from some users that it takes much longer, but we suspect they are on slow machines.) We highly prefer you have a capable machine.\u003c/p\u003e
 \u003cp\u003e\u003cstrong\u003eStorage use\u003c/strong\u003e: In this scenario, since you only download the Bloom filters, the space required is about 1GB. Subsequently, as you download individual chunk, each chunk occupies about 25MB.\u003c/p\u003e
 \u003cp\u003eThe number of index chunks you download depends entirely on the addresses you query. Of course, if you query a lightly used address, very few chunks will be downloaded. However, if you query are heavily used address, such as UniSwap, nearly every chunk will be downloaded. This is by design. In the later case, you would probably be better off using \u003ccode\u003echifra init --all\u003c/code\u003e to begin with.\u003c/p\u003e
@@ -259,7 +259,7 @@ said\u003c/a\u003e:\u003c/p\u003e
 \u003ch3 id="use-chifra-init---all-to-get-the-entirity-of-the-index"\u003eUse chifra init \u0026ndash;all to get the entirity of the index\u003c/h3\u003e
 \u003cp\u003eTo get the entirety of the appearance index, run \u003ccode\u003echifra init --all\u003c/code\u003e.\u003c/p\u003e
 \u003cp\u003eIf you use this command and don\u0026rsquo;t run \u003ccode\u003echifra scrape\u003c/code\u003e, you will have to update the index periodically by running the command again. (\u003ca href="#Supplementary-how-can-I-see-when-the-manifest-was-last-published"\u003eRead about the finding the latest manifest\u003c/a\u003e).\u003c/p\u003e
-\u003cp\u003eFor detailed instructions, see the \u003ca href="/docs/chifra/admin#chifra-pins"\u003e\u003ccode\u003echifra pins\u003c/code\u003e documentation\u003c/a\u003e.\u003c/p\u003e
+\u003cp\u003eFor detailed instructions, see the \u003ca href="/chifra/admin#chifra-pins"\u003e\u003ccode\u003echifra pins\u003c/code\u003e documentation\u003c/a\u003e.\u003c/p\u003e
 \u003cp\u003e\u003cstrong\u003eInitial set up time\u003c/strong\u003e: Somewhere between six and ten hours depending on the speed of your connection.\u003c/p\u003e
 \u003cp\u003e\u003cstrong\u003eStorage use\u003c/strong\u003e: About 60GB-80GB\u003c/p\u003e
 \u003cp\u003e\u003cstrong\u003eHow it works\u003c/strong\u003e\u003c/p\u003e
@@ -277,7 +277,7 @@ You can still use scrape, but you need to
 \u003ca href="/docs/install/install-core#no-tracing"\u003eopen your config and disable these checks\u003c/a\u003e\u003c/p\u003e\u003c/p\u003e
 \u003c/blockquote\u003e
 \u003cp\u003eTo build your own index without any downloading, run \u003ccode\u003echifra scrape\u003c/code\u003e.\u003c/p\u003e
-\u003cp\u003eFor detailed instructions, see the \u003ca href="/docs/chifra/admin#chifra-scrape"\u003e\u003ccode\u003echifra scrape\u003c/code\u003e command documentation\u003c/a\u003e.\u003c/p\u003e
+\u003cp\u003eFor detailed instructions, see the \u003ca href="/chifra/admin#chifra-scrape"\u003e\u003ccode\u003echifra scrape\u003c/code\u003e command documentation\u003c/a\u003e.\u003c/p\u003e
 \u003cp\u003e\u003cstrong\u003eInitial set up time\u003c/strong\u003e: This method requires a locally-running tracing / archive node such as dAppNode running Erigon. Early users have reported 2-4 days to build the index from scratch. (You may wish to run \u003ccode\u003echifra scrape\u003c/code\u003e in an application like \u003ccode\u003etmux\u003c/code\u003e, so you can close the terminal window while it builds.)\u003c/p\u003e
 \u003cp\u003e\u003cstrong\u003eStorage use\u003c/strong\u003e: About 60GB.\u003c/p\u003e
 \u003cp\u003e\u003cstrong\u003eHow it works\u003c/strong\u003e:\u003c/p\u003e
@@ -500,7 +500,7 @@ and some good hardware.\u003c/p\u003e
 \u003cp\u003eIf you want to build your own index, plan for a few days and run \u003ccode\u003echifra scrape\u003c/code\u003e.
 Before doing so, you probably want to read the relevant section in the
 \u003ca href="/docs/install/build-unchained-index"\u003e\u0026ldquo;How Can I Get the Index\u0026rdquo;\u003c/a\u003e article,
-and \u003ca href="/docs/chifra/admin#chifra-scrape"\u003ethe \u003ccode\u003escrape\u003c/code\u003e command documentation\u003c/a\u003e.\u003c/p\u003e
+and \u003ca href="/chifra/admin#chifra-scrape"\u003ethe \u003ccode\u003escrape\u003c/code\u003e command documentation\u003c/a\u003e.\u003c/p\u003e
 \u003cp\u003eFortunately, TrueBlocks also publishes the index on the IPFS,
 which lets you access it locally without running a node.\u003c/p\u003e
 \u003ch2 id="without-a-node-you-can-download-the-index-from-the-ipfs"\u003eWithout a node, you can download the index from the IPFS\u003c/h2\u003e
@@ -717,7 +717,7 @@ variable as described above, but you may also edit \u003ccode\u003etrueBlocks.to
 \u003ch3 id="api-keys"\u003eAPI keys\u003c/h3\u003e
 \u003ch4 id="how-do-i-add-a-etherscan-key"\u003eHow do I add a EtherScan key?\u003c/h4\u003e
 \u003cp\u003eSome small part of TrueBlocks requires an EtherScan API key. In particular
-this is the \u003ca href="/docs/chifra/chaindata/"\u003e\u003ccode\u003e--articulate\u003c/code\u003e option\u003c/a\u003e. We are working
+this is the \u003ca href="/chifra/chaindata/"\u003e\u003ccode\u003e--articulate\u003c/code\u003e option\u003c/a\u003e. We are working
 hard to remove this centralized dependency, but in the mean time you
 may get a warning of a missing key.\u003c/p\u003e
 \u003cp\u003eHere’s an example of a remote RPC for Infura and an EtherScan API key.
@@ -743,7 +743,7 @@ addresses. If you wish to do that, you will need the index.\u003c/p\u003e
 in more detail.\u003c/p\u003e
 \u003cp\u003eNo matter which method you use, downloading or creating the index will take
 somewhere between a few minutes and a day or two. So you might want to play
-around with some \u003ca href="/docs/chifra/chaindata"\u003echifra blockchain commands\u003c/a\u003e first.\u003c/p\u003e
+around with some \u003ca href="/chifra/chaindata"\u003echifra blockchain commands\u003c/a\u003e first.\u003c/p\u003e
 \u003ch3 id="archive-nodes"\u003eArchive nodes\u003c/h3\u003e
 \u003ch4 id="no-tracing"\u003eWhat if my node doesn\u0026rsquo;t have tracing or archiving?\u003c/h4\u003e
 \u003cp\u003eIf the node you\u0026rsquo;re running does not support OpenEthereum style tracing or it
