@@ -5,7 +5,7 @@ var suggestions=document.getElementById("suggestions"),userinput=document.getEle
 \u003cul\u003e
 \u003cli\u003e\u003ca href="/blog/showing-erc-20-transfers/"\u003eShowing ERC20 transfers on the token contract\u003c/a\u003e\u003c/li\u003e
 \u003cli\u003e\u003ca href="https://tjayrush.medium.com/recipe-factories-ce78fa4c5f5b"\u003eListing contracts created by an address (including UniSwap)\u003c/a\u003e\u003c/li\u003e
-\u003cli\u003e\u003ca href="/blog/monthly-token-balances/"\u003eMonthly ERC20 token balance for one or more addresses\u003c/a\u003e\u003c/li\u003e
+\u003cli\u003e\u003ca href="https://tjayrush.medium.com/recipe-monthly-token-balances-ff6a302fda80"\u003eMonthly ERC20 token balance for one or more addresses\u003c/a\u003e\u003c/li\u003e
 \u003cli\u003e\u003ca href="https://tjayrush.medium.com/calling-smart-contracts-with-chifra-state-call-ea03b8d35ea7"\u003eCalling into smart contracts with \u003ccode\u003echifra state\u003c/code\u003e\u003c/a\u003e\u003c/li\u003e
 \u003cli\u003e\u003ca href="https://medium.com/coinmonks/the-rent-is-too-damn-high-part-i-dc6695b25259"\u003eThe Rent is Too Damn High\u003c/a\u003e\u003c/li\u003e
 \u003cli\u003e\u003ca href="https://medium.com/coinmonks/commanding-the-line-ca5fe3496ae1"\u003eCommanding the Line\u003c/a\u003e\u003c/li\u003e
