@@ -153,10 +153,7 @@ apiKey = \u0026quot;\u0026lt;your Etherscan api key\u0026gt;\u0026quot;   # opti
 \u003cli\u003e\u003ca href="/tags/tutorials/"\u003eView data science recipies\u003c/a\u003e\u003c/li\u003e
 \u003cli\u003e\u003ca href="/docs/install/install-explorer/"\u003eUse the explorer application\u003c/a\u003e\u003c/li\u003e
 \u003c/ul\u003e
-`}).add({id:2,href:"/docs/install/install-trueblocks/",title:"The link has moved",description:"",content:`\u003cp\u003e\u003ca href="/docs/install/install-core/"\u003eInstall TrueBlocks\u003c/a\u003e\u003c/p\u003e
-\u003cp\u003e\u003ca name="how-do-i-install-packages-on-the-command-line" id="how-do-i-install-packages-on-the-command-line"\u003e\u003c/a\u003e\u003c/p\u003e
-\u003cp\u003e\u003ca href="/docs/install/install-troubleshooting/#dependencies"\u003eHow to Install Dependencies\u003c/a\u003e\u003c/p\u003e
-`}).add({id:3,href:"/docs/prologue/about-trueblocks/",title:"About TrueBlocks",description:"How does TrueBlocks address the problem",content:`\u003ch2 id="trueblocks-provides-a-solution"\u003eTrueBlocks provides a solution\u003c/h2\u003e
+`}).add({id:2,href:"/docs/prologue/about-trueblocks/",title:"About TrueBlocks",description:"How does TrueBlocks address the problem",content:`\u003ch2 id="trueblocks-provides-a-solution"\u003eTrueBlocks provides a solution\u003c/h2\u003e
 \u003cp\u003eWe think there are at least three fundamental problems with the current Ethereum ecosystem:\u003c/p\u003e
 \u003col\u003e
 \u003cli\u003eIt\u0026rsquo;s difficult to run your own Ethereum node (not really, see below).\u003c/li\u003e
@@ -206,7 +203,7 @@ said\u003c/a\u003e:\u003c/p\u003e
 \u003c/blockquote\u003e
 \u003ch2 id="more-words"\u003eMore words!\u003c/h2\u003e
 \u003cp\u003eWe\u0026rsquo;ve got more words for you. \u003ca href="/blog/a-long-winded-explanation-of-trueblocks/"\u003eThis blog post covers these topics in much more detail\u003c/a\u003e.\u003c/p\u003e
-`}).add({id:4,href:"/docs/install/build-unchained-index/",title:"Unchained Index",description:"There are three ways to get the index. Each way involves some tradeoff between initialization time, storage use, and local access.",content:`\u003ctable\u003e
+`}).add({id:3,href:"/docs/install/build-unchained-index/",title:"Unchained Index",description:"There are three ways to get the index. Each way involves some tradeoff between initialization time, storage use, and local access.",content:`\u003ctable\u003e
 \u003cthead\u003e
 \u003ctr\u003e
 \u003cth\u003eIf you want\u0026hellip;\u003c/th\u003e
@@ -296,7 +293,7 @@ You can still use scrape, but you need to
 \u003cp\u003eTo view the latest manifest published by TrueBlocks (note that there may be other publishers), pass our publisher id: \u003ccode\u003e0xf503017d7baf7fbc0fff7492b751025c6a78179b\u003c/code\u003e and the string \u003ccode\u003emainnet\u003c/code\u003e to the \u003ccode\u003emanifestHashMap()\u003c/code\u003e method of the UnchainedIndex_V2 contract at https://etherscan.io/address/0x0c316b7042b419d07d343f2f4f5bd54ff731183d#readContract. This will return the \u003ccode\u003eLATEST_IPFS_HASH\u003c/code\u003e of the manifest. To fetch the manifest, use an IPFS client and \u003ccode\u003eipfs get \u0026lt;LATEST_IPFS_HASH\u0026gt;\u003c/code\u003e or a gateway (such as the one TrueBlocks maintains) \u003ccode\u003ehttps://ipfs.unchainedindex.io/ipfs/LATEST_IPFS_HASH\u003c/code\u003e.\u003c/p\u003e
 \u003cp\u003eEdit the resulting file to see the latest published data.\u003c/p\u003e
 \u003cp\u003eAlternatively, you may always use \u003ccode\u003echifra chunks manifest\u003c/code\u003e to see where the latest published index is at.\u003c/p\u003e
-`}).add({id:5,href:"/docs/prologue/design-philosophy/",title:"Design philosophy",description:"The philosophy behind the technical design of TrueBlocks",content:`\u003ch2 id="the-three-commandments"\u003eThe three commandments\u003c/h2\u003e
+`}).add({id:4,href:"/docs/prologue/design-philosophy/",title:"Design philosophy",description:"The philosophy behind the technical design of TrueBlocks",content:`\u003ch2 id="the-three-commandments"\u003eThe three commandments\u003c/h2\u003e
 \u003col\u003e
 \u003cli\u003e
 \u003cp\u003e\u003cstrong\u003eLet users query this data without asking third-parties for permission.\u003c/strong\u003e\u003c/p\u003e
@@ -472,7 +469,7 @@ However, if we have to make a tradeoff, these values come after the core values.
 \u003cli\u003eEveryone needs to do accounting and pay taxes\u003c/li\u003e
 \u003cli\u003eThe node can, and should be, be improved\u003c/li\u003e
 \u003c/ul\u003e
-`}).add({id:6,href:"/docs/install/install-explorer/",title:"Install explorer",description:"Explorer is the GUI frontend for TrueBlocks ",content:`\u003cp\u003eFirst, make sure that you have the \u003ccode\u003echifra-core\u003c/code\u003e backend up and running,
+`}).add({id:5,href:"/docs/install/install-explorer/",title:"Install explorer",description:"Explorer is the GUI frontend for TrueBlocks ",content:`\u003cp\u003eFirst, make sure that you have the \u003ccode\u003echifra-core\u003c/code\u003e backend up and running,
 then run the application from \u003ca href="https://github.com/TrueBlocks/trueblocks-explorer"\u003ea clone of the explorer repo\u003c/a\u003e.\u003c/p\u003e
 \u003ch2 id="before-you-begin"\u003eBefore you begin\u003c/h2\u003e
 \u003cp\u003e☑ Set up the trueblocks backend using the \u003ca href="/docs/install/install-core"\u003echifra installation instructions\u003c/a\u003e\u003c/p\u003e
@@ -488,7 +485,7 @@ then run the application from \u003ca href="https://github.com/TrueBlocks/truebl
 \u003cli\u003eyarn develop\u003c/li\u003e
 \u003c/ol\u003e
 \u003cp\u003eOpen your browser, and access the app from \u003ccode\u003elocalhost:1234\u003c/code\u003e.\u003c/p\u003e
-`}).add({id:7,href:"/docs/prologue/do-i-need-a-node/",title:"Do I need a node?",description:"A node is not required, but that's the only way use Trueblocks as it is intended.",content:`\u003cp\u003eAnd if you are running your own node, TrueBlocks works best with Erigon.\u003c/p\u003e
+`}).add({id:6,href:"/docs/prologue/do-i-need-a-node/",title:"Do I need a node?",description:"A node is not required, but that's the only way use Trueblocks as it is intended.",content:`\u003cp\u003eAnd if you are running your own node, TrueBlocks works best with Erigon.\u003c/p\u003e
 \u003chr\u003e
 \u003ch2 id="why-having-a-node-is-the-best-option"\u003eWhy having a node is the best option\u003c/h2\u003e
 \u003cp\u003eSome benefits of TrueBlocks can be realized only when a user has their own node.
@@ -525,7 +522,7 @@ of building an index from your own node:\u003c/p\u003e
 \u003cli\u003eYou must trust the data TrueBlocks publishes (though you can verify the build)\u003c/li\u003e
 \u003cli\u003eYou can only query up to the last time TrueBlocks published the manifest\u003c/li\u003e
 \u003c/ul\u003e
-`}).add({id:8,href:"/docs/prologue/multi-chain/",title:"Multi chain",description:"Instructions for accessing multiple chains from chifra",content:`\u003ch2 id="accessing-multiple-chains"\u003eAccessing multiple chains\u003c/h2\u003e
+`}).add({id:7,href:"/docs/prologue/multi-chain/",title:"Multi chain",description:"Instructions for accessing multiple chains from chifra",content:`\u003ch2 id="accessing-multiple-chains"\u003eAccessing multiple chains\u003c/h2\u003e
 \u003cp\u003eAs of version 0.25.0-alpha, TrueBlocks supports accessing data from any EVM-based blockchain that supports the requisite RPC endpoints. This includes most blockchains we know of.\u003c/p\u003e
 \u003cp\u003eIn order to use this new feature, you have to do almost nothing. All you have to do is add \u003ccode\u003e--chain \u0026lt;chainname\u0026gt;\u003c/code\u003e to any chifra command (except one or two as detailed below).\u003c/p\u003e
 \u003cp\u003eFor example:\u003c/p\u003e
@@ -647,7 +644,7 @@ symbol = \u0026quot;ETH\u0026quot;
 \u003cp\u003ePricing using UniSwap only works on the mainnet. In the future, once more standardization appears relative to pricing on multiple chains, this choice will be revisited.\u003c/p\u003e
 \u003c/li\u003e
 \u003c/ol\u003e
-`}).add({id:9,href:"/docs/install/install-troubleshooting/",title:"Troubleshooting",description:"Solutions to Common Problems",content:`\u003cp\u003eThis section lists solutions to problems some users have run into with the installation. If you continue to have trouble, \u003ca href="https://github.com/TrueBlocks/trueblocks-core/issues"\u003ecreate an issue\u003c/a\u003e, or ask us on discord.\u003c/p\u003e
+`}).add({id:8,href:"/docs/install/install-troubleshooting/",title:"Troubleshooting",description:"Solutions to Common Problems",content:`\u003cp\u003eThis section lists solutions to problems some users have run into with the installation. If you continue to have trouble, \u003ca href="https://github.com/TrueBlocks/trueblocks-core/issues"\u003ecreate an issue\u003c/a\u003e, or ask us on discord.\u003c/p\u003e
 \u003ch2 id="dependencies"\u003eDependencies\u003c/h2\u003e
 \u003ch3 id="installing-go"\u003eInstalling go\u003c/h3\u003e
 \u003ch4 id="how-do-i-check-my-go-version"\u003eHow do I check my Go version?\u003c/h4\u003e
@@ -763,4 +760,4 @@ this will be in the chain-specific config file, otherwise at the top level).\u00
 tracing = false
 archive = false
 \u003c/code\u003e\u003c/pre\u003e
-`}).add({id:10,href:"/docs/prologue/",title:"Prologue",description:"Prologue Doks.",content:""}),userinput.addEventListener("input",n,!0),suggestions.addEventListener("click",s,!0);function n(){var n,r=this.value,o=e.search(r,{limit:5,index:["content"],enrich:!0}),i=suggestions.childNodes,s=0,c=o.length;for(suggestions.classList.remove("d-none"),o.forEach(function(e){n=document.createElement("div"),n.innerHTML="<a href><span></span><span></span></a>",a=n.querySelector("a"),t=n.querySelector("span:first-child"),d=n.querySelector("span:nth-child(2)"),a.href=e.result[s].doc.href,t.textContent=e.result[s].doc.title,d.textContent=e.result[s].doc.description,suggestions.appendChild(n)});i.length>c;)suggestions.removeChild(i[s])}function s(){for(;suggestions.lastChild;)suggestions.removeChild(suggestions.lastChild);return!1}})()
+`}).add({id:9,href:"/docs/prologue/",title:"Prologue",description:"Prologue Doks.",content:""}),userinput.addEventListener("input",n,!0),suggestions.addEventListener("click",s,!0);function n(){var n,r=this.value,o=e.search(r,{limit:5,index:["content"],enrich:!0}),i=suggestions.childNodes,s=0,c=o.length;for(suggestions.classList.remove("d-none"),o.forEach(function(e){n=document.createElement("div"),n.innerHTML="<a href><span></span><span></span></a>",a=n.querySelector("a"),t=n.querySelector("span:first-child"),d=n.querySelector("span:nth-child(2)"),a.href=e.result[s].doc.href,t.textContent=e.result[s].doc.title,d.textContent=e.result[s].doc.description,suggestions.appendChild(n)});i.length>c;)suggestions.removeChild(i[s])}function s(){for(;suggestions.lastChild;)suggestions.removeChild(suggestions.lastChild);return!1}})()
