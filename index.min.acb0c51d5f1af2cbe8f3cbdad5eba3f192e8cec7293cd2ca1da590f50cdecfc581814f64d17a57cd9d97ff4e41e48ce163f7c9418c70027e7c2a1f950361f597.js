@@ -150,7 +150,7 @@ apiKey = \u0026quot;\u0026lt;your Etherscan api key\u0026gt;\u0026quot;   # opti
 \u003cul\u003e
 \u003cli\u003e\u003ca href="/docs/install/build-unchained-index/"\u003eUsing the Unchained Index\u003c/a\u003e\u003c/li\u003e
 \u003cli\u003e\u003ca href="https://github.com/TrueBlocks/trueblocks-core/tree/master/src/examples"\u003eExplore some coding examples\u003c/a\u003e\u003c/li\u003e
-\u003cli\u003e\u003ca href="/tags/tutorials/"\u003eView data science recipies\u003c/a\u003e\u003c/li\u003e
+\u003cli\u003e\u003ca href="/tags/tutorials/"\u003eView data science recipes\u003c/a\u003e\u003c/li\u003e
 \u003cli\u003e\u003ca href="/docs/install/install-explorer/"\u003eUse the explorer application\u003c/a\u003e\u003c/li\u003e
 \u003c/ul\u003e
 `}).add({id:2,href:"/docs/prologue/about-trueblocks/",title:"About TrueBlocks",description:"How does TrueBlocks address the problem",content:`\u003ch2 id="trueblocks-provides-a-solution"\u003eTrueBlocks provides a solution\u003c/h2\u003e
@@ -168,8 +168,8 @@ have gotten much easier. Each of these products allows you to buy a machine, plu
 and your soon you\u0026rsquo;re running your own node.\u003c/p\u003e
 \u003cp\u003eYou should to this now. Buy a dAppNode, plug it in, and enjoy the benefits of running your own node. Why wait?\u003c/p\u003e
 \u003ch3 id="useful-data-is-hard-to-get"\u003eUseful data is hard to get\u003c/h3\u003e
-\u003cp\u003eIt is our strong beleif that the Ethereum RPC is broken. It\u0026rsquo;s missing something. An index by address.\u003c/p\u003e
-\u003cp\u003eThe goal of TrueBlocks is to provide exactly that missing peice. We call our solution the \u003ca href="/docs/install/build-unchained-index/"\u003eUnchained Index\u003c/a\u003e.\u003c/p\u003e
+\u003cp\u003eIt is our strong belief that the Ethereum RPC is broken. It\u0026rsquo;s missing something. An index by address.\u003c/p\u003e
+\u003cp\u003eThe goal of TrueBlocks is to provide exactly that missing piece. We call our solution the \u003ca href="/docs/install/build-unchained-index/"\u003eUnchained Index\u003c/a\u003e.\u003c/p\u003e
 \u003cp\u003eThe Unchained Index is created locally on your machine \u0026ndash; on the dAppNode. As a direct result of being local, the index has a number of amazing qualities:\u003c/p\u003e
 \u003col\u003e
 \u003cli\u003e\u003cstrong\u003eIt fixes the broken node:\u003c/strong\u003e Without an index, one cannot query the node for a \u0026ldquo;list of everything that ever happened to an address.\u0026rdquo; With one, which is what the Unchained Index provides, one can make such a query. In effect this turns the node from a \u0026ldquo;really shitting database,\u0026rdquo; into a perfectly fine database.\u003c/li\u003e
@@ -183,8 +183,8 @@ and your soon you\u0026rsquo;re running your own node.\u003c/p\u003e
 command line options is an API server which allows you to build blindly-fast desktop applications. We\u0026rsquo;ve built an example of
 such an application with our \u003ca href="/docs/install/install-explorer"\u003eAccount Explorer\u003c/a\u003e.\u003c/p\u003e
 \u003ch3 id="avoiding-winner-take-all"\u003eAvoiding winner-take-all\u003c/h3\u003e
-\u003cp\u003eIn it\u0026rsquo;s best incarnation, TrueBlocks runs locally against your own locally running node. If you build the thing yourself, no-one can take it away from you. After the initial syncronization of your node (Erigon, for example) which may take a few weeks, you can run one of TrueBlocks\u0026rsquo; command line tools called \u003ca href="/chifra/admin/#chifra-scrape"\u003echifra scrape\u003c/a\u003e. This process takes a few days.\u003c/p\u003e
-\u003cp\u003eTo ease the burden of having to create the Unchained Index yourself, you may download it from IPFS using \u003ca href="/chifra/admin/#chifra-init"\u003echifra init\u003c/a\u003e. Putting this data on IPFS has the very interesting consequence of sharing it. This makes it impossible for us (or anyone) to become the \u0026ldquo;holder of all data\u0026rdquo; which eventually leads to winner-take-all like Google. We want to purposfully avoid that.\u003c/p\u003e
+\u003cp\u003eIn it\u0026rsquo;s best incarnation, TrueBlocks runs locally against your own locally running node. If you build the thing yourself, no-one can take it away from you. After the initial synchronization of your node (Erigon, for example) which may take a few weeks, you can run one of TrueBlocks\u0026rsquo; command line tools called \u003ca href="/chifra/admin/#chifra-scrape"\u003echifra scrape\u003c/a\u003e. This process takes a few days.\u003c/p\u003e
+\u003cp\u003eTo ease the burden of having to create the Unchained Index yourself, you may download it from IPFS using \u003ca href="/chifra/admin/#chifra-init"\u003echifra init\u003c/a\u003e. Putting this data on IPFS has the very interesting consequence of sharing it. This makes it impossible for us (or anyone) to become the \u0026ldquo;holder of all data\u0026rdquo; which eventually leads to winner-take-all like Google. We want to purposefully avoid that.\u003c/p\u003e
 \u003cp\u003eThis whole process is \u003ca href="/docs/install/build-unchained-index/"\u003ebetter explained here\u003c/a\u003e.\u003c/p\u003e
 \u003ch2 id="unchained-index-provides-huge-advantages"\u003eUnchained Index provides huge advantages\u003c/h2\u003e
 \u003cp\u003eBesides the philosophical benefits, TrueBlocks is straight up more performant.\u003c/p\u003e
@@ -253,10 +253,10 @@ said\u003c/a\u003e:\u003c/p\u003e
 \u003col\u003e
 \u003cli\u003eScans the Bloom filters for potential matches and if there\u0026rsquo;s a hit, downloads the corresponding index chunks.\u003c/li\u003e
 \u003cli\u003eReturns the set of \u003ccode\u003eappearances\u003c/code\u003e for the address as pairs of \u003ccode\u003e\u0026lt;block number\u0026gt;\u003c/code\u003e and \u003ccode\u003e\u0026lt;transaction_id\u0026gt;\u003c/code\u003e. (This permits direct queries for exact details of desired transaction histories).\u003c/li\u003e
-\u003cli\u003eGiven the list of \u003ccode\u003eappearances\u003c/code\u003e, TrueBlocks pulls the full transacitonal history of the account from any (remote or local) RPC endpoint.\u003c/li\u003e
+\u003cli\u003eGiven the list of \u003ccode\u003eappearances\u003c/code\u003e, TrueBlocks pulls the full transactional history of the account from any (remote or local) RPC endpoint.\u003c/li\u003e
 \u003cli\u003eDuring the query, you may instruct TrueBlocks to cache the response locally, making future queries for this same address nearly instantaneous.\u003c/li\u003e
 \u003c/ol\u003e
-\u003ch3 id="use-chifra-init---all-to-get-the-entirity-of-the-index"\u003eUse chifra init \u0026ndash;all to get the entirity of the index\u003c/h3\u003e
+\u003ch3 id="use-chifra-init---all-to-get-the-entirety-of-the-index"\u003eUse chifra init \u0026ndash;all to get the entirety of the index\u003c/h3\u003e
 \u003cp\u003eTo get the entirety of the appearance index, run \u003ccode\u003echifra init --all\u003c/code\u003e.\u003c/p\u003e
 \u003cp\u003eIf you use this command and don\u0026rsquo;t run \u003ccode\u003echifra scrape\u003c/code\u003e, you will have to update the index periodically by running the command again. (\u003ca href="#Supplementary-how-can-I-see-when-the-manifest-was-last-published"\u003eRead about the finding the latest manifest\u003c/a\u003e).\u003c/p\u003e
 \u003cp\u003eFor detailed instructions, see the \u003ca href="/chifra/admin#chifra-pins"\u003e\u003ccode\u003echifra pins\u003c/code\u003e documentation\u003c/a\u003e.\u003c/p\u003e
