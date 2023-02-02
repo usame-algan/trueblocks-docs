@@ -1,20 +1,4 @@
-var suggestions=document.getElementById("suggestions"),userinput=document.getElementById("userinput");document.addEventListener("keydown",inputFocus);function inputFocus(e){e.keyCode===191&&(e.preventDefault(),userinput.focus()),e.keyCode===27&&(userinput.blur(),suggestions.classList.add("d-none"))}document.addEventListener("click",function(e){var t=suggestions.contains(e.target);t||suggestions.classList.add("d-none")}),document.addEventListener("keydown",suggestionFocus);function suggestionFocus(e){const s=suggestions.querySelectorAll("a"),o=[...s],t=o.indexOf(document.activeElement);let n=0;e.keyCode===38?(e.preventDefault(),n=t>0?t-1:0,s[n].focus()):e.keyCode===40&&(e.preventDefault(),n=t+1<o.length?t+1:t,s[n].focus())}(function(){var e=new FlexSearch.Document({tokenize:"forward",cache:100,document:{id:"id",store:["href","title","description"],index:["title","description","content"]}});e.add({id:0,href:"/docs/",title:"Introduction",description:"TrueBlocks Docs",content:`\u003cp\u003e\u003cfont color=red\u003e\u003cb\u003eAre you here for the OpenData Community Hackathon?\u003c/b\u003e\u003c/font\u003e\u003c/p\u003e
-\u003cul\u003e
-\u003cli\u003e\u003ca href="https://github.com/TrueBlocks/trueblocks-docker"\u003eInstall the docker version and download (or build) the Unchained Index\u003c/a\u003e\u003c/li\u003e
-\u003cli\u003eTutorials:
-\u003cul\u003e
-\u003cli\u003e\u003ca href="/blog/showing-erc-20-transfers/"\u003eShowing ERC20 transfers on the token contract\u003c/a\u003e\u003c/li\u003e
-\u003cli\u003e\u003ca href="https://tjayrush.medium.com/recipe-factories-ce78fa4c5f5b"\u003eListing contracts created by an address (including UniSwap)\u003c/a\u003e\u003c/li\u003e
-\u003cli\u003e\u003ca href="https://tjayrush.medium.com/recipe-monthly-token-balances-ff6a302fda80"\u003eMonthly ERC20 token balance for one or more addresses\u003c/a\u003e\u003c/li\u003e
-\u003cli\u003e\u003ca href="https://tjayrush.medium.com/calling-smart-contracts-with-chifra-state-call-ea03b8d35ea7"\u003eCalling into smart contracts with \u003ccode\u003echifra state\u003c/code\u003e\u003c/a\u003e\u003c/li\u003e
-\u003cli\u003e\u003ca href="https://medium.com/coinmonks/the-rent-is-too-damn-high-part-i-dc6695b25259"\u003eThe Rent is Too Damn High\u003c/a\u003e\u003c/li\u003e
-\u003cli\u003e\u003ca href="https://medium.com/coinmonks/commanding-the-line-ca5fe3496ae1"\u003eCommanding the Line\u003c/a\u003e\u003c/li\u003e
-\u003c/ul\u003e
-\u003c/li\u003e
-\u003c/ul\u003e
-\u003cp\u003e\u003cbig\u003e\u003cbig\u003e\u0026#8593\u003c/big\u003e\u003c/big\u003e\u003c/p\u003e
-\u003chr\u003e
-\u003cp\u003eAre blockchains really meeting their promise?\u003c/p\u003e
+var suggestions=document.getElementById("suggestions"),userinput=document.getElementById("userinput");document.addEventListener("keydown",inputFocus);function inputFocus(e){e.keyCode===191&&(e.preventDefault(),userinput.focus()),e.keyCode===27&&(userinput.blur(),suggestions.classList.add("d-none"))}document.addEventListener("click",function(e){var t=suggestions.contains(e.target);t||suggestions.classList.add("d-none")}),document.addEventListener("keydown",suggestionFocus);function suggestionFocus(e){const s=suggestions.querySelectorAll("a"),o=[...s],t=o.indexOf(document.activeElement);let n=0;e.keyCode===38?(e.preventDefault(),n=t>0?t-1:0,s[n].focus()):e.keyCode===40&&(e.preventDefault(),n=t+1<o.length?t+1:t,s[n].focus())}(function(){var e=new FlexSearch.Document({tokenize:"forward",cache:100,document:{id:"id",store:["href","title","description"],index:["title","description","content"]}});e.add({id:0,href:"/docs/",title:"Introduction",description:"TrueBlocks Docs",content:`\u003cp\u003eAre blockchains really meeting their promise?\u003c/p\u003e
 \u003ch2 id="problem-statement"\u003eProblem Statement\u003c/h2\u003e
 \u003cp\u003eIf you\u0026rsquo;re like us, you fell in love with blockchains because of the promise they provide: world-wide, private, and permissionless
 access to the most accurate and agreed-upon data ever produced. Near perfect data.\u003c/p\u003e
