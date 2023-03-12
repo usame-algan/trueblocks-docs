@@ -2,7 +2,7 @@
 You may also name addresses; grab the ABI file for a given address; add, delete, and remove monitors, and, most importantly, export transactional histories in various formats, This includes re-directing output to remote or local databases.
 To the right is a list of commands in this group."><meta name=twitter:site content="@TrueBlocks"><meta name=twitter:creator content="@TrueBlocks"><meta property="og:title" content="Accounts"><meta property="og:description" content="The Accounts group of commands is at the heart of TrueBlocks. They allow you to produce and analyze transactional histories for one or more Ethereum addresses.
 You may also name addresses; grab the ABI file for a given address; add, delete, and remove monitors, and, most importantly, export transactional histories in various formats, This includes re-directing output to remote or local databases.
-To the right is a list of commands in this group."><meta property="og:type" content="article"><meta property="og:url" content="/chifra/accounts/"><meta property="og:image" content="https://trueblocks.io/trueblocks.png"><meta property="article:modified_time" content="2023-01-12T12:50:15-05:00"><meta property="og:site_name" content="TrueBlocks"><meta property="og:locale" content="en_US"><script type=application/ld+json>{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"\/"},{"@type":"ListItem","position":2,"name":"Chifraaccounts","item":"\/chifraaccounts\/"}]}</script><meta name=theme-color content="#fff"><link rel=apple-touch-icon sizes=180x180 href=/apple-touch-icon.png><link rel=icon type=image/png sizes=32x32 href=/favicon-32x32.png><link rel=icon type=image/png sizes=16x16 href=/favicon-16x16.png><link rel=manifest href=/site.webmanifest></head><body class="chifra single"><div class="header-bar fixed-top"></div><script>(localStorage.getItem("theme")==="dark"||localStorage.getItem("theme")===null)&&document.body.classList.add("dark")</script><header class="navbar fixed-top navbar-expand-md navbar-light"><div class=container-fluid><input class="menu-btn order-0" type=checkbox id=menu-btn>
+To the right is a list of commands in this group."><meta property="og:type" content="article"><meta property="og:url" content="/chifra/accounts/"><meta property="og:image" content="https://trueblocks.io/trueblocks.png"><meta property="article:modified_time" content="2023-03-11T21:41:54-05:00"><meta property="og:site_name" content="TrueBlocks"><meta property="og:locale" content="en_US"><script type=application/ld+json>{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"\/"},{"@type":"ListItem","position":2,"name":"Chifraaccounts","item":"\/chifraaccounts\/"}]}</script><meta name=theme-color content="#fff"><link rel=apple-touch-icon sizes=180x180 href=/apple-touch-icon.png><link rel=icon type=image/png sizes=32x32 href=/favicon-32x32.png><link rel=icon type=image/png sizes=16x16 href=/favicon-16x16.png><link rel=manifest href=/site.webmanifest></head><body class="chifra single"><div class="header-bar fixed-top"></div><script>(localStorage.getItem("theme")==="dark"||localStorage.getItem("theme")===null)&&document.body.classList.add("dark")</script><header class="navbar fixed-top navbar-expand-md navbar-light"><div class=container-fluid><input class="menu-btn order-0" type=checkbox id=menu-btn>
 <label class="menu-icon d-md-none" for=menu-btn><span class=navicon></span></label>
 <a class="navbar-brand order-1 order-md-0 me-auto" href=/>TrueBlocks</a>
 <button id=mode class="btn btn-link order-2 order-md-4" type=button aria-label="Toggle mode">
@@ -142,11 +142,10 @@ Arguments:
 Flags:
   -e, --expand       expand search to include all fields (search name, address, and symbol otherwise)
   -m, --match_case   do case-sensitive search
-  -l, --all          include all accounts in the search
-  -c, --custom       include your custom named accounts
-  -p, --prefund      include prefund accounts
-  -n, --named        include well know token and airdrop addresses in the search
-  -a, --addr         display only addresses in the results (useful for scripting)
+  -l, --all          include all (including custom) names in the search
+  -c, --custom       include only custom named accounts in the search
+  -p, --prefund      include prefund accounts in the search
+  -a, --addr         display only addresses in the results (useful for scripting, assumes --no_header)
   -g, --tags         export the list of tags and subtags only
   -x, --fmt string   export format, one of [none|json*|txt|csv]
   -v, --verbose      enable verbose (increase detail with --log_level)
@@ -171,16 +170,16 @@ Arguments:
   addrs - a list of one or more smart contracts whose ABIs to display (required)
 
 Flags:
-  -k, --known          load common 'known' ABIs from cache
-  -s, --sol            extract the abi definition from the provided .sol file(s)
-  -f, --find strings   search for function or event declarations given a four- or 32-byte code(s)
-  -n, --hint strings   for the --find option only, provide hints to speed up the search
-  -x, --fmt string     export format, one of [none|json*|txt|csv]
-  -v, --verbose        enable verbose (increase detail with --log_level)
-  -h, --help           display this help screen
+  -k, --known           load common 'known' ABIs from cache
+  -f, --find strings    search for function or event declarations given a four- or 32-byte code(s)
+  -n, --hint strings    for the --find option only, provide hints to speed up the search
+  -e, --encode string   generate the 32-byte encoding for a given cannonical function or event signature
+  -c, --clean           remove an abi file for an address or all zero-length files if no address is given
+  -x, --fmt string      export format, one of [none|json*|txt|csv]
+  -v, --verbose         enable verbose (increase detail with --log_level)
+  -h, --help            display this help screen
 
 Notes:
-  - For the --sol option, place the solidity files in the current working folder.
   - Search for either four byte signatures or event signatures with the --find option.
 </code></pre><p>Data models produced by this tool:</p><ul><li><a href=/data-model/accounts/#abi>abi</a></li><li><a href=/data-model/other/#function>function</a></li><li><a href=/data-model/other/#parameter>parameter</a></li></ul><p>Links:</p><ul><li><a href=/api/#operation/accounts-abis>api docs</a></li><li><a href=https://github.com/TrueBlocks/trueblocks-core/tree/master/src/apps/chifra/internal/abis>source code</a></li></ul><h3 id=notes>notes<a href=#notes class=anchor aria-hidden=true>#</a></h3><p>The <code>chifra abis --find</code> option scans the cross product of two sets. The first set contains more than 100,000 function and event
 names. The second set contains approximately 700 function signatures. The cross product of these two sets creates 70,000,000
