@@ -61,7 +61,7 @@ If you need help with a particular step, see the \u003ca href="/docs/install/ins
 \u003cli\u003e
 \u003cp\u003eInstall or upgrade the build dependancies: \u003cem\u003egit\u003c/em\u003e, \u003cem\u003ecmake\u003c/em\u003e, \u003cem\u003eninja\u003c/em\u003e, \u003cem\u003ecurl\u003c/em\u003e, \u003cem\u003epython\u003c/em\u003e, \u003cem\u003eclang-format\u003c/em\u003e, \u003cem\u003ejq\u003c/em\u003e\u003c/p\u003e
 \u003cul\u003e
-\u003cli\u003e\u003ca href="/docs/install/install-core/#how-do-i-install-packages-on-the-command-line"\u003eInstall dependencies\u003c/a\u003e
+\u003cli\u003e\u003ca href="https://trueblocks.io/docs/install/install-troubleshooting/#installing-build-tools"\u003eInstall dependencies\u003c/a\u003e
 \u003cbr\u003e\u003cbr\u003e\u003c/li\u003e
 \u003c/ul\u003e
 \u003c/li\u003e
