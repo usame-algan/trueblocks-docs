@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://trueblocks.io/sitemap.xml
+Sitemap: /sitemap.xml

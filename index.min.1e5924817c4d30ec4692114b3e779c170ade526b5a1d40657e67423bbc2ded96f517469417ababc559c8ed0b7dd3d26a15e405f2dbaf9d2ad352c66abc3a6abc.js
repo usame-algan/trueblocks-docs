@@ -1,4 +1,4 @@
-var suggestions=document.getElementById("suggestions"),userinput=document.getElementById("userinput");document.addEventListener("keydown",inputFocus);function inputFocus(e){e.keyCode===191&&(e.preventDefault(),userinput.focus()),e.keyCode===27&&(userinput.blur(),suggestions.classList.add("d-none"))}document.addEventListener("click",function(e){var t=suggestions.contains(e.target);t||suggestions.classList.add("d-none")}),document.addEventListener("keydown",suggestionFocus);function suggestionFocus(e){const s=suggestions.querySelectorAll("a"),o=[...s],t=o.indexOf(document.activeElement);let n=0;e.keyCode===38?(e.preventDefault(),n=t>0?t-1:0,s[n].focus()):e.keyCode===40&&(e.preventDefault(),n=t+1<o.length?t+1:t,s[n].focus())}(function(){var e=new FlexSearch.Document({tokenize:"forward",cache:100,document:{id:"id",store:["href","title","description"],index:["title","description","content"]}});e.add({id:0,href:"https://trueblocks.io/docs/",title:"Introduction",description:"TrueBlocks Docs",content:`<p>Are blockchains really meeting their promise?</p>
+var suggestions=document.getElementById("suggestions"),userinput=document.getElementById("userinput");document.addEventListener("keydown",inputFocus);function inputFocus(e){e.keyCode===191&&(e.preventDefault(),userinput.focus()),e.keyCode===27&&(userinput.blur(),suggestions.classList.add("d-none"))}document.addEventListener("click",function(e){var t=suggestions.contains(e.target);t||suggestions.classList.add("d-none")}),document.addEventListener("keydown",suggestionFocus);function suggestionFocus(e){const s=suggestions.querySelectorAll("a"),o=[...s],t=o.indexOf(document.activeElement);let n=0;e.keyCode===38?(e.preventDefault(),n=t>0?t-1:0,s[n].focus()):e.keyCode===40&&(e.preventDefault(),n=t+1<o.length?t+1:t,s[n].focus())}(function(){var e=new FlexSearch.Document({tokenize:"forward",cache:100,document:{id:"id",store:["href","title","description"],index:["title","description","content"]}});e.add({id:0,href:"/docs/",title:"Introduction",description:"TrueBlocks Docs",content:`<p>Are blockchains really meeting their promise?</p>
 <h2 id="problem-statement">Problem Statement</h2>
 <p>If you&rsquo;re like us, you fell in love with blockchains because of the promise they provide: world-wide, private, and permissionless
 access to the most accurate and agreed-upon data ever produced. Near perfect data.</p>
@@ -48,7 +48,7 @@ telling them, with near perfect data, exactly what you spend your money on.</p>
 environment to provide you ingress and egress to the chain.</p>
 <h2 id="solution">Solution</h2>
 <p><a href="https://dappnode.io/">dAppNode</a>, <a href="https://github.com/ledgerwatch/erigon">Erigon</a> and TrueBlocks.</p>
-`}).add({id:1,href:"https://trueblocks.io/docs/install/install-core/",title:"Install core",description:"TrueBlocks works on Linux and Mac",content:`<p>These instructions assume you can navigate the command line and edit configuration files.
+`}).add({id:1,href:"/docs/install/install-core/",title:"Install core",description:"TrueBlocks works on Linux and Mac",content:`<p>These instructions assume you can navigate the command line and edit configuration files.
 If you need help with a particular step, see the <a href="/docs/install/install-troubleshooting">installation&rsquo;s troubleshooting section</a>.</p>
 <h2 id="installation">Installation</h2>
 <ul>
@@ -137,7 +137,7 @@ apiKey = &quot;&lt;your Etherscan api key&gt;&quot;   # optional
 <li><a href="/tags/tutorials/">View data science recipes</a></li>
 <li><a href="/docs/install/install-explorer/">Use the explorer application</a></li>
 </ul>
-`}).add({id:2,href:"https://trueblocks.io/docs/prologue/about-trueblocks/",title:"About TrueBlocks",description:"How does TrueBlocks address the problem",content:`<h2 id="trueblocks-provides-a-solution">TrueBlocks provides a solution</h2>
+`}).add({id:2,href:"/docs/prologue/about-trueblocks/",title:"About TrueBlocks",description:"How does TrueBlocks address the problem",content:`<h2 id="trueblocks-provides-a-solution">TrueBlocks provides a solution</h2>
 <p>We think there are at least three fundamental problems with the current Ethereum ecosystem:</p>
 <ol>
 <li>It&rsquo;s difficult to run your own Ethereum node (not really, see below).</li>
@@ -187,7 +187,7 @@ said</a>:</p>
 </blockquote>
 <h2 id="more-words">More words!</h2>
 <p>We&rsquo;ve got more words for you. <a href="/blog/a-long-winded-explanation-of-trueblocks/">This blog post covers these topics in much more detail</a>.</p>
-`}).add({id:3,href:"https://trueblocks.io/docs/install/build-unchained-index/",title:"Unchained Index",description:"There are three ways to get the index. Each way involves some tradeoff between initialization time, storage use, and local access.",content:`<table>
+`}).add({id:3,href:"/docs/install/build-unchained-index/",title:"Unchained Index",description:"There are three ways to get the index. Each way involves some tradeoff between initialization time, storage use, and local access.",content:`<table>
 <thead>
 <tr>
 <th>If you want&hellip;</th>
@@ -277,7 +277,7 @@ You can still use scrape, but you need to
 <p>To view the latest manifest published by TrueBlocks (note that there may be other publishers), pass our publisher id: <code>0xf503017d7baf7fbc0fff7492b751025c6a78179b</code> and the string <code>mainnet</code> to the <code>manifestHashMap()</code> method of the UnchainedIndex_V2 contract at https://etherscan.io/address/0x0c316b7042b419d07d343f2f4f5bd54ff731183d#readContract. This will return the <code>LATEST_IPFS_HASH</code> of the manifest. To fetch the manifest, use an IPFS client and <code>ipfs get &lt;LATEST_IPFS_HASH&gt;</code> or a gateway (such as the one TrueBlocks maintains) <code>https://ipfs.unchainedindex.io/ipfs/LATEST_IPFS_HASH</code>.</p>
 <p>Edit the resulting file to see the latest published data.</p>
 <p>Alternatively, you may always use <code>chifra chunks manifest</code> to see where the latest published index is at.</p>
-`}).add({id:4,href:"https://trueblocks.io/docs/prologue/design-philosophy/",title:"Design philosophy",description:"The philosophy behind the technical design of TrueBlocks",content:`<h2 id="the-three-commandments">The three commandments</h2>
+`}).add({id:4,href:"/docs/prologue/design-philosophy/",title:"Design philosophy",description:"The philosophy behind the technical design of TrueBlocks",content:`<h2 id="the-three-commandments">The three commandments</h2>
 <ol>
 <li>
 <p><strong>Let users query this data without asking third-parties for permission.</strong></p>
@@ -453,7 +453,7 @@ However, if we have to make a tradeoff, these values come after the core values.
 <li>Everyone needs to do accounting and pay taxes</li>
 <li>The node can, and should be, be improved</li>
 </ul>
-`}).add({id:5,href:"https://trueblocks.io/docs/install/install-explorer/",title:"Install explorer",description:"Explorer is the GUI frontend for TrueBlocks ",content:`<p>First, make sure that you have the <code>chifra-core</code> backend up and running,
+`}).add({id:5,href:"/docs/install/install-explorer/",title:"Install explorer",description:"Explorer is the GUI frontend for TrueBlocks ",content:`<p>First, make sure that you have the <code>chifra-core</code> backend up and running,
 then run the application from <a href="https://github.com/TrueBlocks/trueblocks-explorer">a clone of the explorer repo</a>.</p>
 <h2 id="before-you-begin">Before you begin</h2>
 <p>☑ Set up the trueblocks backend using the <a href="/docs/install/install-core">chifra installation instructions</a></p>
@@ -469,7 +469,7 @@ then run the application from <a href="https://github.com/TrueBlocks/trueblocks-
 <li>yarn develop</li>
 </ol>
 <p>Open your browser, and access the app from <code>localhost:1234</code>.</p>
-`}).add({id:6,href:"https://trueblocks.io/docs/prologue/do-i-need-a-node/",title:"Do I need a node?",description:"A node is not required, but that's the only way use Trueblocks as it is intended.",content:`<p>And if you are running your own node, TrueBlocks works best with Erigon.</p>
+`}).add({id:6,href:"/docs/prologue/do-i-need-a-node/",title:"Do I need a node?",description:"A node is not required, but that's the only way use Trueblocks as it is intended.",content:`<p>And if you are running your own node, TrueBlocks works best with Erigon.</p>
 <hr>
 <h2 id="why-having-a-node-is-the-best-option">Why having a node is the best option</h2>
 <p>Some benefits of TrueBlocks can be realized only when a user has their own node.
@@ -506,7 +506,7 @@ of building an index from your own node:</p>
 <li>You must trust the data TrueBlocks publishes (though you can verify the build)</li>
 <li>You can only query up to the last time TrueBlocks published the manifest</li>
 </ul>
-`}).add({id:7,href:"https://trueblocks.io/docs/prologue/multi-chain/",title:"Multi chain",description:"Instructions for accessing multiple chains from chifra",content:`<h2 id="accessing-multiple-chains">Accessing multiple chains</h2>
+`}).add({id:7,href:"/docs/prologue/multi-chain/",title:"Multi chain",description:"Instructions for accessing multiple chains from chifra",content:`<h2 id="accessing-multiple-chains">Accessing multiple chains</h2>
 <p>As of version 0.25.0-alpha, TrueBlocks supports accessing data from any EVM-based blockchain that supports the requisite RPC endpoints. This includes most blockchains we know of.</p>
 <p>In order to use this new feature, you have to do almost nothing. All you have to do is add <code>--chain &lt;chainname&gt;</code> to any chifra command (except one or two as detailed below).</p>
 <p>For example:</p>
@@ -628,7 +628,7 @@ symbol = &quot;ETH&quot;
 <p>Pricing using UniSwap only works on the mainnet. In the future, once more standardization appears relative to pricing on multiple chains, this choice will be revisited.</p>
 </li>
 </ol>
-`}).add({id:8,href:"https://trueblocks.io/docs/install/install-troubleshooting/",title:"Troubleshooting",description:"Solutions to Common Problems",content:`<p>This section lists solutions to problems some users have run into with the installation. If you continue to have trouble, <a href="https://github.com/TrueBlocks/trueblocks-core/issues">create an issue</a>, or ask us on discord.</p>
+`}).add({id:8,href:"/docs/install/install-troubleshooting/",title:"Troubleshooting",description:"Solutions to Common Problems",content:`<p>This section lists solutions to problems some users have run into with the installation. If you continue to have trouble, <a href="https://github.com/TrueBlocks/trueblocks-core/issues">create an issue</a>, or ask us on discord.</p>
 <h2 id="dependencies">Dependencies</h2>
 <h3 id="installing-go">Installing go</h3>
 <h4 id="how-do-i-check-my-go-version">How do I check my Go version?</h4>
@@ -744,4 +744,4 @@ this will be in the chain-specific config file, otherwise at the top level).</p>
 tracing = false
 archive = false
 </code></pre>
-`}).add({id:9,href:"https://trueblocks.io/docs/prologue/",title:"Prologue",description:"Prologue Doks.",content:""}),userinput.addEventListener("input",n,!0),suggestions.addEventListener("click",s,!0);function n(){var n,r=this.value,o=e.search(r,{limit:5,index:["content"],enrich:!0}),i=suggestions.childNodes,s=0,c=o.length;for(suggestions.classList.remove("d-none"),o.forEach(function(e){n=document.createElement("div"),n.innerHTML="<a href><span></span><span></span></a>",a=n.querySelector("a"),t=n.querySelector("span:first-child"),d=n.querySelector("span:nth-child(2)"),a.href=e.result[s].doc.href,t.textContent=e.result[s].doc.title,d.textContent=e.result[s].doc.description,suggestions.appendChild(n)});i.length>c;)suggestions.removeChild(i[s])}function s(){for(;suggestions.lastChild;)suggestions.removeChild(suggestions.lastChild);return!1}})()
+`}).add({id:9,href:"/docs/prologue/",title:"Prologue",description:"Prologue Doks.",content:""}),userinput.addEventListener("input",n,!0),suggestions.addEventListener("click",s,!0);function n(){var n,r=this.value,o=e.search(r,{limit:5,index:["content"],enrich:!0}),i=suggestions.childNodes,s=0,c=o.length;for(suggestions.classList.remove("d-none"),o.forEach(function(e){n=document.createElement("div"),n.innerHTML="<a href><span></span><span></span></a>",a=n.querySelector("a"),t=n.querySelector("span:first-child"),d=n.querySelector("span:nth-child(2)"),a.href=e.result[s].doc.href,t.textContent=e.result[s].doc.title,d.textContent=e.result[s].doc.description,suggestions.appendChild(n)});i.length>c;)suggestions.removeChild(i[s])}function s(){for(;suggestions.lastChild;)suggestions.removeChild(suggestions.lastChild);return!1}})()
