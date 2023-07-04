@@ -2,7 +2,7 @@
 To the right is a list of commands in this group. Click on a command to see its full documentation.
 chifra blocks The chifra blocks tool retrieves block data from your Ethereum node or, if previously cached, from the TrueBlocks cache."><meta name=twitter:site content="@TrueBlocks"><meta name=twitter:creator content="@TrueBlocks"><meta property="og:title" content="Chain data"><meta property="og:description" content="The Chain Data group of tools extract raw blockchain data directly from the node. You may extract block data, transactional data, receipts, logs, traces, and other information. Each tool has it own set of options, allowing you to get exactly the data you need.
 To the right is a list of commands in this group. Click on a command to see its full documentation.
-chifra blocks The chifra blocks tool retrieves block data from your Ethereum node or, if previously cached, from the TrueBlocks cache."><meta property="og:type" content="article"><meta property="og:url" content="/chifra/chaindata/"><meta property="og:image" content="https://trueblocks.io/trueblocks.png"><meta property="article:modified_time" content="2023-04-20T06:52:42-04:00"><meta property="og:site_name" content="TrueBlocks"><meta property="og:locale" content="en_US"><script type=application/ld+json>{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"\/"},{"@type":"ListItem","position":2,"name":"Chifrachaindata","item":"\/chifrachaindata\/"}]}</script><meta name=theme-color content="#fff"><link rel=apple-touch-icon sizes=180x180 href=/apple-touch-icon.png><link rel=icon type=image/png sizes=32x32 href=/favicon-32x32.png><link rel=icon type=image/png sizes=16x16 href=/favicon-16x16.png><link rel=manifest href=/site.webmanifest></head><body class="chifra single"><div class="header-bar fixed-top"></div><script>(localStorage.getItem("theme")==="dark"||localStorage.getItem("theme")===null)&&document.body.classList.add("dark")</script><header class="navbar fixed-top navbar-expand-md navbar-light"><div class=container-fluid><input class="menu-btn order-0" type=checkbox id=menu-btn>
+chifra blocks The chifra blocks tool retrieves block data from your Ethereum node or, if previously cached, from the TrueBlocks cache."><meta property="og:type" content="article"><meta property="og:url" content="/chifra/chaindata/"><meta property="og:image" content="https://trueblocks.io/trueblocks.png"><meta property="article:modified_time" content="2023-07-04T17:59:04-04:00"><meta property="og:site_name" content="TrueBlocks"><meta property="og:locale" content="en_US"><script type=application/ld+json>{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"\/"},{"@type":"ListItem","position":2,"name":"Chifrachaindata","item":"\/chifrachaindata\/"}]}</script><meta name=theme-color content="#fff"><link rel=apple-touch-icon sizes=180x180 href=/apple-touch-icon.png><link rel=icon type=image/png sizes=32x32 href=/favicon-32x32.png><link rel=icon type=image/png sizes=16x16 href=/favicon-16x16.png><link rel=manifest href=/site.webmanifest></head><body class="chifra single"><div class="header-bar fixed-top"></div><script>(localStorage.getItem("theme")==="dark"||localStorage.getItem("theme")===null)&&document.body.classList.add("dark")</script><header class="navbar fixed-top navbar-expand-md navbar-light"><div class=container-fluid><input class="menu-btn order-0" type=checkbox id=menu-btn>
 <label class="menu-icon d-md-none" for=menu-btn><span class=navicon></span></label>
 <a class="navbar-brand order-1 order-md-0 me-auto" href=/>TrueBlocks</a>
 <button id=mode class="btn btn-link order-2 order-md-4" type=button aria-label="Toggle mode">
@@ -24,19 +24,23 @@ Arguments:
   blocks - a space-separated list of one or more block identifiers (required)
 
 Flags:
-  -e, --hashes        display only transaction hashes, default is to display full transaction detail
-  -c, --uncles        display uncle blocks (if any) instead of the requested block
-  -t, --traces        export the traces from the block as opposed to the block data
-  -s, --apps          display a list of uniq address appearances in the block
-  -u, --uniq          display a list of uniq address appearances per transaction
-  -f, --flow string   for the uniq and apps options only, export only from or to (including trace from or to)
-                      One of [ from | to | reward ]
-  -U, --count         display the number of the lists of appearances for --addrs or --uniq
-  -o, --cache         force a write of the block to the cache
-  -D, --decache       removes a block and any transactions or traces in the block from the cache
-  -x, --fmt string    export format, one of [none|json*|txt|csv]
-  -v, --verbose       enable verbose (increase detail with --log_level)
-  -h, --help          display this help screen
+  -e, --hashes            display only transaction hashes, default is to display full transaction detail
+  -c, --uncles            display uncle blocks (if any) instead of the requested block
+  -t, --traces            export the traces from the block as opposed to the block data
+  -u, --uniq              display a list of uniq address appearances per transaction
+  -f, --flow string       for the uniq option only, export only from or to (including trace from or to)
+                          One of [ from | to | reward ]
+  -l, --logs              display only the logs found in the block(s)
+  -m, --emitter strings   for the --logs option only, filter logs to show only those logs emitted by the given address(es)
+  -B, --topic strings     for the --logs option only, filter logs to show only those with this topic(s)
+  -a, --articulate        for the --logs option only, articulate the retrieved data if ABIs can be found
+  -r, --big_range uint    for the --logs option only, allow for block ranges larger than 500 (default 500)
+  -U, --count             display the number of the lists of appearances for --addrs or --uniq
+  -o, --cache             force a write of the block to the cache
+  -D, --decache           removes a block and any transactions or traces in the block from the cache
+  -x, --fmt string        export format, one of [none|json*|txt|csv]
+  -v, --verbose           enable verbose (increase detail with --log_level)
+  -h, --help              display this help screen
 
 Notes:
   - Blocks is a space-separated list of values, a start-end range, a special, or any combination.
@@ -45,8 +49,8 @@ Notes:
   - With the --logs option, optionally specify one or more --emitter, one or more --topics, either or both.
   - The --logs option is significantly faster if you provide an --emitter and/or a --topic.
   - Multiple topics match on topic0, topic1, and so on, not on different topic0's.
-  - Large block ranges may crash the node, use --big_range to specify a larger range.
-</code></pre><p>Data models produced by this tool:</p><ul><li><a href=/data-model/accounts/#appearance>appearance</a></li><li><a href=/data-model/chaindata/#block>block</a></li><li><a href=/data-model/chaindata/#log>log</a></li><li><a href=/data-model/chaindata/#trace>trace</a></li><li><a href=/data-model/chaindata/#traceaction>traceaction</a></li><li><a href=/data-model/chaindata/#traceresult>traceresult</a></li><li><a href=/data-model/chaindata/#blockcount>blockcount</a></li></ul><p>Links:</p><ul><li><a href=/api/#operation/chaindata-blocks>api docs</a></li><li><a href=https://github.com/TrueBlocks/trueblocks-core/tree/master/src/apps/chifra/internal/blocks>source code</a></li></ul><h2 id=chifra-transactions>chifra transactions<a href=#chifra-transactions class=anchor aria-hidden=true>#</a></h2><p>The <code>chifra transactions</code> tool retrieves transactions directly from the Ethereum node (using the <code>--raw</code>
+  - For the --logs option, large block ranges may crash the node, use --big_range to specify a larger range.
+</code></pre><p>Data models produced by this tool:</p><ul><li><a href=/data-model/accounts/#appearance>appearance</a></li><li><a href=/data-model/chaindata/#block>block</a></li><li><a href=/data-model/chaindata/#log>log</a></li><li><a href=/data-model/chaindata/#logfilter>logfilter</a></li><li><a href=/data-model/chaindata/#trace>trace</a></li><li><a href=/data-model/chaindata/#traceaction>traceaction</a></li><li><a href=/data-model/chaindata/#traceresult>traceresult</a></li><li><a href=/data-model/chaindata/#blockcount>blockcount</a></li></ul><p>Links:</p><ul><li><a href=/api/#operation/chaindata-blocks>api docs</a></li><li><a href=https://github.com/TrueBlocks/trueblocks-core/tree/master/src/apps/chifra/internal/blocks>source code</a></li></ul><h2 id=chifra-transactions>chifra transactions<a href=#chifra-transactions class=anchor aria-hidden=true>#</a></h2><p>The <code>chifra transactions</code> tool retrieves transactions directly from the Ethereum node (using the <code>--raw</code>
 option) or from the TrueBlocks cache (if present). You may specify multiple transaction identifiers
 per invocation. Unlike the Ethereum RPC, the reported transactions include the transaction&rsquo;s receipt
 and generated logs.</p><p>The <code>--articulate</code> option fetches the ABI from each encountered smart contract (including those
@@ -67,6 +71,9 @@ Flags:
   -u, --uniq                 display a list of uniq addresses found in the transaction
   -f, --flow string          for the uniq option only, export only from or to (including trace from or to)
                              One of [ from | to ]
+  -l, --logs                 display only the logs found in the transaction(s)
+  -m, --emitter strings      for the --logs option only, filter logs to show only those logs emitted by the given address(es)
+  -B, --topic strings        for the --logs option only, filter logs to show only those with this topic(s)
   -A, --account_for string   reconcile the transaction as per the provided address
   -o, --cache                force the results of the query into the tx cache (and the trace cache if applicable)
   -D, --decache              removes a transactions and any traces in the transaction from the cache
@@ -78,7 +85,8 @@ Notes:
   - The transactions list may be one or more transaction hashes, blockNumber.transactionID pairs, or a blockHash.transactionID pairs.
   - This tool checks for valid input syntax, but does not check that the transaction requested actually exists.
   - If the queried node does not store historical state, the results for most older transactions are undefined.
-</code></pre><p>Data models produced by this tool:</p><ul><li><a href=/data-model/chaindata/#transaction>transaction</a></li><li><a href=/data-model/chaindata/#transfer>transfer</a></li></ul><p>Links:</p><ul><li><a href=/api/#operation/chaindata-transactions>api docs</a></li><li><a href=https://github.com/TrueBlocks/trueblocks-core/tree/master/src/apps/chifra/internal/transactions>source code</a></li></ul><h2 id=chifra-receipts>chifra receipts<a href=#chifra-receipts class=anchor aria-hidden=true>#</a></h2><p><code>chifra receipts</code> returns the given transaction&rsquo;s receipt. You may specify multiple transaction identifiers
+  - The --traces option, when used with --account_for, will descend into traces to complete reconciliations.
+</code></pre><p>Data models produced by this tool:</p><ul><li><a href=/data-model/accounts/#statement>statement</a></li><li><a href=/data-model/chaindata/#transaction>transaction</a></li><li><a href=/data-model/chaindata/#transfer>transfer</a></li></ul><p>Links:</p><ul><li><a href=/api/#operation/chaindata-transactions>api docs</a></li><li><a href=https://github.com/TrueBlocks/trueblocks-core/tree/master/src/apps/chifra/internal/transactions>source code</a></li></ul><h2 id=chifra-receipts>chifra receipts<a href=#chifra-receipts class=anchor aria-hidden=true>#</a></h2><p><code>chifra receipts</code> returns the given transaction&rsquo;s receipt. You may specify multiple transaction identifiers
 per invocation.</p><p>The <code>--articulate</code> option fetches the ABI from each encountered smart contract (including those
 encountered in a trace&ndash;if the <code>--trace</code> option is enabled) to better describe the reported data.</p><p>Generally speaking, this tool is less useful than others as you may report the same data using
 <code>chifra transactions</code> and more focused data using <code>chifra logs</code>. It is included here for
@@ -123,7 +131,7 @@ Notes:
   - This tool checks for valid input syntax, but does not check that the transaction requested actually exists.
   - If the queried node does not store historical state, the results for most older transactions are undefined.
   - If you specify a 32-byte hash, it will be assumed to be a transaction hash, if it is not, the hash will be used as a topic.
-</code></pre><p>Data models produced by this tool:</p><ul><li><a href=/data-model/chaindata/#log>log</a></li></ul><p>Links:</p><ul><li><a href=/api/#operation/chaindata-logs>api docs</a></li><li><a href=https://github.com/TrueBlocks/trueblocks-core/tree/master/src/apps/chifra/internal/logs>source code</a></li></ul><h2 id=chifra-traces>chifra traces<a href=#chifra-traces class=anchor aria-hidden=true>#</a></h2><p>The <code>chifra traces</code> tool retrieves a transaction&rsquo;s traces. You may specify multiple transaction
+</code></pre><p>Data models produced by this tool:</p><ul><li><a href=/data-model/chaindata/#log>log</a></li><li><a href=/data-model/chaindata/#logfilter>logfilter</a></li></ul><p>Links:</p><ul><li><a href=/api/#operation/chaindata-logs>api docs</a></li><li><a href=https://github.com/TrueBlocks/trueblocks-core/tree/master/src/apps/chifra/internal/logs>source code</a></li></ul><h2 id=chifra-traces>chifra traces<a href=#chifra-traces class=anchor aria-hidden=true>#</a></h2><p>The <code>chifra traces</code> tool retrieves a transaction&rsquo;s traces. You may specify multiple transaction
 identifiers per invocation.</p><p>The <code>--articulate</code> option fetches the ABI from each encountered smart contract to better describe
 the reported data.</p><p>The <code>--filter</code> option calls your node&rsquo;s <code>trace_filter</code> routine (if available) using a bang-separated
 string of the same values used by <code>trace_fitler</code>.</p><pre><code class=language-[plaintext]>Purpose:
@@ -169,7 +177,8 @@ Flags:
   -U, --count        with --timestamps only, returns the number of timestamps in the cache
   -r, --repair       with --timestamps only, repairs block(s) in the block range by re-querying from the chain
   -c, --check        with --timestamps only, checks the validity of the timestamp data
-      --update       with --timestamps only, bring the timestamp database forward to the latest block
+  -u, --update       with --timestamps only, bring the timestamp database forward to the latest block
+  -d, --deep         with --timestamps --check only, verifies timestamps from on chain (slow)
   -x, --fmt string   export format, one of [none|json*|txt|csv]
   -v, --verbose      enable verbose (increase detail with --log_level)
   -h, --help         display this help screen
