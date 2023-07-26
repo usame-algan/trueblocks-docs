@@ -2,7 +2,7 @@
 You may also name addresses; grab the ABI file for a given address; add, delete, and remove monitors, and, most importantly, export transactional histories in various formats, This includes re-directing output to remote or local databases.
 To the right is a list of commands in this group."><meta name=twitter:site content="@TrueBlocks"><meta name=twitter:creator content="@TrueBlocks"><meta property="og:title" content="Accounts"><meta property="og:description" content="The Accounts group of commands is at the heart of TrueBlocks. They allow you to produce and analyze transactional histories for one or more Ethereum addresses.
 You may also name addresses; grab the ABI file for a given address; add, delete, and remove monitors, and, most importantly, export transactional histories in various formats, This includes re-directing output to remote or local databases.
-To the right is a list of commands in this group."><meta property="og:type" content="article"><meta property="og:url" content="/chifra/accounts/"><meta property="og:image" content="https://trueblocks.io/trueblocks.png"><meta property="article:modified_time" content="2023-07-04T17:59:04-04:00"><meta property="og:site_name" content="TrueBlocks"><meta property="og:locale" content="en_US"><script type=application/ld+json>{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"\/"},{"@type":"ListItem","position":2,"name":"Chifraaccounts","item":"\/chifraaccounts\/"}]}</script><meta name=theme-color content="#fff"><link rel=apple-touch-icon sizes=180x180 href=/apple-touch-icon.png><link rel=icon type=image/png sizes=32x32 href=/favicon-32x32.png><link rel=icon type=image/png sizes=16x16 href=/favicon-16x16.png><link rel=manifest href=/site.webmanifest></head><body class="chifra single"><div class="header-bar fixed-top"></div><script>(localStorage.getItem("theme")==="dark"||localStorage.getItem("theme")===null)&&document.body.classList.add("dark")</script><header class="navbar fixed-top navbar-expand-md navbar-light"><div class=container-fluid><input class="menu-btn order-0" type=checkbox id=menu-btn>
+To the right is a list of commands in this group."><meta property="og:type" content="article"><meta property="og:url" content="/chifra/accounts/"><meta property="og:image" content="https://trueblocks.io/trueblocks.png"><meta property="article:modified_time" content="2023-07-25T22:46:10-04:00"><meta property="og:site_name" content="TrueBlocks"><meta property="og:locale" content="en_US"><script type=application/ld+json>{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"\/"},{"@type":"ListItem","position":2,"name":"Chifraaccounts","item":"\/chifraaccounts\/"}]}</script><meta name=theme-color content="#fff"><link rel=apple-touch-icon sizes=180x180 href=/apple-touch-icon.png><link rel=icon type=image/png sizes=32x32 href=/favicon-32x32.png><link rel=icon type=image/png sizes=16x16 href=/favicon-16x16.png><link rel=manifest href=/site.webmanifest></head><body class="chifra single"><div class="header-bar fixed-top"></div><script>(localStorage.getItem("theme")==="dark"||localStorage.getItem("theme")===null)&&document.body.classList.add("dark")</script><header class="navbar fixed-top navbar-expand-md navbar-light"><div class=container-fluid><input class="menu-btn order-0" type=checkbox id=menu-btn>
 <label class="menu-icon d-md-none" for=menu-btn><span class=navicon></span></label>
 <a class="navbar-brand order-1 order-md-0 me-auto" href=/>TrueBlocks</a>
 <button id=mode class="btn btn-link order-2 order-md-4" type=button aria-label="Toggle mode">
@@ -26,12 +26,13 @@ Arguments:
 
 Flags:
   -U, --count               display only the count of records for each monitor
-  -n, --no_zero             for the --count option only, suppress the display of zero appearance accounts
+  -z, --no_zero             for the --count option only, suppress the display of zero appearance accounts
   -b, --bounds              report first and last block this address appears
   -u, --unripe              list transactions labeled upripe (i.e. less than 28 blocks old)
   -s, --silent              freshen the monitor only (no reporting)
-  -c, --first_record uint   the first record to process (default 1)
+  -c, --first_record uint   the first record to process
   -e, --max_records uint    the maximum number of records to process (default 250)
+  -E, --reversed            produce results in reverse chronological order
   -F, --first_block uint    first block to export (inclusive, ignored when freshening)
   -L, --last_block uint     last block to export (inclusive, ignored when freshening)
   -x, --fmt string          export format, one of [none|json*|txt|csv]
@@ -67,11 +68,11 @@ Flags:
   -n, --neighbors           export the neighbors of the given address
   -C, --accounting          attach accounting records to the exported data (applies to transactions export only)
   -A, --statements          for the accounting options only, export only statements
+  -b, --balances            traverse the transaction history and show each change in ETH balances
   -a, --articulate          articulate transactions, traces, logs, and outputs
-  -o, --cache               write transactions to the cache (see notes)
-  -R, --cache_traces        write traces to the cache (see notes)
+  -R, --cache_traces        force the transaction's traces into the cache
   -U, --count               only available for --appearances mode, if present, return only the number of records
-  -c, --first_record uint   the first record to process (default 1)
+  -c, --first_record uint   the first record to process
   -e, --max_records uint    the maximum number of records to process (default 250)
   -N, --relevant            for log and accounting export only, export only logs relevant to one of the given export addresses
   -m, --emitter strings     for log export only, export only logs if emitted by one of these address(es)
@@ -81,8 +82,12 @@ Flags:
                             One of [ in | out | zero ]
   -y, --factory             for --traces only, report addresses created by (or self-destructed by) the given address(es)
   -u, --unripe              export transactions labeled upripe (i.e. less than 28 blocks old)
+  -E, --reversed            produce results in reverse chronological order
+  -z, --no_zero             for the --count option only, suppress the display of zero appearance accounts
   -F, --first_block uint    first block to process (inclusive)
   -L, --last_block uint     last block to process (inclusive)
+  -H, --ether               specify value in ether
+  -o, --cache               force the results of the query into the cache
   -x, --fmt string          export format, one of [none|json*|txt|csv]
   -v, --verbose             enable verbose (increase detail with --log_level)
   -h, --help                display this help screen
@@ -94,8 +99,9 @@ Notes:
   - The --logs option is significantly faster if you provide an --emitter or a --topic.
   - Neighbors include every address that appears in any transaction in which the export address also appears.
   - If provided, --max_records dominates, also, if provided, --first_record overrides --first_block.
-</code></pre><p>Data models produced by this tool:</p><ul><li><a href=/data-model/accounts/#appearance>appearance</a></li><li><a href=/data-model/accounts/#reconciliation>reconciliation</a></li><li><a href=/data-model/accounts/#monitor>monitor</a></li><li><a href=/data-model/accounts/#appearancecount>appearancecount</a></li><li><a href=/data-model/accounts/#statement>statement</a></li><li><a href=/data-model/chaindata/#transaction>transaction</a></li><li><a href=/data-model/chaindata/#transfer>transfer</a></li><li><a href=/data-model/chaindata/#receipt>receipt</a></li><li><a href=/data-model/chaindata/#log>log</a></li><li><a href=/data-model/chaindata/#trace>trace</a></li><li><a href=/data-model/chaindata/#traceaction>traceaction</a></li><li><a href=/data-model/chaindata/#traceresult>traceresult</a></li><li><a href=/data-model/other/#function>function</a></li><li><a href=/data-model/other/#parameter>parameter</a></li></ul><p>Links:</p><ul><li><a href=/api/#operation/accounts-export>api docs</a></li><li><a href=https://github.com/TrueBlocks/trueblocks-core/tree/master/src/apps/chifra/internal/export>source code</a></li></ul><h2 id=chifra-monitors>chifra monitors<a href=#chifra-monitors class=anchor aria-hidden=true>#</a></h2><p><code>chifra monitors`` has two purposes: (1) to </code>&ndash;watch<code>a set of addresses. This function is in its early stages and will be better explained elsewhere. Please see an example of what one may do with</code>chifra monitors &ndash;watch` <a href=https://tokenomics.io/>here</a>, and (2) allows one to manage existing
-monitored addresses.</p><p>A &ldquo;monitor&rdquo; is simply a file on a hard drive that represents the transactional history of a given
+  - The --first_record and --max_record options are zero-based (as are the block options).
+  - The _block and _record options are ignored when used with the --count option.
+</code></pre><p>Data models produced by this tool:</p><ul><li><a href=/data-model/accounts/#appearance>appearance</a></li><li><a href=/data-model/accounts/#reconciliation>reconciliation</a></li><li><a href=/data-model/accounts/#monitor>monitor</a></li><li><a href=/data-model/accounts/#appearancecount>appearancecount</a></li><li><a href=/data-model/accounts/#statement>statement</a></li><li><a href=/data-model/chaindata/#transaction>transaction</a></li><li><a href=/data-model/chaindata/#transfer>transfer</a></li><li><a href=/data-model/chaindata/#receipt>receipt</a></li><li><a href=/data-model/chaindata/#log>log</a></li><li><a href=/data-model/chaindata/#trace>trace</a></li><li><a href=/data-model/chaindata/#traceaction>traceaction</a></li><li><a href=/data-model/chaindata/#traceresult>traceresult</a></li><li><a href=/data-model/chainstate/#tokenbalance>tokenbalance</a></li><li><a href=/data-model/other/#function>function</a></li><li><a href=/data-model/other/#parameter>parameter</a></li></ul><p>Links:</p><ul><li><a href=/api/#operation/accounts-export>api docs</a></li><li><a href=https://github.com/TrueBlocks/trueblocks-core/tree/master/src/apps/chifra/internal/export>source code</a></li></ul><h2 id=chifra-monitors>chifra monitors<a href=#chifra-monitors class=anchor aria-hidden=true>#</a></h2><p><code>chifra monitors`` has two purposes: (1) to </code>&ndash;watch<code>a set of addresses. This function is in its early stages and will be better explained elsewhere. Please see an example of what one may do with</code>chifra monitors &ndash;watch`, and (2) allows one to manage existing monitored addresses.</p><p>A &ldquo;monitor&rdquo; is simply a file on a hard drive that represents the transactional history of a given
 Ethereum address. Monitors are very small, being only the <code>&lt;block_no>&lt;tx_id></code> pair representing each
 appearance of an address. Monitor files are only created when a user expresses interest in a
 particular address. In this way, TrueBlock is able to continue to work on small desktop or even
@@ -163,7 +169,7 @@ Notes:
   - The tool will accept up to three terms, each of which must match against any field in the database.
   - The --match_case option enables case sensitive matching.
 </code></pre><p>Data models produced by this tool:</p><ul><li><a href=/data-model/accounts/#name>name</a></li></ul><p>Links:</p><ul><li><a href=/api/#operation/accounts-names>api docs</a></li><li><a href=https://github.com/TrueBlocks/trueblocks-core/tree/master/src/apps/chifra/internal/names>source code</a></li></ul><h2 id=chifra-abis>chifra abis<a href=#chifra-abis class=anchor aria-hidden=true>#</a></h2><p><code>chifra abis</code> retrieves ABI files for the given address(es). It searches for the ABI in this order:
-the current local folder, the TrueBlocks cache, <a href=http://etherscan.io>Etherscan</a>, or (in the
+the current local folder, the TrueBlocks cache, Etherscan, or (in the
 future) ENS and Sourcify.</p><p>While this tool may be used from the command line and the API, its primary purpose is in support of
 tools such as <code>chifra export</code> to support the <code>--articulate</code> option.</p><p>The <code>--known</code> option prints a list of semi-standard function signatures such as the ERC20 standard,
 ERC 721 standard, various functions from OpenZeppelin, various Uniswap functions, etc. As an
