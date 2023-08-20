@@ -2,7 +2,7 @@
 See the API documentation for all information about using the API.
 To the right is a list of commands in this group."><meta name=twitter:site content="@TrueBlocks"><meta name=twitter:creator content="@TrueBlocks"><meta property="og:title" content="Admin"><meta property="og:description" content="The Admin gourp of commands allows you to query the status of the TrueBlocks system and manage various apects including the Unchained Index. You may query the status; query for information about TrueBlocks caches; control the creation, sharing, and pinning of the Unchained Index; and even serve the data through an API.
 See the API documentation for all information about using the API.
-To the right is a list of commands in this group."><meta property="og:type" content="article"><meta property="og:url" content="/chifra/admin/"><meta property="og:image" content="/trueblocks.png"><meta property="article:modified_time" content="2023-07-25T22:46:10-04:00"><meta property="og:site_name" content="TrueBlocks"><meta property="og:locale" content="en_US"><script type=application/ld+json>{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https:\/\/trueblocks.io"},{"@type":"ListItem","position":3,"name":"Chifra","item":"https:\/\/trueblocks.io\/chifra\/"},{"@type":"ListItem","position":4,"name":"Admin","item":"https:\/\/trueblocks.io\/chifra\/admin\/"}]}</script><meta name=theme-color content="#fff"><link rel=apple-touch-icon sizes=180x180 href=/apple-touch-icon.png><link rel=icon type=image/png sizes=32x32 href=/favicon-32x32.png><link rel=icon type=image/png sizes=16x16 href=/favicon-16x16.png><link rel=manifest href=/site.webmanifest><script>(function(e,t,n,s,o,i,a){e[o]=e[o]||function(){(e[o].q=e[o].q||[]).push(arguments)},i=t.createElement(n),i.async=1,i.src=s,a=t.getElementsByTagName(n)[0],a.parentNode.insertBefore(i,a)})(window,document,"script","https://assets.mailerlite.com/js/universal.js","ml"),ml("account","529446")</script></head><body class="chifra single"><div class="header-bar fixed-top"></div><script>(localStorage.getItem("theme")==="dark"||localStorage.getItem("theme")===null)&&document.body.classList.add("dark")</script><header class="navbar fixed-top navbar-expand-md navbar-light"><div class=container-fluid><input class="menu-btn order-0" type=checkbox id=menu-btn>
+To the right is a list of commands in this group."><meta property="og:type" content="article"><meta property="og:url" content="/chifra/admin/"><meta property="og:image" content="/trueblocks.png"><meta property="article:modified_time" content="2023-08-19T22:15:33-04:00"><meta property="og:site_name" content="TrueBlocks"><meta property="og:locale" content="en_US"><script type=application/ld+json>{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https:\/\/trueblocks.io"},{"@type":"ListItem","position":3,"name":"Chifra","item":"https:\/\/trueblocks.io\/chifra\/"},{"@type":"ListItem","position":4,"name":"Admin","item":"https:\/\/trueblocks.io\/chifra\/admin\/"}]}</script><meta name=theme-color content="#fff"><link rel=apple-touch-icon sizes=180x180 href=/apple-touch-icon.png><link rel=icon type=image/png sizes=32x32 href=/favicon-32x32.png><link rel=icon type=image/png sizes=16x16 href=/favicon-16x16.png><link rel=manifest href=/site.webmanifest><script>(function(e,t,n,s,o,i,a){e[o]=e[o]||function(){(e[o].q=e[o].q||[]).push(arguments)},i=t.createElement(n),i.async=1,i.src=s,a=t.getElementsByTagName(n)[0],a.parentNode.insertBefore(i,a)})(window,document,"script","https://assets.mailerlite.com/js/universal.js","ml"),ml("account","529446")</script></head><body class="chifra single"><div class="header-bar fixed-top"></div><script>(localStorage.getItem("theme")==="dark"||localStorage.getItem("theme")===null)&&document.body.classList.add("dark")</script><header class="navbar fixed-top navbar-expand-md navbar-light"><div class=container-fluid><input class="menu-btn order-0" type=checkbox id=menu-btn>
 <label class="menu-icon d-md-none" for=menu-btn><span class=navicon></span></label>
 <a class="navbar-brand order-1 order-md-0 me-auto" href=/>TrueBlocks</a>
 <button id=mode class="btn btn-link order-2 order-md-4" type=button aria-label="Toggle mode">
@@ -26,7 +26,7 @@ Arguments:
 Flags:
   -a, --paths        show the configuration paths for the system
   -x, --fmt string   export format, one of [none|json*|txt|csv]
-  -v, --verbose      enable verbose (increase detail with --log_level)
+  -v, --verbose      enable verbose output
   -h, --help         display this help screen
 </code></pre><p>Data models produced by this tool:</p><ul><li><a href=/data-model/admin/#chain>chain</a></li></ul><p>Links:</p><ul><li><a href=/api/#operation/admin-config>api docs</a></li><li><a href=https://github.com/TrueBlocks/trueblocks-core/tree/master/src/apps/chifra/internal/config>source code</a></li></ul><h2 id=chifra-status>chifra status<a href=#chifra-status class=anchor aria-hidden=true>#</a></h2><pre><code class=language-[plaintext]>Purpose:
   Report on the state of the internal binary caches.
@@ -36,13 +36,14 @@ Usage:
 
 Arguments:
   modes - the (optional) name of the binary cache to report on, terse otherwise
-	One or more of [ index | blooms | blocks | txs | traces | monitors | names | abis | recons | slurps | staging | unripe | maps | some | all ]
+	One or more of [ index | blooms | blocks | transactions | traces | logs | statements | results | state | tokens | monitors | names | abis | slurps | staging | unripe | maps | some | all ]
 
 Flags:
   -c, --first_record uint   the first record to process
   -e, --max_records uint    the maximum number of records to process (default 10000)
+  -a, --chains              include a list of chain configurations in the output
   -x, --fmt string          export format, one of [none|json*|txt|csv]
-  -v, --verbose             enable verbose (increase detail with --log_level)
+  -v, --verbose             enable verbose output
   -h, --help                display this help screen
 
 Notes:
@@ -71,7 +72,7 @@ Flags:
   -m, --monitor         instruct the node to start the monitors tool
   -g, --grpc            run gRPC server to serve names
   -x, --fmt string      export format, one of [none|json*|txt|csv]
-  -v, --verbose         enable verbose (increase detail with --log_level)
+  -v, --verbose         enable verbose output
   -h, --help            display this help screen
 
 Notes:
@@ -101,7 +102,7 @@ Flags:
   -r, --remote             pin new chunks to the gateway (requires pinning service keys)
   -s, --sleep float        seconds to sleep between scraper passes (default 14)
   -l, --start_block uint   first block to visit when scraping (snapped back to most recent snap_to_grid mark)
-  -v, --verbose            enable verbose (increase detail with --log_level)
+  -v, --verbose            enable verbose output
   -h, --help               display this help screen
 </code></pre><p>Data models produced by this tool:</p><ul><li><a href=/data-model/admin/#manifest>manifest</a></li><li><a href=/data-model/admin/#chunkrecord>chunkrecord</a></li></ul><p>Links:</p><ul><li><a href=/api/#operation/admin-scrape>api docs</a></li><li><a href=https://github.com/TrueBlocks/trueblocks-core/tree/master/src/apps/chifra/internal/scrape>source code</a></li></ul><h3 id=configuration>configuration<a href=#configuration class=anchor aria-hidden=true>#</a></h3><p>Each of the following additional configurable command line options are available.</p><p><strong>Configuration file:</strong> <code>$CONFIG/$CHAIN/blockScrape.toml</code><br><strong>Configuration group:</strong> <code>[settings]</code></p><table><thead><tr><th>Item</th><th>Type</th><th>Default</th><th>Description / Default</th></tr></thead><tbody><tr><td>apps_per_chunk</td><td>uint64</td><td>200000</td><td>the number of appearances to build into a chunk before consolidating it</td></tr><tr><td>snap_to_grid</td><td>uint64</td><td>100000</td><td>an override to apps_per_chunk to snap-to-grid at every modulo of this value, this allows easier corrections to the index</td></tr><tr><td>first_snap</td><td>uint64</td><td>0</td><td>the first block at which snap_to_grid is enabled</td></tr><tr><td>unripe_dist</td><td>uint64</td><td>28</td><td>the distance (in blocks) from the front of the chain under which (inclusive) a block is considered unripe</td></tr><tr><td>channel_count</td><td>uint64</td><td>20</td><td>number of concurrent processing channels</td></tr><tr><td>allow_missing</td><td>bool</td><td>true</td><td>do not report errors for blockchains that contain blocks with zero addresses</td></tr></tbody></table><p>These items may be set in three ways, each overridding the preceeding method:</p><p>&ndash; in the above configuration file under the <code>[settings]</code> group,<br>&ndash; in the environment by exporting the configuration item as UPPER_CASE, without underbars, and prepended with TB_SETTINGS_, or<br>&ndash; on the command line using the configuration item with leading dashes (i.e., <code>--name</code>).</p><h3 id=further-information>further information<a href=#further-information class=anchor aria-hidden=true>#</a></h3><p>Each time <code>chifra scrape</code> runs, it begins at the last block it completed processing (plus one). With
 each pass, the scraper descends as deeply as is possible into each block&rsquo;s data. (This is why
@@ -150,7 +151,7 @@ Flags:
   -d, --deep               if true, dig more deeply during checking (manifest only)
   -s, --sleep float        for --remote pinning only, seconds to sleep between API calls
   -x, --fmt string         export format, one of [none|json*|txt|csv]
-  -v, --verbose            enable verbose (increase detail with --log_level)
+  -v, --verbose            enable verbose output
   -h, --help               display this help screen
 
 Notes:
@@ -184,7 +185,7 @@ Flags:
   -d, --dry_run            display the results of the download without actually downloading
   -F, --first_block uint   do not download any chunks earlier than this block
   -s, --sleep float        seconds to sleep between downloads
-  -v, --verbose            enable verbose (increase detail with --log_level)
+  -v, --verbose            enable verbose output
   -h, --help               display this help screen
 
 Notes:

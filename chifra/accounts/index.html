@@ -2,7 +2,7 @@
 You may also name addresses; grab the ABI file for a given address; add, delete, and remove monitors, and, most importantly, export transactional histories in various formats, This includes re-directing output to remote or local databases.
 To the right is a list of commands in this group."><meta name=twitter:site content="@TrueBlocks"><meta name=twitter:creator content="@TrueBlocks"><meta property="og:title" content="Accounts"><meta property="og:description" content="The Accounts group of commands is at the heart of TrueBlocks. They allow you to produce and analyze transactional histories for one or more Ethereum addresses.
 You may also name addresses; grab the ABI file for a given address; add, delete, and remove monitors, and, most importantly, export transactional histories in various formats, This includes re-directing output to remote or local databases.
-To the right is a list of commands in this group."><meta property="og:type" content="article"><meta property="og:url" content="/chifra/accounts/"><meta property="og:image" content="/trueblocks.png"><meta property="article:modified_time" content="2023-07-25T22:46:10-04:00"><meta property="og:site_name" content="TrueBlocks"><meta property="og:locale" content="en_US"><script type=application/ld+json>{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https:\/\/trueblocks.io"},{"@type":"ListItem","position":3,"name":"Chifra","item":"https:\/\/trueblocks.io\/chifra\/"},{"@type":"ListItem","position":4,"name":"Accounts","item":"https:\/\/trueblocks.io\/chifra\/accounts\/"}]}</script><meta name=theme-color content="#fff"><link rel=apple-touch-icon sizes=180x180 href=/apple-touch-icon.png><link rel=icon type=image/png sizes=32x32 href=/favicon-32x32.png><link rel=icon type=image/png sizes=16x16 href=/favicon-16x16.png><link rel=manifest href=/site.webmanifest><script>(function(e,t,n,s,o,i,a){e[o]=e[o]||function(){(e[o].q=e[o].q||[]).push(arguments)},i=t.createElement(n),i.async=1,i.src=s,a=t.getElementsByTagName(n)[0],a.parentNode.insertBefore(i,a)})(window,document,"script","https://assets.mailerlite.com/js/universal.js","ml"),ml("account","529446")</script></head><body class="chifra single"><div class="header-bar fixed-top"></div><script>(localStorage.getItem("theme")==="dark"||localStorage.getItem("theme")===null)&&document.body.classList.add("dark")</script><header class="navbar fixed-top navbar-expand-md navbar-light"><div class=container-fluid><input class="menu-btn order-0" type=checkbox id=menu-btn>
+To the right is a list of commands in this group."><meta property="og:type" content="article"><meta property="og:url" content="/chifra/accounts/"><meta property="og:image" content="/trueblocks.png"><meta property="article:modified_time" content="2023-08-19T22:15:33-04:00"><meta property="og:site_name" content="TrueBlocks"><meta property="og:locale" content="en_US"><script type=application/ld+json>{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https:\/\/trueblocks.io"},{"@type":"ListItem","position":3,"name":"Chifra","item":"https:\/\/trueblocks.io\/chifra\/"},{"@type":"ListItem","position":4,"name":"Accounts","item":"https:\/\/trueblocks.io\/chifra\/accounts\/"}]}</script><meta name=theme-color content="#fff"><link rel=apple-touch-icon sizes=180x180 href=/apple-touch-icon.png><link rel=icon type=image/png sizes=32x32 href=/favicon-32x32.png><link rel=icon type=image/png sizes=16x16 href=/favicon-16x16.png><link rel=manifest href=/site.webmanifest><script>(function(e,t,n,s,o,i,a){e[o]=e[o]||function(){(e[o].q=e[o].q||[]).push(arguments)},i=t.createElement(n),i.async=1,i.src=s,a=t.getElementsByTagName(n)[0],a.parentNode.insertBefore(i,a)})(window,document,"script","https://assets.mailerlite.com/js/universal.js","ml"),ml("account","529446")</script></head><body class="chifra single"><div class="header-bar fixed-top"></div><script>(localStorage.getItem("theme")==="dark"||localStorage.getItem("theme")===null)&&document.body.classList.add("dark")</script><header class="navbar fixed-top navbar-expand-md navbar-light"><div class=container-fluid><input class="menu-btn order-0" type=checkbox id=menu-btn>
 <label class="menu-icon d-md-none" for=menu-btn><span class=navicon></span></label>
 <a class="navbar-brand order-1 order-md-0 me-auto" href=/>TrueBlocks</a>
 <button id=mode class="btn btn-link order-2 order-md-4" type=button aria-label="Toggle mode">
@@ -36,7 +36,7 @@ Flags:
   -F, --first_block uint    first block to export (inclusive, ignored when freshening)
   -L, --last_block uint     last block to export (inclusive, ignored when freshening)
   -x, --fmt string          export format, one of [none|json*|txt|csv]
-  -v, --verbose             enable verbose (increase detail with --log_level)
+  -v, --verbose             enable verbose output
   -h, --help                display this help screen
 
 Notes:
@@ -88,8 +88,9 @@ Flags:
   -L, --last_block uint     last block to process (inclusive)
   -H, --ether               specify value in ether
   -o, --cache               force the results of the query into the cache
+  -D, --decache             removes related items from the cache
   -x, --fmt string          export format, one of [none|json*|txt|csv]
-  -v, --verbose             enable verbose (increase detail with --log_level)
+  -v, --verbose             enable verbose output
   -h, --help                display this help screen
 
 Notes:
@@ -98,10 +99,12 @@ Notes:
   - For the --logs option, you may optionally specify one or more --emitter, one or more --topics, or both.
   - The --logs option is significantly faster if you provide an --emitter or a --topic.
   - Neighbors include every address that appears in any transaction in which the export address also appears.
-  - If provided, --max_records dominates, also, if provided, --first_record overrides --first_block.
+  - If present, --first_/--last_block are applied, followed by user-supplied filters such as asset or topic, followed by --first_/--max_record if present.
   - The --first_record and --max_record options are zero-based (as are the block options).
-  - The _block and _record options are ignored when used with the --count option.
-</code></pre><p>Data models produced by this tool:</p><ul><li><a href=/data-model/accounts/#appearance>appearance</a></li><li><a href=/data-model/accounts/#reconciliation>reconciliation</a></li><li><a href=/data-model/accounts/#monitor>monitor</a></li><li><a href=/data-model/accounts/#appearancecount>appearancecount</a></li><li><a href=/data-model/accounts/#statement>statement</a></li><li><a href=/data-model/chaindata/#transaction>transaction</a></li><li><a href=/data-model/chaindata/#transfer>transfer</a></li><li><a href=/data-model/chaindata/#receipt>receipt</a></li><li><a href=/data-model/chaindata/#log>log</a></li><li><a href=/data-model/chaindata/#trace>trace</a></li><li><a href=/data-model/chaindata/#traceaction>traceaction</a></li><li><a href=/data-model/chaindata/#traceresult>traceresult</a></li><li><a href=/data-model/chainstate/#tokenbalance>tokenbalance</a></li><li><a href=/data-model/other/#function>function</a></li><li><a href=/data-model/other/#parameter>parameter</a></li></ul><p>Links:</p><ul><li><a href=/api/#operation/accounts-export>api docs</a></li><li><a href=https://github.com/TrueBlocks/trueblocks-core/tree/master/src/apps/chifra/internal/export>source code</a></li></ul><h2 id=chifra-monitors>chifra monitors<a href=#chifra-monitors class=anchor aria-hidden=true>#</a></h2><p><code>chifra monitors`` has two purposes: (1) to </code>&ndash;watch<code>a set of addresses. This function is in its early stages and will be better explained elsewhere. Please see an example of what one may do with</code>chifra monitors &ndash;watch`, and (2) allows one to manage existing monitored addresses.</p><p>A &ldquo;monitor&rdquo; is simply a file on a hard drive that represents the transactional history of a given
+  - The _block and _record filters are ignored when used with the --count option.
+  - If the --reversed option is present, the appearance list is reversed prior to all processing (including filtering).
+  - The --decache option will remove all cache items (blocks, transactions, traces, etc.) for the given address(es).
+</code></pre><p>Data models produced by this tool:</p><ul><li><a href=/data-model/accounts/#appearance>appearance</a></li><li><a href=/data-model/accounts/#reconciliation>reconciliation</a></li><li><a href=/data-model/accounts/#monitor>monitor</a></li><li><a href=/data-model/accounts/#appearancecount>appearancecount</a></li><li><a href=/data-model/accounts/#statement>statement</a></li><li><a href=/data-model/chaindata/#transaction>transaction</a></li><li><a href=/data-model/chaindata/#transfer>transfer</a></li><li><a href=/data-model/chaindata/#receipt>receipt</a></li><li><a href=/data-model/chaindata/#log>log</a></li><li><a href=/data-model/chaindata/#trace>trace</a></li><li><a href=/data-model/chaindata/#traceaction>traceaction</a></li><li><a href=/data-model/chaindata/#traceresult>traceresult</a></li><li><a href=/data-model/chainstate/#token>token</a></li><li><a href=/data-model/other/#function>function</a></li><li><a href=/data-model/other/#parameter>parameter</a></li></ul><p>Links:</p><ul><li><a href=/api/#operation/accounts-export>api docs</a></li><li><a href=https://github.com/TrueBlocks/trueblocks-core/tree/master/src/apps/chifra/internal/export>source code</a></li></ul><h2 id=chifra-monitors>chifra monitors<a href=#chifra-monitors class=anchor aria-hidden=true>#</a></h2><p><code>chifra monitors`` has two purposes: (1) to </code>&ndash;watch<code>a set of addresses. This function is in its early stages and will be better explained elsewhere. Please see an example of what one may do with</code>chifra monitors &ndash;watch`, and (2) allows one to manage existing monitored addresses.</p><p>A &ldquo;monitor&rdquo; is simply a file on a hard drive that represents the transactional history of a given
 Ethereum address. Monitors are very small, being only the <code>&lt;block_no>&lt;tx_id></code> pair representing each
 appearance of an address. Monitor files are only created when a user expresses interest in a
 particular address. In this way, TrueBlock is able to continue to work on small desktop or even
@@ -122,18 +125,16 @@ Flags:
       --undelete      undelete a previously deleted monitor
       --remove        remove a previously deleted monitor
   -C, --clean         clean (i.e. remove duplicate appearances) from monitors
-  -D, --decache       removes a monitor and all associated data from the cache
   -l, --list          list monitors in the cache (--verbose for more detail)
   -w, --watch         continually scan for new blocks and extract data for monitored addresses
   -s, --sleep float   seconds to sleep between monitor passes (default 14)
   -x, --fmt string    export format, one of [none|json*|txt|csv]
-  -v, --verbose       enable verbose (increase detail with --log_level)
+  -v, --verbose       enable verbose output
   -h, --help          display this help screen
 
 Notes:
   - An address must be either an ENS name or start with '0x' and be forty-two characters long.
   - If no address is presented to the --clean command, all monitors will be cleaned.
-  - The --decache option will remove all cache items (blocks, txs, traces, recons) for the given address(es).
 </code></pre><p>Data models produced by this tool:</p><ul><li><a href=/data-model/accounts/#monitor>monitor</a></li><li><a href=/data-model/admin/#monitorclean>monitorclean</a></li></ul><p>Links:</p><ul><li><a href=/api/#operation/accounts-monitors>api docs</a></li><li><a href=https://github.com/TrueBlocks/trueblocks-core/tree/master/src/apps/chifra/internal/monitors>source code</a></li></ul><h2 id=chifra-names>chifra names<a href=#chifra-names class=anchor aria-hidden=true>#</a></h2><p><code>chifra names</code> is a surprisingly useful tool. It allows one to associate textual names with Ethereum
 addresses. One may ask why this is necessary given that ENS exists. The answer is a single
 word: &ldquo;privacy&rdquo;. ENS names are public. In many cases, users desire to keep personal addresses
@@ -162,7 +163,7 @@ Flags:
   -d, --dry_run           only available with --clean or --autoname, outputs changes to stdout instead of updating databases
   -A, --autoname string   an address assumed to be a token, added automatically to names database if true
   -x, --fmt string        export format, one of [none|json*|txt|csv]
-  -v, --verbose           enable verbose (increase detail with --log_level)
+  -v, --verbose           enable verbose output
   -h, --help              display this help screen
 
 Notes:
@@ -190,7 +191,7 @@ Flags:
   -e, --encode string   generate the 32-byte encoding for a given cannonical function or event signature
   -C, --clean           remove an abi file for an address or all zero-length files if no address is given
   -x, --fmt string      export format, one of [none|json*|txt|csv]
-  -v, --verbose         enable verbose (increase detail with --log_level)
+  -v, --verbose         enable verbose output
   -h, --help            display this help screen
 
 Notes:
