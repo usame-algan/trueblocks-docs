@@ -1,5 +1,5 @@
 ---
-title: "Tutorials"
+title: "dAppCon Berlin 2023 - Interactive Session"
 description: "Learn how to use TrueBlocks, chifra, and the Unchained Index."
 date: 2023-09-05T19:25:12+02:00
 lastmod:
@@ -13,8 +13,6 @@ layout: single
 ---
 
 <!-- smarkdownlint-disable -->
-
-## dAppCon Berlin 2023 - Interactive Session
 
 This session will be an interactive demonstration of TrueBlocks. It is a work in progress.
 
