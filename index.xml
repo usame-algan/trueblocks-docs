@@ -4,8 +4,8 @@ But in reality, it&amp;rsquo;s as if we&amp;rsquo;re just lost at sea. Awash in 
 World-wide Blockchains are supposed to be world-wide. Are they? Yes, they are.
 Permissionless Blockchains are supposed to be permissionless.</description></item><item><title>TrueBlocks in Berlin - 2023</title><link>/tutorials/</link><pubDate>Tue, 05 Sep 2023 19:25:12 +0200</pubDate><guid>/tutorials/</guid><description>An interactive demonstration of TrueBlocks at dAppCon Berlin 2023.
 Prior to attending the session To save time for everyone, please complete the Prerequisites before you come.
-What we hope to accomplish We hope to show just how true this statement is: &amp;ldquo;Accessing Ethereum data from a locally running Ethereum node is orders of magnitude better than accessing it remotely.&amp;rdquo;
-People don&amp;rsquo;t understand what this actually means. Come learn. Hint: it&amp;rsquo;s not just about speed.</description></item><item><title>TrueBlocks Papers</title><link>/papers/</link><pubDate>Wed, 22 Jun 2022 13:06:08 -0300</pubDate><guid>/papers/</guid><description>2023
+What we hope to accomplish &amp;quot;Accessing Ethereum data from a locally running Ethereum node is orders of magnitude better than accessing it remotely.&amp;quot; Thomas Jay Rush, every day We hope to show why:
+Running a local Ethereum node is not that hard, The RPC is broken, but it can be fixed, Rate limiting is your enemy and leads to: Capture Privacy ivasion Winner takes all Not what we want to be building, Content addressable data stores hold the key.</description></item><item><title>TrueBlocks Papers</title><link>/papers/</link><pubDate>Wed, 22 Jun 2022 13:06:08 -0300</pubDate><guid>/papers/</guid><description>2023
 Unchained Index Spec v0.51.0-beta 2022
 Unchained Index File Format Spec (v0.40.0-beta - deprecated) 2021
 The Difference Between TrueBlocks and theGraph 2020
